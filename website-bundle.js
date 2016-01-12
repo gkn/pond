@@ -36465,6 +36465,8 @@
 
 	var _srcSeries = __webpack_require__(568);
 
+	var _srcSeries2 = _interopRequireDefault(_srcSeries);
+
 	var _srcRange = __webpack_require__(679);
 
 	var _srcRange2 = _interopRequireDefault(_srcRange);
@@ -36514,16 +36516,21 @@
 	        // Setup our aggregators
 	        //
 
-	        this.fiveMinuteAggregator = new _srcAggregator2["default"]("5m", _srcFunctions.avg, function (index, event) {
+	        this.fiveMinuteAggregator = new _srcAggregator2["default"]({
+	            window: "5m", operator: _srcFunctions.avg
+	        }, function (fiveMinuteAvg) {
 	            var events = _this.state.fiveMinuteAvg;
-	            events.push(event);
-	            _this.setState({ fiveMinuteAvg: events });
+	            events.push(fiveMinuteAvg);
+	            _this.setState({ fiveMinuteAvg: fiveMinuteAvg });
 	        });
 
-	        this.hourlyAggregator = new _srcAggregator2["default"]("1h", _srcFunctions.avg, function (index, event) {
+	        this.hourlyAggregator = new _srcAggregator2["default"]({
+	            window: "1h",
+	            operator: _srcFunctions.avg
+	        }, function (hourlyAvg) {
 	            var events = _this.state.hourlyAvg;
-	            events.push(event);
-	            _this.setState({ hourlyAvg: events });
+	            events.push(hourlyAvg);
+	            _this.setState({ hourlyAvg: hourlyAvg });
 	        });
 
 	        //
@@ -36563,9 +36570,9 @@
 
 	        var hourlyStyle = {
 	            value: {
-	                normal: { fill: "#80AD62", opacity: 0.2 },
-	                highlight: { fill: "#80AD62", opacity: 0.5 },
-	                selected: { fill: "#80AD62", opacity: 0.5 }
+	                normal: { fill: "#AD62A2", opacity: 0.2 },
+	                highlight: { fill: "#AD62A2", opacity: 0.5 },
+	                selected: { fill: "#AD62A2", opacity: 0.5 }
 	            }
 	        };
 
@@ -36575,12 +36582,12 @@
 	        };
 
 	        // Create a TimeSeries for our raw, 5min and hourly events
-	        var eventSeries = new _srcSeries.TimeSeries({ name: "raw", events: this.state.events.toArray() });
-	        var fiveMinuteSeries = new _srcSeries.TimeSeries({
+	        var eventSeries = new _srcSeries2["default"]({ name: "raw", events: this.state.events.toArray() });
+	        var fiveMinuteSeries = new _srcSeries2["default"]({
 	            name: "five minute avg",
 	            events: this.state.fiveMinuteAvg.toArray()
 	        });
-	        var hourlySeries = new _srcSeries.TimeSeries({
+	        var hourlySeries = new _srcSeries2["default"]({
 	            name: "hourly",
 	            events: this.state.hourlyAvg.toArray()
 	        });
