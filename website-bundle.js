@@ -36516,21 +36516,16 @@
 	        // Setup our aggregators
 	        //
 
-	        this.fiveMinuteAggregator = new _srcAggregator2["default"]({
-	            window: "5m", operator: _srcFunctions.avg
-	        }, function (fiveMinuteAvg) {
+	        this.fiveMinuteAggregator = new _srcAggregator2["default"]({ window: "5m", operator: _srcFunctions.avg }, function (event) {
 	            var events = _this.state.fiveMinuteAvg;
-	            events.push(fiveMinuteAvg);
-	            _this.setState({ fiveMinuteAvg: fiveMinuteAvg });
+	            events.push(event);
+	            _this.setState({ fiveMinuteAvg: events });
 	        });
 
-	        this.hourlyAggregator = new _srcAggregator2["default"]({
-	            window: "1h",
-	            operator: _srcFunctions.avg
-	        }, function (hourlyAvg) {
+	        this.hourlyAggregator = new _srcAggregator2["default"]({ window: "1h", operator: _srcFunctions.avg }, function (event) {
 	            var events = _this.state.hourlyAvg;
-	            events.push(hourlyAvg);
-	            _this.setState({ hourlyAvg: hourlyAvg });
+	            events.push(event);
+	            _this.setState({ hourlyAvg: events });
 	        });
 
 	        //
@@ -36581,12 +36576,20 @@
 	            opacity: 0.5
 	        };
 
+	        //
 	        // Create a TimeSeries for our raw, 5min and hourly events
-	        var eventSeries = new _srcSeries2["default"]({ name: "raw", events: this.state.events.toArray() });
+	        //
+
+	        var eventSeries = new _srcSeries2["default"]({
+	            name: "raw",
+	            events: this.state.events.toArray()
+	        });
+
 	        var fiveMinuteSeries = new _srcSeries2["default"]({
 	            name: "five minute avg",
 	            events: this.state.fiveMinuteAvg.toArray()
 	        });
+
 	        var hourlySeries = new _srcSeries2["default"]({
 	            name: "hourly",
 	            events: this.state.hourlyAvg.toArray()
