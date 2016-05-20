@@ -12,7 +12,7 @@
 import React from "react";
 import { render } from "react-dom";
 import { Router, IndexRoute, Route, useRouterHistory } from "react-router";
-import createBrowserHistory from "history/lib/createBrowserHistory";
+import createBrowserHistory from "history/lib/createHashHistory";
 import useScroll from "scroll-behavior/lib/useStandardScroll";
 
 const browserHistory = useScroll(useRouterHistory(createBrowserHistory))();

@@ -61,9 +61,9 @@
 
 	var _reactRouter = __webpack_require__(160);
 
-	var _createBrowserHistory = __webpack_require__(220);
+	var _createHashHistory = __webpack_require__(170);
 
-	var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
+	var _createHashHistory2 = _interopRequireDefault(_createHashHistory);
 
 	var _useStandardScroll = __webpack_require__(223);
 
@@ -115,15 +115,15 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var browserHistory = (0, _useStandardScroll2.default)((0, _reactRouter.useRouterHistory)(_createBrowserHistory2.default))(); /**
-	                                                                                                                              *  Copyright (c) 2015, The Regents of the University of California,
-	                                                                                                                              *  through Lawrence Berkeley National Laboratory (subject to receipt
-	                                                                                                                              *  of any required approvals from the U.S. Dept. of Energy).
-	                                                                                                                              *  All rights reserved.
-	                                                                                                                              *
-	                                                                                                                              *  This source code is licensed under the BSD-style license found in the
-	                                                                                                                              *  LICENSE file in the root directory of this source tree.
-	                                                                                                                              */
+	var browserHistory = (0, _useStandardScroll2.default)((0, _reactRouter.useRouterHistory)(_createHashHistory2.default))(); /**
+	                                                                                                                           *  Copyright (c) 2015, The Regents of the University of California,
+	                                                                                                                           *  through Lawrence Berkeley National Laboratory (subject to receipt
+	                                                                                                                           *  of any required approvals from the U.S. Dept. of Energy).
+	                                                                                                                           *  All rights reserved.
+	                                                                                                                           *
+	                                                                                                                           *  This source code is licensed under the BSD-style license found in the
+	                                                                                                                           *  LICENSE file in the root directory of this source tree.
+	                                                                                                                           */
 	/* eslint max-len:0 */
 
 	(0, _reactDom.render)(_react2.default.createElement(
