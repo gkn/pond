@@ -2,8 +2,6 @@
 // webpack.website.config.js to build an the pond website bundle.
 //
 
-var AnyBarWebpackPlugin = require('anybar-webpack');
-
 module.exports = {
 
     entry: {
@@ -40,11 +38,5 @@ module.exports = {
 
     resolve: {
         extensions: ["", ".js", ".jsx", ".json"]
-    },
-
-    plugins: [
-        new AnyBarWebpackPlugin({
-            enableNotifications: true
-        })
-    ]
+    }
 };

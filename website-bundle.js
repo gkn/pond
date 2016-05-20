@@ -61,55 +61,55 @@
 
 	var _reactRouter = __webpack_require__(160);
 
-	var _createBrowserHistory = __webpack_require__(216);
+	var _createBrowserHistory = __webpack_require__(220);
 
 	var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
 
-	var _useStandardScroll = __webpack_require__(219);
+	var _useStandardScroll = __webpack_require__(223);
 
 	var _useStandardScroll2 = _interopRequireDefault(_useStandardScroll);
 
-	var _app = __webpack_require__(229);
+	var _app = __webpack_require__(233);
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _intro = __webpack_require__(231);
+	var _intro = __webpack_require__(235);
 
 	var _intro2 = _interopRequireDefault(_intro);
 
-	var _start = __webpack_require__(255);
+	var _start = __webpack_require__(259);
 
 	var _start2 = _interopRequireDefault(_start);
 
-	var _timerange = __webpack_require__(258);
+	var _timerange = __webpack_require__(262);
 
 	var _timerange2 = _interopRequireDefault(_timerange);
 
-	var _index = __webpack_require__(260);
+	var _index = __webpack_require__(264);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _event = __webpack_require__(262);
+	var _event = __webpack_require__(266);
 
 	var _event2 = _interopRequireDefault(_event);
 
-	var _timerangeevent = __webpack_require__(264);
+	var _timerangeevent = __webpack_require__(268);
 
 	var _timerangeevent2 = _interopRequireDefault(_timerangeevent);
 
-	var _indexedevent = __webpack_require__(266);
+	var _indexedevent = __webpack_require__(270);
 
 	var _indexedevent2 = _interopRequireDefault(_indexedevent);
 
-	var _collection = __webpack_require__(268);
+	var _collection = __webpack_require__(272);
 
 	var _collection2 = _interopRequireDefault(_collection);
 
-	var _timeseries = __webpack_require__(270);
+	var _timeseries = __webpack_require__(274);
 
 	var _timeseries2 = _interopRequireDefault(_timeseries);
 
-	var _pipeline = __webpack_require__(272);
+	var _pipeline = __webpack_require__(276);
 
 	var _pipeline2 = _interopRequireDefault(_pipeline);
 
@@ -310,6 +310,9 @@
 	var queueIndex = -1;
 
 	function cleanUpNextTick() {
+	    if (!draining || !currentQueue) {
+	        return;
+	    }
 	    draining = false;
 	    if (currentQueue.length) {
 	        queue = currentQueue.concat(queue);
@@ -19754,150 +19757,162 @@
 /* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* components */
 	'use strict';
 
 	exports.__esModule = true;
+	exports.createMemoryHistory = exports.hashHistory = exports.browserHistory = exports.applyRouterMiddleware = exports.formatPattern = exports.useRouterHistory = exports.match = exports.routerShape = exports.locationShape = exports.PropTypes = exports.RoutingContext = exports.RouterContext = exports.createRoutes = exports.useRoutes = exports.RouteContext = exports.Lifecycle = exports.History = exports.Route = exports.Redirect = exports.IndexRoute = exports.IndexRedirect = exports.withRouter = exports.IndexLink = exports.Link = exports.Router = undefined;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	var _RouteUtils = __webpack_require__(161);
 
-	var _Router2 = __webpack_require__(161);
+	Object.defineProperty(exports, 'createRoutes', {
+	  enumerable: true,
+	  get: function get() {
+	    return _RouteUtils.createRoutes;
+	  }
+	});
+
+	var _PropTypes2 = __webpack_require__(164);
+
+	Object.defineProperty(exports, 'locationShape', {
+	  enumerable: true,
+	  get: function get() {
+	    return _PropTypes2.locationShape;
+	  }
+	});
+	Object.defineProperty(exports, 'routerShape', {
+	  enumerable: true,
+	  get: function get() {
+	    return _PropTypes2.routerShape;
+	  }
+	});
+
+	var _PatternUtils = __webpack_require__(167);
+
+	Object.defineProperty(exports, 'formatPattern', {
+	  enumerable: true,
+	  get: function get() {
+	    return _PatternUtils.formatPattern;
+	  }
+	});
+
+	var _Router2 = __webpack_require__(169);
 
 	var _Router3 = _interopRequireDefault(_Router2);
 
-	exports.Router = _Router3['default'];
-
-	var _Link2 = __webpack_require__(197);
+	var _Link2 = __webpack_require__(200);
 
 	var _Link3 = _interopRequireDefault(_Link2);
 
-	exports.Link = _Link3['default'];
-
-	var _IndexLink2 = __webpack_require__(199);
+	var _IndexLink2 = __webpack_require__(201);
 
 	var _IndexLink3 = _interopRequireDefault(_IndexLink2);
 
-	exports.IndexLink = _IndexLink3['default'];
+	var _withRouter2 = __webpack_require__(202);
 
-	/* components (configuration) */
+	var _withRouter3 = _interopRequireDefault(_withRouter2);
 
-	var _IndexRedirect2 = __webpack_require__(200);
+	var _IndexRedirect2 = __webpack_require__(204);
 
 	var _IndexRedirect3 = _interopRequireDefault(_IndexRedirect2);
 
-	exports.IndexRedirect = _IndexRedirect3['default'];
-
-	var _IndexRoute2 = __webpack_require__(202);
+	var _IndexRoute2 = __webpack_require__(206);
 
 	var _IndexRoute3 = _interopRequireDefault(_IndexRoute2);
 
-	exports.IndexRoute = _IndexRoute3['default'];
-
-	var _Redirect2 = __webpack_require__(201);
+	var _Redirect2 = __webpack_require__(205);
 
 	var _Redirect3 = _interopRequireDefault(_Redirect2);
 
-	exports.Redirect = _Redirect3['default'];
-
-	var _Route2 = __webpack_require__(203);
+	var _Route2 = __webpack_require__(207);
 
 	var _Route3 = _interopRequireDefault(_Route2);
 
-	exports.Route = _Route3['default'];
-
-	/* mixins */
-
-	var _History2 = __webpack_require__(204);
+	var _History2 = __webpack_require__(208);
 
 	var _History3 = _interopRequireDefault(_History2);
 
-	exports.History = _History3['default'];
-
-	var _Lifecycle2 = __webpack_require__(205);
+	var _Lifecycle2 = __webpack_require__(209);
 
 	var _Lifecycle3 = _interopRequireDefault(_Lifecycle2);
 
-	exports.Lifecycle = _Lifecycle3['default'];
-
-	var _RouteContext2 = __webpack_require__(206);
+	var _RouteContext2 = __webpack_require__(210);
 
 	var _RouteContext3 = _interopRequireDefault(_RouteContext2);
 
-	exports.RouteContext = _RouteContext3['default'];
-
-	/* utils */
-
-	var _useRoutes2 = __webpack_require__(207);
+	var _useRoutes2 = __webpack_require__(211);
 
 	var _useRoutes3 = _interopRequireDefault(_useRoutes2);
 
-	exports.useRoutes = _useRoutes3['default'];
-
-	var _RouteUtils = __webpack_require__(192);
-
-	exports.createRoutes = _RouteUtils.createRoutes;
-
-	var _RouterContext2 = __webpack_require__(194);
+	var _RouterContext2 = __webpack_require__(197);
 
 	var _RouterContext3 = _interopRequireDefault(_RouterContext2);
 
-	exports.RouterContext = _RouterContext3['default'];
-
-	var _RoutingContext2 = __webpack_require__(208);
+	var _RoutingContext2 = __webpack_require__(212);
 
 	var _RoutingContext3 = _interopRequireDefault(_RoutingContext2);
 
-	exports.RoutingContext = _RoutingContext3['default'];
-
-	var _PropTypes2 = __webpack_require__(198);
-
 	var _PropTypes3 = _interopRequireDefault(_PropTypes2);
 
-	exports.PropTypes = _PropTypes3['default'];
-	exports.locationShape = _PropTypes2.locationShape;
-	exports.routerShape = _PropTypes2.routerShape;
-
-	var _match2 = __webpack_require__(209);
+	var _match2 = __webpack_require__(213);
 
 	var _match3 = _interopRequireDefault(_match2);
 
-	exports.match = _match3['default'];
-
-	var _useRouterHistory2 = __webpack_require__(213);
+	var _useRouterHistory2 = __webpack_require__(217);
 
 	var _useRouterHistory3 = _interopRequireDefault(_useRouterHistory2);
 
-	exports.useRouterHistory = _useRouterHistory3['default'];
-
-	var _PatternUtils = __webpack_require__(185);
-
-	exports.formatPattern = _PatternUtils.formatPattern;
-
-	var _applyRouterMiddleware2 = __webpack_require__(214);
+	var _applyRouterMiddleware2 = __webpack_require__(218);
 
 	var _applyRouterMiddleware3 = _interopRequireDefault(_applyRouterMiddleware2);
 
-	exports.applyRouterMiddleware = _applyRouterMiddleware3['default'];
-
-	/* histories */
-
-	var _browserHistory2 = __webpack_require__(215);
+	var _browserHistory2 = __webpack_require__(219);
 
 	var _browserHistory3 = _interopRequireDefault(_browserHistory2);
 
-	exports.browserHistory = _browserHistory3['default'];
-
-	var _hashHistory2 = __webpack_require__(218);
+	var _hashHistory2 = __webpack_require__(222);
 
 	var _hashHistory3 = _interopRequireDefault(_hashHistory2);
 
-	exports.hashHistory = _hashHistory3['default'];
-
-	var _createMemoryHistory2 = __webpack_require__(210);
+	var _createMemoryHistory2 = __webpack_require__(214);
 
 	var _createMemoryHistory3 = _interopRequireDefault(_createMemoryHistory2);
 
-	exports.createMemoryHistory = _createMemoryHistory3['default'];
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.Router = _Router3.default; /* components */
+
+	exports.Link = _Link3.default;
+	exports.IndexLink = _IndexLink3.default;
+	exports.withRouter = _withRouter3.default;
+
+	/* components (configuration) */
+
+	exports.IndexRedirect = _IndexRedirect3.default;
+	exports.IndexRoute = _IndexRoute3.default;
+	exports.Redirect = _Redirect3.default;
+	exports.Route = _Route3.default;
+
+	/* mixins */
+
+	exports.History = _History3.default;
+	exports.Lifecycle = _Lifecycle3.default;
+	exports.RouteContext = _RouteContext3.default;
+
+	/* utils */
+
+	exports.useRoutes = _useRoutes3.default;
+	exports.RouterContext = _RouterContext3.default;
+	exports.RoutingContext = _RoutingContext3.default;
+	exports.PropTypes = _PropTypes3.default;
+	exports.match = _match3.default;
+	exports.useRouterHistory = _useRouterHistory3.default;
+	exports.applyRouterMiddleware = _applyRouterMiddleware3.default;
+
+	/* histories */
+
+	exports.browserHistory = _browserHistory3.default;
+	exports.hashHistory = _hashHistory3.default;
+	exports.createMemoryHistory = _createMemoryHistory3.default;
 
 /***/ },
 /* 161 */
@@ -19909,45 +19924,772 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-	var _historyLibCreateHashHistory = __webpack_require__(162);
-
-	var _historyLibCreateHashHistory2 = _interopRequireDefault(_historyLibCreateHashHistory);
-
-	var _historyLibUseQueries = __webpack_require__(179);
-
-	var _historyLibUseQueries2 = _interopRequireDefault(_historyLibUseQueries);
+	exports.isReactChildren = isReactChildren;
+	exports.createRouteFromReactElement = createRouteFromReactElement;
+	exports.createRoutesFromReactChildren = createRoutesFromReactChildren;
+	exports.createRoutes = createRoutes;
 
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _createTransitionManager = __webpack_require__(182);
+	var _routerWarning = __webpack_require__(162);
+
+	var _routerWarning2 = _interopRequireDefault(_routerWarning);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function isValidChild(object) {
+	  return object == null || _react2.default.isValidElement(object);
+	}
+
+	function isReactChildren(object) {
+	  return isValidChild(object) || Array.isArray(object) && object.every(isValidChild);
+	}
+
+	function checkPropTypes(componentName, propTypes, props) {
+	  componentName = componentName || 'UnknownComponent';
+
+	  for (var propName in propTypes) {
+	    if (Object.prototype.hasOwnProperty.call(propTypes, propName)) {
+	      var error = propTypes[propName](props, propName, componentName);
+
+	      /* istanbul ignore if: error logging */
+	      if (error instanceof Error) process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, error.message) : void 0;
+	    }
+	  }
+	}
+
+	function createRoute(defaultProps, props) {
+	  return _extends({}, defaultProps, props);
+	}
+
+	function createRouteFromReactElement(element) {
+	  var type = element.type;
+	  var route = createRoute(type.defaultProps, element.props);
+
+	  if (type.propTypes) checkPropTypes(type.displayName || type.name, type.propTypes, route);
+
+	  if (route.children) {
+	    var childRoutes = createRoutesFromReactChildren(route.children, route);
+
+	    if (childRoutes.length) route.childRoutes = childRoutes;
+
+	    delete route.children;
+	  }
+
+	  return route;
+	}
+
+	/**
+	 * Creates and returns a routes object from the given ReactChildren. JSX
+	 * provides a convenient way to visualize how routes in the hierarchy are
+	 * nested.
+	 *
+	 *   import { Route, createRoutesFromReactChildren } from 'react-router'
+	 *   
+	 *   const routes = createRoutesFromReactChildren(
+	 *     <Route component={App}>
+	 *       <Route path="home" component={Dashboard}/>
+	 *       <Route path="news" component={NewsFeed}/>
+	 *     </Route>
+	 *   )
+	 *
+	 * Note: This method is automatically used when you provide <Route> children
+	 * to a <Router> component.
+	 */
+	function createRoutesFromReactChildren(children, parentRoute) {
+	  var routes = [];
+
+	  _react2.default.Children.forEach(children, function (element) {
+	    if (_react2.default.isValidElement(element)) {
+	      // Component classes may have a static create* method.
+	      if (element.type.createRouteFromReactElement) {
+	        var route = element.type.createRouteFromReactElement(element, parentRoute);
+
+	        if (route) routes.push(route);
+	      } else {
+	        routes.push(createRouteFromReactElement(element));
+	      }
+	    }
+	  });
+
+	  return routes;
+	}
+
+	/**
+	 * Creates and returns an array of routes from the given object which
+	 * may be a JSX route, a plain object route, or an array of either.
+	 */
+	function createRoutes(routes) {
+	  if (isReactChildren(routes)) {
+	    routes = createRoutesFromReactChildren(routes);
+	  } else if (routes && !Array.isArray(routes)) {
+	    routes = [routes];
+	  }
+
+	  return routes;
+	}
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.default = routerWarning;
+	exports._resetWarned = _resetWarned;
+
+	var _warning = __webpack_require__(163);
+
+	var _warning2 = _interopRequireDefault(_warning);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var warned = {};
+
+	function routerWarning(falseToWarn, message) {
+	  // Only issue deprecation warnings once.
+	  if (message.indexOf('deprecated') !== -1) {
+	    if (warned[message]) {
+	      return;
+	    }
+
+	    warned[message] = true;
+	  }
+
+	  message = '[react-router] ' + message;
+
+	  for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+	    args[_key - 2] = arguments[_key];
+	  }
+
+	  _warning2.default.apply(undefined, [falseToWarn, message].concat(args));
+	}
+
+	function _resetWarned() {
+	  warned = {};
+	}
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2014-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+
+	'use strict';
+
+	/**
+	 * Similar to invariant but only logs a warning if the condition is not met.
+	 * This can be used to log issues in development environments in critical
+	 * paths. Removing the logging code for production environments will keep the
+	 * same logic and follow the same code paths.
+	 */
+
+	var warning = function() {};
+
+	if (process.env.NODE_ENV !== 'production') {
+	  warning = function(condition, format, args) {
+	    var len = arguments.length;
+	    args = new Array(len > 2 ? len - 2 : 0);
+	    for (var key = 2; key < len; key++) {
+	      args[key - 2] = arguments[key];
+	    }
+	    if (format === undefined) {
+	      throw new Error(
+	        '`warning(condition, format, ...args)` requires a warning ' +
+	        'message argument'
+	      );
+	    }
+
+	    if (format.length < 10 || (/^[s\W]*$/).test(format)) {
+	      throw new Error(
+	        'The warning format should be able to uniquely identify this ' +
+	        'warning. Please, use a more descriptive format than: ' + format
+	      );
+	    }
+
+	    if (!condition) {
+	      var argIndex = 0;
+	      var message = 'Warning: ' +
+	        format.replace(/%s/g, function() {
+	          return args[argIndex++];
+	        });
+	      if (typeof console !== 'undefined') {
+	        console.error(message);
+	      }
+	      try {
+	        // This error was thrown as a convenience so that you can use this stack
+	        // to find the callsite that caused this warning to fire.
+	        throw new Error(message);
+	      } catch(x) {}
+	    }
+	  };
+	}
+
+	module.exports = warning;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+
+	exports.__esModule = true;
+	exports.router = exports.routes = exports.route = exports.components = exports.component = exports.location = exports.history = exports.falsy = exports.locationShape = exports.routerShape = undefined;
+
+	var _react = __webpack_require__(2);
+
+	var _deprecateObjectProperties = __webpack_require__(165);
+
+	var _deprecateObjectProperties2 = _interopRequireDefault(_deprecateObjectProperties);
+
+	var _InternalPropTypes = __webpack_require__(166);
+
+	var InternalPropTypes = _interopRequireWildcard(_InternalPropTypes);
+
+	var _routerWarning = __webpack_require__(162);
+
+	var _routerWarning2 = _interopRequireDefault(_routerWarning);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var func = _react.PropTypes.func;
+	var object = _react.PropTypes.object;
+	var shape = _react.PropTypes.shape;
+	var string = _react.PropTypes.string;
+	var routerShape = exports.routerShape = shape({
+	  push: func.isRequired,
+	  replace: func.isRequired,
+	  go: func.isRequired,
+	  goBack: func.isRequired,
+	  goForward: func.isRequired,
+	  setRouteLeaveHook: func.isRequired,
+	  isActive: func.isRequired
+	});
+
+	var locationShape = exports.locationShape = shape({
+	  pathname: string.isRequired,
+	  search: string.isRequired,
+	  state: object,
+	  action: string.isRequired,
+	  key: string
+	});
+
+	// Deprecated stuff below:
+
+	var falsy = exports.falsy = InternalPropTypes.falsy;
+	var history = exports.history = InternalPropTypes.history;
+	var location = exports.location = locationShape;
+	var component = exports.component = InternalPropTypes.component;
+	var components = exports.components = InternalPropTypes.components;
+	var route = exports.route = InternalPropTypes.route;
+	var routes = exports.routes = InternalPropTypes.routes;
+	var router = exports.router = routerShape;
+
+	if (process.env.NODE_ENV !== 'production') {
+	  (function () {
+	    var deprecatePropType = function deprecatePropType(propType, message) {
+	      return function () {
+	        process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, message) : void 0;
+	        return propType.apply(undefined, arguments);
+	      };
+	    };
+
+	    var deprecateInternalPropType = function deprecateInternalPropType(propType) {
+	      return deprecatePropType(propType, 'This prop type is not intended for external use, and was previously exported by mistake. These internal prop types are deprecated for external use, and will be removed in a later version.');
+	    };
+
+	    var deprecateRenamedPropType = function deprecateRenamedPropType(propType, name) {
+	      return deprecatePropType(propType, 'The `' + name + '` prop type is now exported as `' + name + 'Shape` to avoid name conflicts. This export is deprecated and will be removed in a later version.');
+	    };
+
+	    exports.falsy = falsy = deprecateInternalPropType(falsy);
+	    exports.history = history = deprecateInternalPropType(history);
+	    exports.component = component = deprecateInternalPropType(component);
+	    exports.components = components = deprecateInternalPropType(components);
+	    exports.route = route = deprecateInternalPropType(route);
+	    exports.routes = routes = deprecateInternalPropType(routes);
+
+	    exports.location = location = deprecateRenamedPropType(location, 'location');
+	    exports.router = router = deprecateRenamedPropType(router, 'router');
+	  })();
+	}
+
+	var defaultExport = {
+	  falsy: falsy,
+	  history: history,
+	  location: location,
+	  component: component,
+	  components: components,
+	  route: route,
+	  // For some reason, routes was never here.
+	  router: router
+	};
+
+	if (process.env.NODE_ENV !== 'production') {
+	  defaultExport = (0, _deprecateObjectProperties2.default)(defaultExport, 'The default export from `react-router/lib/PropTypes` is deprecated. Please use the named exports instead.');
+	}
+
+	exports.default = defaultExport;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+
+	exports.__esModule = true;
+	exports.canUseMembrane = undefined;
+
+	var _routerWarning = __webpack_require__(162);
+
+	var _routerWarning2 = _interopRequireDefault(_routerWarning);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var canUseMembrane = exports.canUseMembrane = false;
+
+	// No-op by default.
+	var deprecateObjectProperties = function deprecateObjectProperties(object) {
+	  return object;
+	};
+
+	if (process.env.NODE_ENV !== 'production') {
+	  try {
+	    if (Object.defineProperty({}, 'x', {
+	      get: function get() {
+	        return true;
+	      }
+	    }).x) {
+	      exports.canUseMembrane = canUseMembrane = true;
+	    }
+	    /* eslint-disable no-empty */
+	  } catch (e) {}
+	  /* eslint-enable no-empty */
+
+	  if (canUseMembrane) {
+	    deprecateObjectProperties = function deprecateObjectProperties(object, message) {
+	      // Wrap the deprecated object in a membrane to warn on property access.
+	      var membrane = {};
+
+	      var _loop = function _loop(prop) {
+	        if (!Object.prototype.hasOwnProperty.call(object, prop)) {
+	          return 'continue';
+	        }
+
+	        if (typeof object[prop] === 'function') {
+	          // Can't use fat arrow here because of use of arguments below.
+	          membrane[prop] = function () {
+	            process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, message) : void 0;
+	            return object[prop].apply(object, arguments);
+	          };
+	          return 'continue';
+	        }
+
+	        // These properties are non-enumerable to prevent React dev tools from
+	        // seeing them and causing spurious warnings when accessing them. In
+	        // principle this could be done with a proxy, but support for the
+	        // ownKeys trap on proxies is not universal, even among browsers that
+	        // otherwise support proxies.
+	        Object.defineProperty(membrane, prop, {
+	          get: function get() {
+	            process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, message) : void 0;
+	            return object[prop];
+	          }
+	        });
+	      };
+
+	      for (var prop in object) {
+	        var _ret = _loop(prop);
+
+	        if (_ret === 'continue') continue;
+	      }
+
+	      return membrane;
+	    };
+	  }
+	}
+
+	exports.default = deprecateObjectProperties;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.routes = exports.route = exports.components = exports.component = exports.history = undefined;
+	exports.falsy = falsy;
+
+	var _react = __webpack_require__(2);
+
+	var func = _react.PropTypes.func;
+	var object = _react.PropTypes.object;
+	var arrayOf = _react.PropTypes.arrayOf;
+	var oneOfType = _react.PropTypes.oneOfType;
+	var element = _react.PropTypes.element;
+	var shape = _react.PropTypes.shape;
+	var string = _react.PropTypes.string;
+	function falsy(props, propName, componentName) {
+	  if (props[propName]) return new Error('<' + componentName + '> should not have a "' + propName + '" prop');
+	}
+
+	var history = exports.history = shape({
+	  listen: func.isRequired,
+	  push: func.isRequired,
+	  replace: func.isRequired,
+	  go: func.isRequired,
+	  goBack: func.isRequired,
+	  goForward: func.isRequired
+	});
+
+	var component = exports.component = oneOfType([func, string]);
+	var components = exports.components = oneOfType([component, object]);
+	var route = exports.route = oneOfType([object, element]);
+	var routes = exports.routes = oneOfType([route, arrayOf(route)]);
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+
+	exports.__esModule = true;
+	exports.compilePattern = compilePattern;
+	exports.matchPattern = matchPattern;
+	exports.getParamNames = getParamNames;
+	exports.getParams = getParams;
+	exports.formatPattern = formatPattern;
+
+	var _invariant = __webpack_require__(168);
+
+	var _invariant2 = _interopRequireDefault(_invariant);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function escapeRegExp(string) {
+	  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+	}
+
+	function _compilePattern(pattern) {
+	  var regexpSource = '';
+	  var paramNames = [];
+	  var tokens = [];
+
+	  var match = void 0,
+	      lastIndex = 0,
+	      matcher = /:([a-zA-Z_$][a-zA-Z0-9_$]*)|\*\*|\*|\(|\)/g;
+	  while (match = matcher.exec(pattern)) {
+	    if (match.index !== lastIndex) {
+	      tokens.push(pattern.slice(lastIndex, match.index));
+	      regexpSource += escapeRegExp(pattern.slice(lastIndex, match.index));
+	    }
+
+	    if (match[1]) {
+	      regexpSource += '([^/]+)';
+	      paramNames.push(match[1]);
+	    } else if (match[0] === '**') {
+	      regexpSource += '(.*)';
+	      paramNames.push('splat');
+	    } else if (match[0] === '*') {
+	      regexpSource += '(.*?)';
+	      paramNames.push('splat');
+	    } else if (match[0] === '(') {
+	      regexpSource += '(?:';
+	    } else if (match[0] === ')') {
+	      regexpSource += ')?';
+	    }
+
+	    tokens.push(match[0]);
+
+	    lastIndex = matcher.lastIndex;
+	  }
+
+	  if (lastIndex !== pattern.length) {
+	    tokens.push(pattern.slice(lastIndex, pattern.length));
+	    regexpSource += escapeRegExp(pattern.slice(lastIndex, pattern.length));
+	  }
+
+	  return {
+	    pattern: pattern,
+	    regexpSource: regexpSource,
+	    paramNames: paramNames,
+	    tokens: tokens
+	  };
+	}
+
+	var CompiledPatternsCache = {};
+
+	function compilePattern(pattern) {
+	  if (!(pattern in CompiledPatternsCache)) CompiledPatternsCache[pattern] = _compilePattern(pattern);
+
+	  return CompiledPatternsCache[pattern];
+	}
+
+	/**
+	 * Attempts to match a pattern on the given pathname. Patterns may use
+	 * the following special characters:
+	 *
+	 * - :paramName     Matches a URL segment up to the next /, ?, or #. The
+	 *                  captured string is considered a "param"
+	 * - ()             Wraps a segment of the URL that is optional
+	 * - *              Consumes (non-greedy) all characters up to the next
+	 *                  character in the pattern, or to the end of the URL if
+	 *                  there is none
+	 * - **             Consumes (greedy) all characters up to the next character
+	 *                  in the pattern, or to the end of the URL if there is none
+	 *
+	 *  The function calls callback(error, matched) when finished.
+	 * The return value is an object with the following properties:
+	 *
+	 * - remainingPathname
+	 * - paramNames
+	 * - paramValues
+	 */
+	function matchPattern(pattern, pathname) {
+	  // Ensure pattern starts with leading slash for consistency with pathname.
+	  if (pattern.charAt(0) !== '/') {
+	    pattern = '/' + pattern;
+	  }
+
+	  var _compilePattern2 = compilePattern(pattern);
+
+	  var regexpSource = _compilePattern2.regexpSource;
+	  var paramNames = _compilePattern2.paramNames;
+	  var tokens = _compilePattern2.tokens;
+
+
+	  if (pattern.charAt(pattern.length - 1) !== '/') {
+	    regexpSource += '/?'; // Allow optional path separator at end.
+	  }
+
+	  // Special-case patterns like '*' for catch-all routes.
+	  if (tokens[tokens.length - 1] === '*') {
+	    regexpSource += '$';
+	  }
+
+	  var match = pathname.match(new RegExp('^' + regexpSource, 'i'));
+	  if (match == null) {
+	    return null;
+	  }
+
+	  var matchedPath = match[0];
+	  var remainingPathname = pathname.substr(matchedPath.length);
+
+	  if (remainingPathname) {
+	    // Require that the match ends at a path separator, if we didn't match
+	    // the full path, so any remaining pathname is a new path segment.
+	    if (matchedPath.charAt(matchedPath.length - 1) !== '/') {
+	      return null;
+	    }
+
+	    // If there is a remaining pathname, treat the path separator as part of
+	    // the remaining pathname for properly continuing the match.
+	    remainingPathname = '/' + remainingPathname;
+	  }
+
+	  return {
+	    remainingPathname: remainingPathname,
+	    paramNames: paramNames,
+	    paramValues: match.slice(1).map(function (v) {
+	      return v && decodeURIComponent(v);
+	    })
+	  };
+	}
+
+	function getParamNames(pattern) {
+	  return compilePattern(pattern).paramNames;
+	}
+
+	function getParams(pattern, pathname) {
+	  var match = matchPattern(pattern, pathname);
+	  if (!match) {
+	    return null;
+	  }
+
+	  var paramNames = match.paramNames;
+	  var paramValues = match.paramValues;
+
+	  var params = {};
+
+	  paramNames.forEach(function (paramName, index) {
+	    params[paramName] = paramValues[index];
+	  });
+
+	  return params;
+	}
+
+	/**
+	 * Returns a version of the given pattern with params interpolated. Throws
+	 * if there is a dynamic segment of the pattern for which there is no param.
+	 */
+	function formatPattern(pattern, params) {
+	  params = params || {};
+
+	  var _compilePattern3 = compilePattern(pattern);
+
+	  var tokens = _compilePattern3.tokens;
+
+	  var parenCount = 0,
+	      pathname = '',
+	      splatIndex = 0;
+
+	  var token = void 0,
+	      paramName = void 0,
+	      paramValue = void 0;
+	  for (var i = 0, len = tokens.length; i < len; ++i) {
+	    token = tokens[i];
+
+	    if (token === '*' || token === '**') {
+	      paramValue = Array.isArray(params.splat) ? params.splat[splatIndex++] : params.splat;
+
+	      !(paramValue != null || parenCount > 0) ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'Missing splat #%s for path "%s"', splatIndex, pattern) : (0, _invariant2.default)(false) : void 0;
+
+	      if (paramValue != null) pathname += encodeURI(paramValue);
+	    } else if (token === '(') {
+	      parenCount += 1;
+	    } else if (token === ')') {
+	      parenCount -= 1;
+	    } else if (token.charAt(0) === ':') {
+	      paramName = token.substring(1);
+	      paramValue = params[paramName];
+
+	      !(paramValue != null || parenCount > 0) ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'Missing "%s" parameter for path "%s"', paramName, pattern) : (0, _invariant2.default)(false) : void 0;
+
+	      if (paramValue != null) pathname += encodeURIComponent(paramValue);
+	    } else {
+	      pathname += token;
+	    }
+	  }
+
+	  return pathname.replace(/\/+/g, '/');
+	}
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+
+	'use strict';
+
+	/**
+	 * Use invariant() to assert state which your program assumes to be true.
+	 *
+	 * Provide sprintf-style format (only %s is supported) and arguments
+	 * to provide information about what broke and what you were
+	 * expecting.
+	 *
+	 * The invariant message will be stripped in production, but the invariant
+	 * will remain to ensure logic does not differ in production.
+	 */
+
+	var invariant = function(condition, format, a, b, c, d, e, f) {
+	  if (process.env.NODE_ENV !== 'production') {
+	    if (format === undefined) {
+	      throw new Error('invariant requires an error message argument');
+	    }
+	  }
+
+	  if (!condition) {
+	    var error;
+	    if (format === undefined) {
+	      error = new Error(
+	        'Minified exception occurred; use the non-minified dev environment ' +
+	        'for the full error message and additional helpful warnings.'
+	      );
+	    } else {
+	      var args = [a, b, c, d, e, f];
+	      var argIndex = 0;
+	      error = new Error(
+	        format.replace(/%s/g, function() { return args[argIndex++]; })
+	      );
+	      error.name = 'Invariant Violation';
+	    }
+
+	    error.framesToPop = 1; // we don't care about invariant's own frame
+	    throw error;
+	  }
+	};
+
+	module.exports = invariant;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createHashHistory = __webpack_require__(170);
+
+	var _createHashHistory2 = _interopRequireDefault(_createHashHistory);
+
+	var _useQueries = __webpack_require__(187);
+
+	var _useQueries2 = _interopRequireDefault(_useQueries);
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _createTransitionManager = __webpack_require__(190);
 
 	var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
-	var _InternalPropTypes = __webpack_require__(193);
+	var _InternalPropTypes = __webpack_require__(166);
 
-	var _RouterContext = __webpack_require__(194);
+	var _RouterContext = __webpack_require__(197);
 
 	var _RouterContext2 = _interopRequireDefault(_RouterContext);
 
-	var _RouteUtils = __webpack_require__(192);
+	var _RouteUtils = __webpack_require__(161);
 
-	var _RouterUtils = __webpack_require__(196);
+	var _RouterUtils = __webpack_require__(199);
 
-	var _routerWarning = __webpack_require__(183);
+	var _routerWarning = __webpack_require__(162);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	function isDeprecatedHistory(history) {
 	  return !history || !history.__v2_compatible__;
 	}
 
-	var _React$PropTypes = _react2['default'].PropTypes;
+	var _React$PropTypes = _react2.default.PropTypes;
 	var func = _React$PropTypes.func;
 	var object = _React$PropTypes.object;
 
@@ -19956,8 +20698,10 @@
 	 * a router that renders a <RouterContext> with all the props
 	 * it needs each time the URL changes.
 	 */
-	var Router = _react2['default'].createClass({
+
+	var Router = _react2.default.createClass({
 	  displayName: 'Router',
+
 
 	  propTypes: {
 	    history: object,
@@ -19975,11 +20719,10 @@
 	  getDefaultProps: function getDefaultProps() {
 	    return {
 	      render: function render(props) {
-	        return _react2['default'].createElement(_RouterContext2['default'], props);
+	        return _react2.default.createElement(_RouterContext2.default, props);
 	      }
 	    };
 	  },
-
 	  getInitialState: function getInitialState() {
 	    return {
 	      location: null,
@@ -19988,7 +20731,6 @@
 	      components: null
 	    };
 	  },
-
 	  handleError: function handleError(error) {
 	    if (this.props.onError) {
 	      this.props.onError.call(this, error);
@@ -19997,7 +20739,6 @@
 	      throw error; // This error probably occurred in getChildRoutes or getComponents.
 	    }
 	  },
-
 	  componentWillMount: function componentWillMount() {
 	    var _this = this;
 
@@ -20005,13 +20746,14 @@
 	    var parseQueryString = _props.parseQueryString;
 	    var stringifyQuery = _props.stringifyQuery;
 
-	    process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](!(parseQueryString || stringifyQuery), '`parseQueryString` and `stringifyQuery` are deprecated. Please create a custom history. http://tiny.cc/router-customquerystring') : undefined;
+	    process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(!(parseQueryString || stringifyQuery), '`parseQueryString` and `stringifyQuery` are deprecated. Please create a custom history. http://tiny.cc/router-customquerystring') : void 0;
 
 	    var _createRouterObjects = this.createRouterObjects();
 
 	    var history = _createRouterObjects.history;
 	    var transitionManager = _createRouterObjects.transitionManager;
 	    var router = _createRouterObjects.router;
+
 
 	    this._unlisten = transitionManager.listen(function (error, state) {
 	      if (error) {
@@ -20024,7 +20766,6 @@
 	    this.history = history;
 	    this.router = router;
 	  },
-
 	  createRouterObjects: function createRouterObjects() {
 	    var matchContext = this.props.matchContext;
 
@@ -20037,47 +20778,47 @@
 	    var routes = _props2.routes;
 	    var children = _props2.children;
 
+
 	    if (isDeprecatedHistory(history)) {
 	      history = this.wrapDeprecatedHistory(history);
 	    }
 
-	    var transitionManager = _createTransitionManager2['default'](history, _RouteUtils.createRoutes(routes || children));
-	    var router = _RouterUtils.createRouterObject(history, transitionManager);
-	    var routingHistory = _RouterUtils.createRoutingHistory(history, transitionManager);
+	    var transitionManager = (0, _createTransitionManager2.default)(history, (0, _RouteUtils.createRoutes)(routes || children));
+	    var router = (0, _RouterUtils.createRouterObject)(history, transitionManager);
+	    var routingHistory = (0, _RouterUtils.createRoutingHistory)(history, transitionManager);
 
 	    return { history: routingHistory, transitionManager: transitionManager, router: router };
 	  },
-
 	  wrapDeprecatedHistory: function wrapDeprecatedHistory(history) {
 	    var _props3 = this.props;
 	    var parseQueryString = _props3.parseQueryString;
 	    var stringifyQuery = _props3.stringifyQuery;
 
-	    var createHistory = undefined;
+
+	    var createHistory = void 0;
 	    if (history) {
-	      process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, 'It appears you have provided a deprecated history object to `<Router/>`, please use a history provided by ' + 'React Router with `import { browserHistory } from \'react-router\'` or `import { hashHistory } from \'react-router\'`. ' + 'If you are using a custom history please create it with `useRouterHistory`, see http://tiny.cc/router-usinghistory for details.') : undefined;
-	      createHistory = function () {
+	      process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, 'It appears you have provided a deprecated history object to `<Router/>`, please use a history provided by ' + 'React Router with `import { browserHistory } from \'react-router\'` or `import { hashHistory } from \'react-router\'`. ' + 'If you are using a custom history please create it with `useRouterHistory`, see http://tiny.cc/router-usinghistory for details.') : void 0;
+	      createHistory = function createHistory() {
 	        return history;
 	      };
 	    } else {
-	      process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, '`Router` no longer defaults the history prop to hash history. Please use the `hashHistory` singleton instead. http://tiny.cc/router-defaulthistory') : undefined;
-	      createHistory = _historyLibCreateHashHistory2['default'];
+	      process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, '`Router` no longer defaults the history prop to hash history. Please use the `hashHistory` singleton instead. http://tiny.cc/router-defaulthistory') : void 0;
+	      createHistory = _createHashHistory2.default;
 	    }
 
-	    return _historyLibUseQueries2['default'](createHistory)({ parseQueryString: parseQueryString, stringifyQuery: stringifyQuery });
+	    return (0, _useQueries2.default)(createHistory)({ parseQueryString: parseQueryString, stringifyQuery: stringifyQuery });
 	  },
+
 
 	  /* istanbul ignore next: sanity check */
 	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-	    process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](nextProps.history === this.props.history, 'You cannot change <Router history>; it will be ignored') : undefined;
+	    process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(nextProps.history === this.props.history, 'You cannot change <Router history>; it will be ignored') : void 0;
 
-	    process.env.NODE_ENV !== 'production' ? _routerWarning2['default']((nextProps.routes || nextProps.children) === (this.props.routes || this.props.children), 'You cannot change <Router routes>; it will be ignored') : undefined;
+	    process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)((nextProps.routes || nextProps.children) === (this.props.routes || this.props.children), 'You cannot change <Router routes>; it will be ignored') : void 0;
 	  },
-
 	  componentWillUnmount: function componentWillUnmount() {
 	    if (this._unlisten) this._unlisten();
 	  },
-
 	  render: function render() {
 	    var _state = this.state;
 	    var location = _state.location;
@@ -20108,15 +20849,14 @@
 	      createElement: createElement
 	    }));
 	  }
-
 	});
 
-	exports['default'] = Router;
+	exports.default = Router;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 162 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -20127,25 +20867,25 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(163);
+	var _warning = __webpack_require__(171);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _invariant = __webpack_require__(164);
+	var _invariant = __webpack_require__(172);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _Actions = __webpack_require__(165);
+	var _Actions = __webpack_require__(173);
 
-	var _PathUtils = __webpack_require__(166);
+	var _PathUtils = __webpack_require__(174);
 
-	var _ExecutionEnvironment = __webpack_require__(167);
+	var _ExecutionEnvironment = __webpack_require__(175);
 
-	var _DOMUtils = __webpack_require__(168);
+	var _DOMUtils = __webpack_require__(176);
 
-	var _DOMStateStorage = __webpack_require__(169);
+	var _DOMStateStorage = __webpack_require__(177);
 
-	var _createDOMHistory = __webpack_require__(170);
+	var _createDOMHistory = __webpack_require__(178);
 
 	var _createDOMHistory2 = _interopRequireDefault(_createDOMHistory);
 
@@ -20368,7 +21108,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 163 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -20435,7 +21175,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 164 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -20493,7 +21233,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 165 */
+/* 173 */
 /***/ function(module, exports) {
 
 	/**
@@ -20529,7 +21269,7 @@
 	};
 
 /***/ },
-/* 166 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -20540,7 +21280,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(163);
+	var _warning = __webpack_require__(171);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -20582,7 +21322,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 167 */
+/* 175 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20592,7 +21332,7 @@
 	exports.canUseDOM = canUseDOM;
 
 /***/ },
-/* 168 */
+/* 176 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20672,7 +21412,7 @@
 	}
 
 /***/ },
-/* 169 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/*eslint-disable no-empty */
@@ -20684,7 +21424,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(163);
+	var _warning = __webpack_require__(171);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -20751,7 +21491,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 170 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -20762,15 +21502,15 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(164);
+	var _invariant = __webpack_require__(172);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _ExecutionEnvironment = __webpack_require__(167);
+	var _ExecutionEnvironment = __webpack_require__(175);
 
-	var _DOMUtils = __webpack_require__(168);
+	var _DOMUtils = __webpack_require__(176);
 
-	var _createHistory = __webpack_require__(171);
+	var _createHistory = __webpack_require__(179);
 
 	var _createHistory2 = _interopRequireDefault(_createHistory);
 
@@ -20797,7 +21537,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 171 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -20808,29 +21548,29 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(163);
+	var _warning = __webpack_require__(171);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _deepEqual = __webpack_require__(172);
+	var _deepEqual = __webpack_require__(180);
 
 	var _deepEqual2 = _interopRequireDefault(_deepEqual);
 
-	var _PathUtils = __webpack_require__(166);
+	var _PathUtils = __webpack_require__(174);
 
-	var _AsyncUtils = __webpack_require__(175);
+	var _AsyncUtils = __webpack_require__(183);
 
-	var _Actions = __webpack_require__(165);
+	var _Actions = __webpack_require__(173);
 
-	var _createLocation2 = __webpack_require__(176);
+	var _createLocation2 = __webpack_require__(184);
 
 	var _createLocation3 = _interopRequireDefault(_createLocation2);
 
-	var _runTransitionHook = __webpack_require__(177);
+	var _runTransitionHook = __webpack_require__(185);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
-	var _deprecate = __webpack_require__(178);
+	var _deprecate = __webpack_require__(186);
 
 	var _deprecate2 = _interopRequireDefault(_deprecate);
 
@@ -21091,12 +21831,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 172 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var pSlice = Array.prototype.slice;
-	var objectKeys = __webpack_require__(173);
-	var isArguments = __webpack_require__(174);
+	var objectKeys = __webpack_require__(181);
+	var isArguments = __webpack_require__(182);
 
 	var deepEqual = module.exports = function (actual, expected, opts) {
 	  if (!opts) opts = {};
@@ -21191,7 +21931,7 @@
 
 
 /***/ },
-/* 173 */
+/* 181 */
 /***/ function(module, exports) {
 
 	exports = module.exports = typeof Object.keys === 'function'
@@ -21206,7 +21946,7 @@
 
 
 /***/ },
-/* 174 */
+/* 182 */
 /***/ function(module, exports) {
 
 	var supportsArgumentsClass = (function(){
@@ -21232,7 +21972,7 @@
 
 
 /***/ },
-/* 175 */
+/* 183 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -21295,7 +22035,7 @@
 	}
 
 /***/ },
-/* 176 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -21306,13 +22046,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(163);
+	var _warning = __webpack_require__(171);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _Actions = __webpack_require__(165);
+	var _Actions = __webpack_require__(173);
 
-	var _PathUtils = __webpack_require__(166);
+	var _PathUtils = __webpack_require__(174);
 
 	function createLocation() {
 	  var location = arguments.length <= 0 || arguments[0] === undefined ? '/' : arguments[0];
@@ -21352,7 +22092,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 177 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -21361,7 +22101,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(163);
+	var _warning = __webpack_require__(171);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -21382,7 +22122,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 178 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -21391,7 +22131,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(163);
+	var _warning = __webpack_require__(171);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -21407,7 +22147,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 179 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -21418,19 +22158,19 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(163);
+	var _warning = __webpack_require__(171);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _queryString = __webpack_require__(180);
+	var _queryString = __webpack_require__(188);
 
-	var _runTransitionHook = __webpack_require__(177);
+	var _runTransitionHook = __webpack_require__(185);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
-	var _PathUtils = __webpack_require__(166);
+	var _PathUtils = __webpack_require__(174);
 
-	var _deprecate = __webpack_require__(178);
+	var _deprecate = __webpack_require__(186);
 
 	var _deprecate2 = _interopRequireDefault(_deprecate);
 
@@ -21589,11 +22329,11 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 180 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var strictUriEncode = __webpack_require__(181);
+	var strictUriEncode = __webpack_require__(189);
 
 	exports.extract = function (str) {
 		return str.split('?')[1] || '';
@@ -21661,7 +22401,7 @@
 
 
 /***/ },
-/* 181 */
+/* 189 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21673,7 +22413,7 @@
 
 
 /***/ },
-/* 182 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -21682,33 +22422,33 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	exports['default'] = createTransitionManager;
+	exports.default = createTransitionManager;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _routerWarning = __webpack_require__(183);
+	var _routerWarning = __webpack_require__(162);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _historyLibActions = __webpack_require__(165);
+	var _Actions = __webpack_require__(173);
 
-	var _computeChangedRoutes2 = __webpack_require__(184);
+	var _computeChangedRoutes2 = __webpack_require__(191);
 
 	var _computeChangedRoutes3 = _interopRequireDefault(_computeChangedRoutes2);
 
-	var _TransitionUtils = __webpack_require__(186);
+	var _TransitionUtils = __webpack_require__(192);
 
-	var _isActive2 = __webpack_require__(188);
+	var _isActive2 = __webpack_require__(194);
 
 	var _isActive3 = _interopRequireDefault(_isActive2);
 
-	var _getComponents = __webpack_require__(189);
+	var _getComponents = __webpack_require__(195);
 
 	var _getComponents2 = _interopRequireDefault(_getComponents);
 
-	var _matchRoutes = __webpack_require__(191);
+	var _matchRoutes = __webpack_require__(196);
 
 	var _matchRoutes2 = _interopRequireDefault(_matchRoutes);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function hasAnyProperties(object) {
 	  for (var p in object) {
@@ -21725,9 +22465,9 @@
 	    var indexOnlyOrDeprecatedQuery = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
 	    var deprecatedIndexOnly = arguments.length <= 2 || arguments[2] === undefined ? null : arguments[2];
 
-	    var indexOnly = undefined;
+	    var indexOnly = void 0;
 	    if (indexOnlyOrDeprecatedQuery && indexOnlyOrDeprecatedQuery !== true || deprecatedIndexOnly !== null) {
-	      process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, '`isActive(pathname, query, indexOnly) is deprecated; use `isActive(location, indexOnly)` with a location descriptor instead. http://tiny.cc/router-isActivedeprecated') : undefined;
+	      process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, '`isActive(pathname, query, indexOnly) is deprecated; use `isActive(location, indexOnly)` with a location descriptor instead. http://tiny.cc/router-isActivedeprecated') : void 0;
 	      location = { pathname: location, query: indexOnlyOrDeprecatedQuery };
 	      indexOnly = deprecatedIndexOnly || false;
 	    } else {
@@ -21735,21 +22475,21 @@
 	      indexOnly = indexOnlyOrDeprecatedQuery;
 	    }
 
-	    return _isActive3['default'](location, indexOnly, state.location, state.routes, state.params);
+	    return (0, _isActive3.default)(location, indexOnly, state.location, state.routes, state.params);
 	  }
 
 	  function createLocationFromRedirectInfo(location) {
-	    return history.createLocation(location, _historyLibActions.REPLACE);
+	    return history.createLocation(location, _Actions.REPLACE);
 	  }
 
-	  var partialNextState = undefined;
+	  var partialNextState = void 0;
 
 	  function match(location, callback) {
 	    if (partialNextState && partialNextState.location === location) {
 	      // Continue from where we left off.
 	      finishMatch(partialNextState, callback);
 	    } else {
-	      _matchRoutes2['default'](routes, location, function (error, nextState) {
+	      (0, _matchRoutes2.default)(routes, location, function (error, nextState) {
 	        if (error) {
 	          callback(error);
 	        } else if (nextState) {
@@ -21762,13 +22502,14 @@
 	  }
 
 	  function finishMatch(nextState, callback) {
-	    var _computeChangedRoutes = _computeChangedRoutes3['default'](state, nextState);
+	    var _computeChangedRoutes = (0, _computeChangedRoutes3.default)(state, nextState);
 
 	    var leaveRoutes = _computeChangedRoutes.leaveRoutes;
 	    var changeRoutes = _computeChangedRoutes.changeRoutes;
 	    var enterRoutes = _computeChangedRoutes.enterRoutes;
 
-	    _TransitionUtils.runLeaveHooks(leaveRoutes);
+
+	    (0, _TransitionUtils.runLeaveHooks)(leaveRoutes);
 
 	    // Tear down confirmation hooks for left routes
 	    leaveRoutes.filter(function (route) {
@@ -21776,17 +22517,17 @@
 	    }).forEach(removeListenBeforeHooksForRoute);
 
 	    // change and enter hooks are run in series
-	    _TransitionUtils.runChangeHooks(changeRoutes, state, nextState, function (error, redirectInfo) {
+	    (0, _TransitionUtils.runChangeHooks)(changeRoutes, state, nextState, function (error, redirectInfo) {
 	      if (error || redirectInfo) return handleErrorOrRedirect(error, redirectInfo);
 
-	      _TransitionUtils.runEnterHooks(enterRoutes, nextState, finishEnterHooks);
+	      (0, _TransitionUtils.runEnterHooks)(enterRoutes, nextState, finishEnterHooks);
 	    });
 
 	    function finishEnterHooks(error, redirectInfo) {
 	      if (error || redirectInfo) return handleErrorOrRedirect(error, redirectInfo);
 
 	      // TODO: Fetch components after state is updated.
-	      _getComponents2['default'](nextState, function (error, components) {
+	      (0, _getComponents2.default)(nextState, function (error, components) {
 	        if (error) {
 	          callback(error);
 	        } else {
@@ -21820,7 +22561,7 @@
 	  }
 
 	  function transitionHook(location, callback) {
-	    _matchRoutes2['default'](routes, location, function (error, nextState) {
+	    (0, _matchRoutes2.default)(routes, location, function (error, nextState) {
 	      if (nextState == null) {
 	        // TODO: We didn't actually match anything, but hang
 	        // onto error/nextState so we don't have to matchRoutes
@@ -21833,9 +22574,9 @@
 	      // matchRoutes() again in the listen callback.
 	      partialNextState = _extends({}, nextState, { location: location });
 
-	      var hooks = getRouteHooksForRoutes(_computeChangedRoutes3['default'](state, partialNextState).leaveRoutes);
+	      var hooks = getRouteHooksForRoutes((0, _computeChangedRoutes3.default)(state, partialNextState).leaveRoutes);
 
-	      var result = undefined;
+	      var result = void 0;
 	      for (var i = 0, len = hooks.length; result == null && i < len; ++i) {
 	        // Passing the location arg here indicates to
 	        // the user that this is a transition hook.
@@ -21853,7 +22594,7 @@
 	    if (state.routes) {
 	      var hooks = getRouteHooksForRoutes(state.routes);
 
-	      var message = undefined;
+	      var message = void 0;
 	      for (var i = 0, len = hooks.length; typeof message !== 'string' && i < len; ++i) {
 	        // Passing no args indicates to the user that this is a
 	        // beforeunload hook. We don't know the next location.
@@ -21864,8 +22605,8 @@
 	    }
 	  }
 
-	  var unlistenBefore = undefined,
-	      unlistenBeforeUnload = undefined;
+	  var unlistenBefore = void 0,
+	      unlistenBeforeUnload = void 0;
 
 	  function removeListenBeforeHooksForRoute(route) {
 	    var routeID = getRouteID(route, false);
@@ -21922,7 +22663,7 @@
 	      }
 	    } else {
 	      if (hooks.indexOf(hook) === -1) {
-	        process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, 'adding multiple leave hooks for the same route is deprecated; manage multiple confirmations in your own code instead') : undefined;
+	        process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, 'adding multiple leave hooks for the same route is deprecated; manage multiple confirmations in your own code instead') : void 0;
 
 	        hooks.push(hook);
 	      }
@@ -21965,7 +22706,7 @@
 	          } else if (nextState) {
 	            listener(null, nextState);
 	          } else {
-	            process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, 'Location "%s" did not match any routes', location.pathname + location.search + location.hash) : undefined;
+	            process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, 'Location "%s" did not match any routes', location.pathname + location.search + location.hash) : void 0;
 	          }
 	        });
 	      }
@@ -21985,61 +22726,19 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 183 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-
-	exports.__esModule = true;
-	exports['default'] = routerWarning;
-	exports._resetWarned = _resetWarned;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _warning = __webpack_require__(163);
-
-	var _warning2 = _interopRequireDefault(_warning);
-
-	var warned = {};
-
-	function routerWarning(falseToWarn, message) {
-	  // Only issue deprecation warnings once.
-	  if (message.indexOf('deprecated') !== -1) {
-	    if (warned[message]) {
-	      return;
-	    }
-
-	    warned[message] = true;
-	  }
-
-	  message = '[react-router] ' + message;
-
-	  for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-	    args[_key - 2] = arguments[_key];
-	  }
-
-	  process.env.NODE_ENV !== 'production' ? _warning2['default'].apply(undefined, [falseToWarn, message].concat(args)) : undefined;
-	}
-
-	function _resetWarned() {
-	  warned = {};
-	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
-
-/***/ },
-/* 184 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _PatternUtils = __webpack_require__(185);
+	var _PatternUtils = __webpack_require__(167);
 
 	function routeParamsChanged(route, prevState, nextState) {
 	  if (!route.path) return false;
 
-	  var paramNames = _PatternUtils.getParamNames(route.path);
+	  var paramNames = (0, _PatternUtils.getParamNames)(route.path);
 
 	  return paramNames.some(function (paramName) {
 	    return prevState.params[paramName] !== nextState.params[paramName];
@@ -22063,9 +22762,9 @@
 	  var prevRoutes = prevState && prevState.routes;
 	  var nextRoutes = nextState.routes;
 
-	  var leaveRoutes = undefined,
-	      changeRoutes = undefined,
-	      enterRoutes = undefined;
+	  var leaveRoutes = void 0,
+	      changeRoutes = void 0,
+	      enterRoutes = void 0;
 	  if (prevRoutes) {
 	    (function () {
 	      var parentIsLeaving = false;
@@ -22105,236 +22804,11 @@
 	  };
 	}
 
-	exports['default'] = computeChangedRoutes;
+	exports.default = computeChangedRoutes;
 	module.exports = exports['default'];
 
 /***/ },
-/* 185 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-
-	exports.__esModule = true;
-	exports.compilePattern = compilePattern;
-	exports.matchPattern = matchPattern;
-	exports.getParamNames = getParamNames;
-	exports.getParams = getParams;
-	exports.formatPattern = formatPattern;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _invariant = __webpack_require__(164);
-
-	var _invariant2 = _interopRequireDefault(_invariant);
-
-	function escapeRegExp(string) {
-	  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-	}
-
-	function _compilePattern(pattern) {
-	  var regexpSource = '';
-	  var paramNames = [];
-	  var tokens = [];
-
-	  var match = undefined,
-	      lastIndex = 0,
-	      matcher = /:([a-zA-Z_$][a-zA-Z0-9_$]*)|\*\*|\*|\(|\)/g;
-	  while (match = matcher.exec(pattern)) {
-	    if (match.index !== lastIndex) {
-	      tokens.push(pattern.slice(lastIndex, match.index));
-	      regexpSource += escapeRegExp(pattern.slice(lastIndex, match.index));
-	    }
-
-	    if (match[1]) {
-	      regexpSource += '([^/]+)';
-	      paramNames.push(match[1]);
-	    } else if (match[0] === '**') {
-	      regexpSource += '(.*)';
-	      paramNames.push('splat');
-	    } else if (match[0] === '*') {
-	      regexpSource += '(.*?)';
-	      paramNames.push('splat');
-	    } else if (match[0] === '(') {
-	      regexpSource += '(?:';
-	    } else if (match[0] === ')') {
-	      regexpSource += ')?';
-	    }
-
-	    tokens.push(match[0]);
-
-	    lastIndex = matcher.lastIndex;
-	  }
-
-	  if (lastIndex !== pattern.length) {
-	    tokens.push(pattern.slice(lastIndex, pattern.length));
-	    regexpSource += escapeRegExp(pattern.slice(lastIndex, pattern.length));
-	  }
-
-	  return {
-	    pattern: pattern,
-	    regexpSource: regexpSource,
-	    paramNames: paramNames,
-	    tokens: tokens
-	  };
-	}
-
-	var CompiledPatternsCache = {};
-
-	function compilePattern(pattern) {
-	  if (!(pattern in CompiledPatternsCache)) CompiledPatternsCache[pattern] = _compilePattern(pattern);
-
-	  return CompiledPatternsCache[pattern];
-	}
-
-	/**
-	 * Attempts to match a pattern on the given pathname. Patterns may use
-	 * the following special characters:
-	 *
-	 * - :paramName     Matches a URL segment up to the next /, ?, or #. The
-	 *                  captured string is considered a "param"
-	 * - ()             Wraps a segment of the URL that is optional
-	 * - *              Consumes (non-greedy) all characters up to the next
-	 *                  character in the pattern, or to the end of the URL if
-	 *                  there is none
-	 * - **             Consumes (greedy) all characters up to the next character
-	 *                  in the pattern, or to the end of the URL if there is none
-	 *
-	 * The return value is an object with the following properties:
-	 *
-	 * - remainingPathname
-	 * - paramNames
-	 * - paramValues
-	 */
-
-	function matchPattern(pattern, pathname) {
-	  // Ensure pattern starts with leading slash for consistency with pathname.
-	  if (pattern.charAt(0) !== '/') {
-	    pattern = '/' + pattern;
-	  }
-
-	  var _compilePattern2 = compilePattern(pattern);
-
-	  var regexpSource = _compilePattern2.regexpSource;
-	  var paramNames = _compilePattern2.paramNames;
-	  var tokens = _compilePattern2.tokens;
-
-	  if (pattern.charAt(pattern.length - 1) !== '/') {
-	    regexpSource += '/?'; // Allow optional path separator at end.
-	  }
-
-	  // Special-case patterns like '*' for catch-all routes.
-	  if (tokens[tokens.length - 1] === '*') {
-	    regexpSource += '$';
-	  }
-
-	  var match = pathname.match(new RegExp('^' + regexpSource, 'i'));
-
-	  var remainingPathname = undefined,
-	      paramValues = undefined;
-	  if (match != null) {
-	    var matchedPath = match[0];
-	    remainingPathname = pathname.substr(matchedPath.length);
-
-	    if (remainingPathname) {
-	      // Require that the match ends at a path separator, if we didn't match
-	      // the full path, so any remaining pathname is a new path segment.
-	      if (matchedPath.charAt(matchedPath.length - 1) !== '/') {
-	        return {
-	          remainingPathname: null,
-	          paramNames: paramNames,
-	          paramValues: null
-	        };
-	      }
-
-	      // If there is a remaining pathname, treat the path separator as part of
-	      // the remaining pathname for properly continuing the match.
-	      remainingPathname = '/' + remainingPathname;
-	    }
-
-	    paramValues = match.slice(1).map(function (v) {
-	      return v && decodeURIComponent(v);
-	    });
-	  } else {
-	    remainingPathname = paramValues = null;
-	  }
-
-	  return {
-	    remainingPathname: remainingPathname,
-	    paramNames: paramNames,
-	    paramValues: paramValues
-	  };
-	}
-
-	function getParamNames(pattern) {
-	  return compilePattern(pattern).paramNames;
-	}
-
-	function getParams(pattern, pathname) {
-	  var _matchPattern = matchPattern(pattern, pathname);
-
-	  var paramNames = _matchPattern.paramNames;
-	  var paramValues = _matchPattern.paramValues;
-
-	  if (paramValues != null) {
-	    return paramNames.reduce(function (memo, paramName, index) {
-	      memo[paramName] = paramValues[index];
-	      return memo;
-	    }, {});
-	  }
-
-	  return null;
-	}
-
-	/**
-	 * Returns a version of the given pattern with params interpolated. Throws
-	 * if there is a dynamic segment of the pattern for which there is no param.
-	 */
-
-	function formatPattern(pattern, params) {
-	  params = params || {};
-
-	  var _compilePattern3 = compilePattern(pattern);
-
-	  var tokens = _compilePattern3.tokens;
-
-	  var parenCount = 0,
-	      pathname = '',
-	      splatIndex = 0;
-
-	  var token = undefined,
-	      paramName = undefined,
-	      paramValue = undefined;
-	  for (var i = 0, len = tokens.length; i < len; ++i) {
-	    token = tokens[i];
-
-	    if (token === '*' || token === '**') {
-	      paramValue = Array.isArray(params.splat) ? params.splat[splatIndex++] : params.splat;
-
-	      !(paramValue != null || parenCount > 0) ? process.env.NODE_ENV !== 'production' ? _invariant2['default'](false, 'Missing splat #%s for path "%s"', splatIndex, pattern) : _invariant2['default'](false) : undefined;
-
-	      if (paramValue != null) pathname += encodeURI(paramValue);
-	    } else if (token === '(') {
-	      parenCount += 1;
-	    } else if (token === ')') {
-	      parenCount -= 1;
-	    } else if (token.charAt(0) === ':') {
-	      paramName = token.substring(1);
-	      paramValue = params[paramName];
-
-	      !(paramValue != null || parenCount > 0) ? process.env.NODE_ENV !== 'production' ? _invariant2['default'](false, 'Missing "%s" parameter for path "%s"', paramName, pattern) : _invariant2['default'](false) : undefined;
-
-	      if (paramValue != null) pathname += encodeURIComponent(paramValue);
-	    } else {
-	      pathname += token;
-	    }
-	  }
-
-	  return pathname.replace(/\/+/g, '/');
-	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
-
-/***/ },
-/* 186 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -22344,13 +22818,13 @@
 	exports.runChangeHooks = runChangeHooks;
 	exports.runLeaveHooks = runLeaveHooks;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	var _AsyncUtils = __webpack_require__(193);
 
-	var _AsyncUtils = __webpack_require__(187);
-
-	var _routerWarning = __webpack_require__(183);
+	var _routerWarning = __webpack_require__(162);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function createTransitionHook(hook, route, asyncArity) {
 	  return function () {
@@ -22390,10 +22864,10 @@
 	    return;
 	  }
 
-	  var redirectInfo = undefined;
+	  var redirectInfo = void 0;
 	  function replace(location, deprecatedPathname, deprecatedQuery) {
 	    if (deprecatedPathname) {
-	      process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, '`replaceState(state, pathname, query) is deprecated; use `replace(location)` with a location descriptor instead. http://tiny.cc/router-isActivedeprecated') : undefined;
+	      process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, '`replaceState(state, pathname, query) is deprecated; use `replace(location)` with a location descriptor instead. http://tiny.cc/router-isActivedeprecated') : void 0;
 	      redirectInfo = {
 	        pathname: deprecatedPathname,
 	        query: deprecatedQuery,
@@ -22406,7 +22880,7 @@
 	    redirectInfo = location;
 	  }
 
-	  _AsyncUtils.loopAsync(length, function (index, next, done) {
+	  (0, _AsyncUtils.loopAsync)(length, function (index, next, done) {
 	    iter(index, replace, function (error) {
 	      if (error || redirectInfo) {
 	        done(error, redirectInfo); // No need to continue.
@@ -22427,7 +22901,6 @@
 	 * function. However, doing so will cause the transition to pause,
 	 * which could lead to a non-responsive UI if the hook is slow.
 	 */
-
 	function runEnterHooks(routes, nextState, callback) {
 	  var hooks = getEnterHooks(routes);
 	  return runTransitionHooks(hooks.length, function (index, replace, next) {
@@ -22445,7 +22918,6 @@
 	 * function. However, doing so will cause the transition to pause,
 	 * which could lead to a non-responsive UI if the hook is slow.
 	 */
-
 	function runChangeHooks(routes, state, nextState, callback) {
 	  var hooks = getChangeHooks(routes);
 	  return runTransitionHooks(hooks.length, function (index, replace, next) {
@@ -22456,7 +22928,6 @@
 	/**
 	 * Runs all onLeave hooks in the given array of routes in order.
 	 */
-
 	function runLeaveHooks(routes) {
 	  for (var i = 0, len = routes.length; i < len; ++i) {
 	    if (routes[i].onLeave) routes[i].onLeave.call(routes[i]);
@@ -22465,28 +22936,26 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 187 */
+/* 193 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 	exports.__esModule = true;
-	var _slice = Array.prototype.slice;
 	exports.loopAsync = loopAsync;
 	exports.mapAsync = mapAsync;
-
 	function loopAsync(turns, work, callback) {
 	  var currentTurn = 0,
 	      isDone = false;
 	  var sync = false,
 	      hasNext = false,
-	      doneArgs = undefined;
+	      doneArgs = void 0;
 
 	  function done() {
 	    isDone = true;
 	    if (sync) {
 	      // Iterate instead of recursing if possible.
-	      doneArgs = [].concat(_slice.call(arguments));
+	      doneArgs = [].concat(Array.prototype.slice.call(arguments));
 	      return;
 	    }
 
@@ -22560,15 +23029,18 @@
 	}
 
 /***/ },
-/* 188 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
-	exports['default'] = isActive;
 
-	var _PatternUtils = __webpack_require__(185);
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+	exports.default = isActive;
+
+	var _PatternUtils = __webpack_require__(167);
 
 	function deepEqual(a, b) {
 	  if (a == b) return true;
@@ -22581,7 +23053,7 @@
 	    });
 	  }
 
-	  if (typeof a === 'object') {
+	  if ((typeof a === 'undefined' ? 'undefined' : _typeof(a)) === 'object') {
 	    for (var p in a) {
 	      if (!Object.prototype.hasOwnProperty.call(a, p)) {
 	        continue;
@@ -22649,10 +23121,14 @@
 	    }
 
 	    if (remainingPathname !== null && pattern) {
-	      var matched = _PatternUtils.matchPattern(pattern, remainingPathname);
-	      remainingPathname = matched.remainingPathname;
-	      paramNames = [].concat(paramNames, matched.paramNames);
-	      paramValues = [].concat(paramValues, matched.paramValues);
+	      var matched = (0, _PatternUtils.matchPattern)(pattern, remainingPathname);
+	      if (matched) {
+	        remainingPathname = matched.remainingPathname;
+	        paramNames = [].concat(paramNames, matched.paramNames);
+	        paramValues = [].concat(paramValues, matched.paramValues);
+	      } else {
+	        remainingPathname = null;
+	      }
 
 	      if (remainingPathname === '') {
 	        // We have an exact match on the route. Just check that all the params
@@ -22684,7 +23160,6 @@
 	 * Returns true if a <Link> to the given pathname/query combination is
 	 * currently active.
 	 */
-
 	function isActive(_ref, indexOnly, currentLocation, routes, params) {
 	  var pathname = _ref.pathname;
 	  var query = _ref.query;
@@ -22708,11 +23183,10 @@
 
 	  return queryIsActive(query, currentLocation.query);
 	}
-
 	module.exports = exports['default'];
 
 /***/ },
-/* 189 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -22721,15 +23195,15 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	var _AsyncUtils = __webpack_require__(193);
 
-	var _AsyncUtils = __webpack_require__(187);
+	var _deprecateObjectProperties = __webpack_require__(165);
 
-	var _deprecateObjectProperties = __webpack_require__(190);
-
-	var _routerWarning = __webpack_require__(183);
+	var _routerWarning = __webpack_require__(162);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function getComponentsForRoute(nextState, route, callback) {
 	  if (route.component || route.components) {
@@ -22745,7 +23219,7 @@
 
 	  var location = nextState.location;
 
-	  var nextStateWithLocation = undefined;
+	  var nextStateWithLocation = void 0;
 
 	  if (process.env.NODE_ENV !== 'production' && _deprecateObjectProperties.canUseMembrane) {
 	    nextStateWithLocation = _extends({}, nextState);
@@ -22754,14 +23228,14 @@
 	    // same code path between development and production, in that we just
 	    // assign extra properties to the copy of the state object in both cases.
 
-	    var _loop = function (prop) {
+	    var _loop = function _loop(prop) {
 	      if (!Object.prototype.hasOwnProperty.call(location, prop)) {
 	        return 'continue';
 	      }
 
 	      Object.defineProperty(nextStateWithLocation, prop, {
 	        get: function get() {
-	          process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, 'Accessing location properties from the first argument to `getComponent` and `getComponents` is deprecated. That argument is now the router state (`nextState`) rather than the location. To access the location, use `nextState.location`.') : undefined;
+	          process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, 'Accessing location properties from the first argument to `getComponent` and `getComponents` is deprecated. That argument is now the router state (`nextState`) rather than the location. To access the location, use `nextState.location`.') : void 0;
 	          return location[prop];
 	        }
 	      });
@@ -22787,96 +23261,17 @@
 	 * asynchronous getComponents method.
 	 */
 	function getComponents(nextState, callback) {
-	  _AsyncUtils.mapAsync(nextState.routes, function (route, index, callback) {
+	  (0, _AsyncUtils.mapAsync)(nextState.routes, function (route, index, callback) {
 	    getComponentsForRoute(nextState, route, callback);
 	  }, callback);
 	}
 
-	exports['default'] = getComponents;
+	exports.default = getComponents;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 190 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _routerWarning = __webpack_require__(183);
-
-	var _routerWarning2 = _interopRequireDefault(_routerWarning);
-
-	var canUseMembrane = false;
-
-	exports.canUseMembrane = canUseMembrane;
-	// No-op by default.
-	var deprecateObjectProperties = function deprecateObjectProperties(object) {
-	  return object;
-	};
-
-	if (process.env.NODE_ENV !== 'production') {
-	  try {
-	    if (Object.defineProperty({}, 'x', { get: function get() {
-	        return true;
-	      } }).x) {
-	      exports.canUseMembrane = canUseMembrane = true;
-	    }
-	    /* eslint-disable no-empty */
-	  } catch (e) {}
-	  /* eslint-enable no-empty */
-
-	  if (canUseMembrane) {
-	    deprecateObjectProperties = function (object, message) {
-	      // Wrap the deprecated object in a membrane to warn on property access.
-	      var membrane = {};
-
-	      var _loop = function (prop) {
-	        if (!Object.prototype.hasOwnProperty.call(object, prop)) {
-	          return 'continue';
-	        }
-
-	        if (typeof object[prop] === 'function') {
-	          // Can't use fat arrow here because of use of arguments below.
-	          membrane[prop] = function () {
-	            process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, message) : undefined;
-	            return object[prop].apply(object, arguments);
-	          };
-	          return 'continue';
-	        }
-
-	        // These properties are non-enumerable to prevent React dev tools from
-	        // seeing them and causing spurious warnings when accessing them. In
-	        // principle this could be done with a proxy, but support for the
-	        // ownKeys trap on proxies is not universal, even among browsers that
-	        // otherwise support proxies.
-	        Object.defineProperty(membrane, prop, {
-	          get: function get() {
-	            process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, message) : undefined;
-	            return object[prop];
-	          }
-	        });
-	      };
-
-	      for (var prop in object) {
-	        var _ret = _loop(prop);
-
-	        if (_ret === 'continue') continue;
-	      }
-
-	      return membrane;
-	    };
-	  }
-	}
-
-	exports['default'] = deprecateObjectProperties;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
-
-/***/ },
-/* 191 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -22885,19 +23280,21 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	exports['default'] = matchRoutes;
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	exports.default = matchRoutes;
 
-	var _routerWarning = __webpack_require__(183);
+	var _routerWarning = __webpack_require__(162);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _AsyncUtils = __webpack_require__(187);
+	var _AsyncUtils = __webpack_require__(193);
 
-	var _PatternUtils = __webpack_require__(185);
+	var _PatternUtils = __webpack_require__(167);
 
-	var _RouteUtils = __webpack_require__(192);
+	var _RouteUtils = __webpack_require__(161);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function getChildRoutes(route, location, callback) {
 	  if (route.childRoutes) {
@@ -22908,10 +23305,10 @@
 	  }
 
 	  var sync = true,
-	      result = undefined;
+	      result = void 0;
 
 	  route.getChildRoutes(location, function (error, childRoutes) {
-	    childRoutes = !error && _RouteUtils.createRoutes(childRoutes);
+	    childRoutes = !error && (0, _RouteUtils.createRoutes)(childRoutes);
 	    if (sync) {
 	      result = [error, childRoutes];
 	      return;
@@ -22929,7 +23326,7 @@
 	    callback(null, route.indexRoute);
 	  } else if (route.getIndexRoute) {
 	    route.getIndexRoute(location, function (error, indexRoute) {
-	      callback(error, !error && _RouteUtils.createRoutes(indexRoute)[0]);
+	      callback(error, !error && (0, _RouteUtils.createRoutes)(indexRoute)[0]);
 	    });
 	  } else if (route.childRoutes) {
 	    (function () {
@@ -22937,7 +23334,7 @@
 	        return !childRoute.path;
 	      });
 
-	      _AsyncUtils.loopAsync(pathless.length, function (index, next, done) {
+	      (0, _AsyncUtils.loopAsync)(pathless.length, function (index, next, done) {
 	        getIndexRoute(pathless[index], location, function (error, indexRoute) {
 	          if (error || indexRoute) {
 	            var routes = [pathless[index]].concat(Array.isArray(indexRoute) ? indexRoute : [indexRoute]);
@@ -22987,15 +23384,23 @@
 	  // Only try to match the path if the route actually has a pattern, and if
 	  // we're not just searching for potential nested absolute paths.
 	  if (remainingPathname !== null && pattern) {
-	    var matched = _PatternUtils.matchPattern(pattern, remainingPathname);
-	    remainingPathname = matched.remainingPathname;
-	    paramNames = [].concat(paramNames, matched.paramNames);
-	    paramValues = [].concat(paramValues, matched.paramValues);
+	    try {
+	      var matched = (0, _PatternUtils.matchPattern)(pattern, remainingPathname);
+	      if (matched) {
+	        remainingPathname = matched.remainingPathname;
+	        paramNames = [].concat(paramNames, matched.paramNames);
+	        paramValues = [].concat(paramValues, matched.paramValues);
+	      } else {
+	        remainingPathname = null;
+	      }
+	    } catch (error) {
+	      callback(error);
+	    }
 
 	    // By assumption, pattern is non-empty here, which is the prerequisite for
 	    // actually terminating a match.
 	    if (remainingPathname === '') {
-	      var _ret2 = (function () {
+	      var _ret2 = function () {
 	        var match = {
 	          routes: [route],
 	          params: createParams(paramNames, paramValues)
@@ -23008,12 +23413,12 @@
 	            if (Array.isArray(indexRoute)) {
 	              var _match$routes;
 
-	              process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](indexRoute.every(function (route) {
+	              process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(indexRoute.every(function (route) {
 	                return !route.path;
-	              }), 'Index routes should not have paths') : undefined;
+	              }), 'Index routes should not have paths') : void 0;
 	              (_match$routes = match.routes).push.apply(_match$routes, indexRoute);
 	            } else if (indexRoute) {
-	              process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](!indexRoute.path, 'Index routes should not have paths') : undefined;
+	              process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(!indexRoute.path, 'Index routes should not have paths') : void 0;
 	              match.routes.push(indexRoute);
 	            }
 
@@ -23022,11 +23427,11 @@
 	        });
 
 	        return {
-	          v: undefined
+	          v: void 0
 	        };
-	      })();
+	      }();
 
-	      if (typeof _ret2 === 'object') return _ret2.v;
+	      if ((typeof _ret2 === 'undefined' ? 'undefined' : _typeof(_ret2)) === "object") return _ret2.v;
 	    }
 	  }
 
@@ -23075,7 +23480,6 @@
 	 * Note: This operation may finish synchronously if no routes have an
 	 * asynchronous getChildRoutes method.
 	 */
-
 	function matchRoutes(routes, location, callback, remainingPathname) {
 	  var paramNames = arguments.length <= 4 || arguments[4] === undefined ? [] : arguments[4];
 	  var paramValues = arguments.length <= 5 || arguments[5] === undefined ? [] : arguments[5];
@@ -23092,7 +23496,7 @@
 	    remainingPathname = location.pathname;
 	  }
 
-	  _AsyncUtils.loopAsync(routes.length, function (index, next, done) {
+	  (0, _AsyncUtils.loopAsync)(routes.length, function (index, next, done) {
 	    matchRouteDeep(routes[index], location, remainingPathname, paramNames, paramValues, function (error, match) {
 	      if (error || match) {
 	        done(error, match);
@@ -23102,185 +23506,22 @@
 	    });
 	  }, callback);
 	}
-
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 192 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	exports.__esModule = true;
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	exports.isReactChildren = isReactChildren;
-	exports.createRouteFromReactElement = createRouteFromReactElement;
-	exports.createRoutesFromReactChildren = createRoutesFromReactChildren;
-	exports.createRoutes = createRoutes;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _routerWarning = __webpack_require__(183);
-
-	var _routerWarning2 = _interopRequireDefault(_routerWarning);
-
-	function isValidChild(object) {
-	  return object == null || _react2['default'].isValidElement(object);
-	}
-
-	function isReactChildren(object) {
-	  return isValidChild(object) || Array.isArray(object) && object.every(isValidChild);
-	}
-
-	function checkPropTypes(componentName, propTypes, props) {
-	  componentName = componentName || 'UnknownComponent';
-
-	  for (var propName in propTypes) {
-	    if (Object.prototype.hasOwnProperty.call(propTypes, propName)) {
-	      var error = propTypes[propName](props, propName, componentName);
-
-	      /* istanbul ignore if: error logging */
-	      if (error instanceof Error) process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, error.message) : undefined;
-	    }
-	  }
-	}
-
-	function createRoute(defaultProps, props) {
-	  return _extends({}, defaultProps, props);
-	}
-
-	function createRouteFromReactElement(element) {
-	  var type = element.type;
-	  var route = createRoute(type.defaultProps, element.props);
-
-	  if (type.propTypes) checkPropTypes(type.displayName || type.name, type.propTypes, route);
-
-	  if (route.children) {
-	    var childRoutes = createRoutesFromReactChildren(route.children, route);
-
-	    if (childRoutes.length) route.childRoutes = childRoutes;
-
-	    delete route.children;
-	  }
-
-	  return route;
-	}
-
-	/**
-	 * Creates and returns a routes object from the given ReactChildren. JSX
-	 * provides a convenient way to visualize how routes in the hierarchy are
-	 * nested.
-	 *
-	 *   import { Route, createRoutesFromReactChildren } from 'react-router'
-	 *   
-	 *   const routes = createRoutesFromReactChildren(
-	 *     <Route component={App}>
-	 *       <Route path="home" component={Dashboard}/>
-	 *       <Route path="news" component={NewsFeed}/>
-	 *     </Route>
-	 *   )
-	 *
-	 * Note: This method is automatically used when you provide <Route> children
-	 * to a <Router> component.
-	 */
-
-	function createRoutesFromReactChildren(children, parentRoute) {
-	  var routes = [];
-
-	  _react2['default'].Children.forEach(children, function (element) {
-	    if (_react2['default'].isValidElement(element)) {
-	      // Component classes may have a static create* method.
-	      if (element.type.createRouteFromReactElement) {
-	        var route = element.type.createRouteFromReactElement(element, parentRoute);
-
-	        if (route) routes.push(route);
-	      } else {
-	        routes.push(createRouteFromReactElement(element));
-	      }
-	    }
-	  });
-
-	  return routes;
-	}
-
-	/**
-	 * Creates and returns an array of routes from the given object which
-	 * may be a JSX route, a plain object route, or an array of either.
-	 */
-
-	function createRoutes(routes) {
-	  if (isReactChildren(routes)) {
-	    routes = createRoutesFromReactChildren(routes);
-	  } else if (routes && !Array.isArray(routes)) {
-	    routes = [routes];
-	  }
-
-	  return routes;
-	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
-
-/***/ },
-/* 193 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.falsy = falsy;
-
-	var _react = __webpack_require__(2);
-
-	var func = _react.PropTypes.func;
-	var object = _react.PropTypes.object;
-	var arrayOf = _react.PropTypes.arrayOf;
-	var oneOfType = _react.PropTypes.oneOfType;
-	var element = _react.PropTypes.element;
-	var shape = _react.PropTypes.shape;
-	var string = _react.PropTypes.string;
-
-	function falsy(props, propName, componentName) {
-	  if (props[propName]) return new Error('<' + componentName + '> should not have a "' + propName + '" prop');
-	}
-
-	var history = shape({
-	  listen: func.isRequired,
-	  push: func.isRequired,
-	  replace: func.isRequired,
-	  go: func.isRequired,
-	  goBack: func.isRequired,
-	  goForward: func.isRequired
-	});
-
-	exports.history = history;
-	var component = oneOfType([func, string]);
-	exports.component = component;
-	var components = oneOfType([component, object]);
-	exports.components = components;
-	var route = oneOfType([object, element]);
-	exports.route = route;
-	var routes = oneOfType([route, arrayOf(route)]);
-	exports.routes = routes;
-
-/***/ },
-/* 194 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-
-	exports.__esModule = true;
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _invariant = __webpack_require__(164);
+	var _invariant = __webpack_require__(168);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -23288,21 +23529,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _deprecateObjectProperties = __webpack_require__(190);
+	var _deprecateObjectProperties = __webpack_require__(165);
 
 	var _deprecateObjectProperties2 = _interopRequireDefault(_deprecateObjectProperties);
 
-	var _getRouteParams = __webpack_require__(195);
+	var _getRouteParams = __webpack_require__(198);
 
 	var _getRouteParams2 = _interopRequireDefault(_getRouteParams);
 
-	var _RouteUtils = __webpack_require__(192);
+	var _RouteUtils = __webpack_require__(161);
 
-	var _routerWarning = __webpack_require__(183);
+	var _routerWarning = __webpack_require__(162);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _React$PropTypes = _react2['default'].PropTypes;
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var _React$PropTypes = _react2.default.PropTypes;
 	var array = _React$PropTypes.array;
 	var func = _React$PropTypes.func;
 	var object = _React$PropTypes.object;
@@ -23311,8 +23554,10 @@
 	 * A <RouterContext> renders the component tree for a given router state
 	 * and sets the history object and the current location in context.
 	 */
-	var RouterContext = _react2['default'].createClass({
+
+	var RouterContext = _react2.default.createClass({
 	  displayName: 'RouterContext',
+
 
 	  propTypes: {
 	    history: object,
@@ -23326,9 +23571,10 @@
 
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-	      createElement: _react2['default'].createElement
+	      createElement: _react2.default.createElement
 	    };
 	  },
+
 
 	  childContextTypes: {
 	    history: object,
@@ -23343,7 +23589,7 @@
 	    var location = _props.location;
 
 	    if (!router) {
-	      process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, '`<RouterContext>` expects a `router` rather than a `history`') : undefined;
+	      process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, '`<RouterContext>` expects a `router` rather than a `history`') : void 0;
 
 	      router = _extends({}, history, {
 	        setRouteLeaveHook: history.listenBeforeLeavingRoute
@@ -23352,16 +23598,14 @@
 	    }
 
 	    if (process.env.NODE_ENV !== 'production') {
-	      location = _deprecateObjectProperties2['default'](location, '`context.location` is deprecated, please use a route component\'s `props.location` instead. http://tiny.cc/router-accessinglocation');
+	      location = (0, _deprecateObjectProperties2.default)(location, '`context.location` is deprecated, please use a route component\'s `props.location` instead. http://tiny.cc/router-accessinglocation');
 	    }
 
 	    return { history: history, location: location, router: router };
 	  },
-
 	  createElement: function createElement(component, props) {
 	    return component == null ? null : this.props.createElement(component, props);
 	  },
-
 	  render: function render() {
 	    var _this = this;
 
@@ -23379,7 +23623,7 @@
 	        if (components == null) return element; // Don't create new children; use the grandchildren.
 
 	        var route = routes[index];
-	        var routeParams = _getRouteParams2['default'](route, params);
+	        var routeParams = (0, _getRouteParams2.default)(route, params);
 	        var props = {
 	          history: history,
 	          location: location,
@@ -23389,7 +23633,7 @@
 	          routes: routes
 	        };
 
-	        if (_RouteUtils.isReactChildren(element)) {
+	        if ((0, _RouteUtils.isReactChildren)(element)) {
 	          props.children = element;
 	        } else if (element) {
 	          for (var prop in element) {
@@ -23397,7 +23641,7 @@
 	          }
 	        }
 
-	        if (typeof components === 'object') {
+	        if ((typeof components === 'undefined' ? 'undefined' : _typeof(components)) === 'object') {
 	          var elements = {};
 
 	          for (var key in components) {
@@ -23417,26 +23661,25 @@
 	      }, element);
 	    }
 
-	    !(element === null || element === false || _react2['default'].isValidElement(element)) ? process.env.NODE_ENV !== 'production' ? _invariant2['default'](false, 'The root route must render a single element') : _invariant2['default'](false) : undefined;
+	    !(element === null || element === false || _react2.default.isValidElement(element)) ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'The root route must render a single element') : (0, _invariant2.default)(false) : void 0;
 
 	    return element;
 	  }
-
 	});
 
-	exports['default'] = RouterContext;
+	exports.default = RouterContext;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 195 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _PatternUtils = __webpack_require__(185);
+	var _PatternUtils = __webpack_require__(167);
 
 	/**
 	 * Extracts an object of params the given route cares about from
@@ -23447,7 +23690,7 @@
 
 	  if (!route.path) return routeParams;
 
-	  var paramNames = _PatternUtils.getParamNames(route.path);
+	  var paramNames = (0, _PatternUtils.getParamNames)(route.path);
 
 	  for (var p in params) {
 	    if (Object.prototype.hasOwnProperty.call(params, p) && paramNames.indexOf(p) !== -1) {
@@ -23458,11 +23701,11 @@
 	  return routeParams;
 	}
 
-	exports['default'] = getRouteParams;
+	exports.default = getRouteParams;
 	module.exports = exports['default'];
 
 /***/ },
-/* 196 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -23474,11 +23717,11 @@
 	exports.createRouterObject = createRouterObject;
 	exports.createRoutingHistory = createRoutingHistory;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _deprecateObjectProperties = __webpack_require__(190);
+	var _deprecateObjectProperties = __webpack_require__(165);
 
 	var _deprecateObjectProperties2 = _interopRequireDefault(_deprecateObjectProperties);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function createRouterObject(history, transitionManager) {
 	  return _extends({}, history, {
@@ -23488,12 +23731,11 @@
 	}
 
 	// deprecated
-
 	function createRoutingHistory(history, transitionManager) {
 	  history = _extends({}, history, transitionManager);
 
 	  if (process.env.NODE_ENV !== 'production') {
-	    history = _deprecateObjectProperties2['default'](history, '`props.history` and `context.history` are deprecated. Please use `context.router`. http://tiny.cc/router-contextchanges');
+	    history = (0, _deprecateObjectProperties2.default)(history, '`props.history` and `context.history` are deprecated. Please use `context.router`. http://tiny.cc/router-contextchanges');
 	  }
 
 	  return history;
@@ -23501,7 +23743,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 197 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -23510,26 +23752,27 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _routerWarning = __webpack_require__(183);
+	var _routerWarning = __webpack_require__(162);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _PropTypes = __webpack_require__(198);
+	var _PropTypes = __webpack_require__(164);
 
-	var _React$PropTypes = _react2['default'].PropTypes;
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	var _React$PropTypes = _react2.default.PropTypes;
 	var bool = _React$PropTypes.bool;
 	var object = _React$PropTypes.object;
 	var string = _React$PropTypes.string;
 	var func = _React$PropTypes.func;
 	var oneOfType = _React$PropTypes.oneOfType;
+
 
 	function isLeftClickEvent(event) {
 	  return event.button === 0;
@@ -23576,8 +23819,9 @@
 	 *
 	 *   <Link ... query={{ show: true }} state={{ the: 'state' }} />
 	 */
-	var Link = _react2['default'].createClass({
+	var Link = _react2.default.createClass({
 	  displayName: 'Link',
+
 
 	  contextTypes: {
 	    router: _PropTypes.routerShape
@@ -23591,7 +23835,8 @@
 	    activeStyle: object,
 	    activeClassName: string,
 	    onlyActiveOnIndex: bool.isRequired,
-	    onClick: func
+	    onClick: func,
+	    target: string
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -23600,7 +23845,6 @@
 	      style: {}
 	    };
 	  },
-
 	  handleClick: function handleClick(event) {
 	    var allowTransition = true;
 
@@ -23627,12 +23871,11 @@
 	      var hash = _props.hash;
 	      var state = _props.state;
 
-	      var _location = createLocationDescriptor(to, { query: query, hash: hash, state: state });
+	      var location = createLocationDescriptor(to, { query: query, hash: hash, state: state });
 
-	      this.context.router.push(_location);
+	      this.context.router.push(location);
 	    }
 	  },
-
 	  render: function render() {
 	    var _props2 = this.props;
 	    var to = _props2.to;
@@ -23645,17 +23888,18 @@
 
 	    var props = _objectWithoutProperties(_props2, ['to', 'query', 'hash', 'state', 'activeClassName', 'activeStyle', 'onlyActiveOnIndex']);
 
-	    process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](!(query || hash || state), 'the `query`, `hash`, and `state` props on `<Link>` are deprecated, use `<Link to={{ pathname, query, hash, state }}/>. http://tiny.cc/router-isActivedeprecated') : undefined;
+	    process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(!(query || hash || state), 'the `query`, `hash`, and `state` props on `<Link>` are deprecated, use `<Link to={{ pathname, query, hash, state }}/>. http://tiny.cc/router-isActivedeprecated') : void 0;
 
 	    // Ignore if rendered outside the context of router, simplifies unit testing.
 	    var router = this.context.router;
 
+
 	    if (router) {
-	      var _location2 = createLocationDescriptor(to, { query: query, hash: hash, state: state });
-	      props.href = router.createHref(_location2);
+	      var location = createLocationDescriptor(to, { query: query, hash: hash, state: state });
+	      props.href = router.createHref(location);
 
 	      if (activeClassName || activeStyle != null && !isEmptyObject(activeStyle)) {
-	        if (router.isActive(_location2, onlyActiveOnIndex)) {
+	        if (router.isActive(location, onlyActiveOnIndex)) {
 	          if (activeClassName) {
 	            if (props.className) {
 	              props.className += ' ' + activeClassName;
@@ -23669,133 +23913,16 @@
 	      }
 	    }
 
-	    return _react2['default'].createElement('a', _extends({}, props, { onClick: this.handleClick }));
+	    return _react2.default.createElement('a', _extends({}, props, { onClick: this.handleClick }));
 	  }
-
 	});
 
-	exports['default'] = Link;
+	exports.default = Link;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 198 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _react = __webpack_require__(2);
-
-	var _deprecateObjectProperties = __webpack_require__(190);
-
-	var _deprecateObjectProperties2 = _interopRequireDefault(_deprecateObjectProperties);
-
-	var _InternalPropTypes = __webpack_require__(193);
-
-	var InternalPropTypes = _interopRequireWildcard(_InternalPropTypes);
-
-	var _routerWarning = __webpack_require__(183);
-
-	var _routerWarning2 = _interopRequireDefault(_routerWarning);
-
-	var func = _react.PropTypes.func;
-	var object = _react.PropTypes.object;
-	var shape = _react.PropTypes.shape;
-	var string = _react.PropTypes.string;
-	var routerShape = shape({
-	  push: func.isRequired,
-	  replace: func.isRequired,
-	  go: func.isRequired,
-	  goBack: func.isRequired,
-	  goForward: func.isRequired,
-	  setRouteLeaveHook: func.isRequired,
-	  isActive: func.isRequired
-	});
-
-	exports.routerShape = routerShape;
-	var locationShape = shape({
-	  pathname: string.isRequired,
-	  search: string.isRequired,
-	  state: object,
-	  action: string.isRequired,
-	  key: string
-	});
-
-	exports.locationShape = locationShape;
-	// Deprecated stuff below:
-
-	var falsy = InternalPropTypes.falsy;
-	exports.falsy = falsy;
-	var history = InternalPropTypes.history;
-	exports.history = history;
-	var location = locationShape;
-	exports.location = location;
-	var component = InternalPropTypes.component;
-	exports.component = component;
-	var components = InternalPropTypes.components;
-	exports.components = components;
-	var route = InternalPropTypes.route;
-	exports.route = route;
-	var routes = InternalPropTypes.routes;
-	exports.routes = routes;
-	var router = routerShape;
-
-	exports.router = router;
-	if (process.env.NODE_ENV !== 'production') {
-	  (function () {
-	    var deprecatePropType = function deprecatePropType(propType, message) {
-	      return function () {
-	        process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, message) : undefined;
-	        return propType.apply(undefined, arguments);
-	      };
-	    };
-
-	    var deprecateInternalPropType = function deprecateInternalPropType(propType) {
-	      return deprecatePropType(propType, 'This prop type is not intended for external use, and was previously exported by mistake. These internal prop types are deprecated for external use, and will be removed in a later version.');
-	    };
-
-	    var deprecateRenamedPropType = function deprecateRenamedPropType(propType, name) {
-	      return deprecatePropType(propType, 'The `' + name + '` prop type is now exported as `' + name + 'Shape` to avoid name conflicts. This export is deprecated and will be removed in a later version.');
-	    };
-
-	    exports.falsy = falsy = deprecateInternalPropType(falsy);
-	    exports.history = history = deprecateInternalPropType(history);
-	    exports.component = component = deprecateInternalPropType(component);
-	    exports.components = components = deprecateInternalPropType(components);
-	    exports.route = route = deprecateInternalPropType(route);
-	    exports.routes = routes = deprecateInternalPropType(routes);
-
-	    exports.location = location = deprecateRenamedPropType(location, 'location');
-	    exports.router = router = deprecateRenamedPropType(router, 'router');
-	  })();
-	}
-
-	var defaultExport = {
-	  falsy: falsy,
-	  history: history,
-	  location: location,
-	  component: component,
-	  components: components,
-	  route: route,
-	  // For some reason, routes was never here.
-	  router: router
-	};
-
-	if (process.env.NODE_ENV !== 'production') {
-	  defaultExport = _deprecateObjectProperties2['default'](defaultExport, 'The default export from `react-router/lib/PropTypes` is deprecated. Please use the named exports instead.');
-	}
-
-	exports['default'] = defaultExport;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
-
-/***/ },
-/* 199 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23804,80 +23931,171 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Link = __webpack_require__(200);
+
+	var _Link2 = _interopRequireDefault(_Link);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * An <IndexLink> is used to link to an <IndexRoute>.
+	 */
+	var IndexLink = _react2.default.createClass({
+	  displayName: 'IndexLink',
+	  render: function render() {
+	    return _react2.default.createElement(_Link2.default, _extends({}, this.props, { onlyActiveOnIndex: true }));
+	  }
+	});
+
+	exports.default = IndexLink;
+	module.exports = exports['default'];
+
+/***/ },
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = withRouter;
 
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Link = __webpack_require__(197);
+	var _hoistNonReactStatics = __webpack_require__(203);
 
-	var _Link2 = _interopRequireDefault(_Link);
+	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-	/**
-	 * An <IndexLink> is used to link to an <IndexRoute>.
-	 */
-	var IndexLink = _react2['default'].createClass({
-	  displayName: 'IndexLink',
+	var _PropTypes = __webpack_require__(164);
 
-	  render: function render() {
-	    return _react2['default'].createElement(_Link2['default'], _extends({}, this.props, { onlyActiveOnIndex: true }));
-	  }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	});
+	function getDisplayName(WrappedComponent) {
+	  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+	}
 
-	exports['default'] = IndexLink;
+	function withRouter(WrappedComponent) {
+	  var WithRouter = _react2.default.createClass({
+	    displayName: 'WithRouter',
+
+	    contextTypes: { router: _PropTypes.routerShape },
+	    render: function render() {
+	      return _react2.default.createElement(WrappedComponent, _extends({}, this.props, { router: this.context.router }));
+	    }
+	  });
+
+	  WithRouter.displayName = 'withRouter(' + getDisplayName(WrappedComponent) + ')';
+	  WithRouter.WrappedComponent = WrappedComponent;
+
+	  return (0, _hoistNonReactStatics2.default)(WithRouter, WrappedComponent);
+	}
 	module.exports = exports['default'];
 
 /***/ },
-/* 200 */
+/* 203 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2015, Yahoo! Inc.
+	 * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+	 */
+	'use strict';
+
+	var REACT_STATICS = {
+	    childContextTypes: true,
+	    contextTypes: true,
+	    defaultProps: true,
+	    displayName: true,
+	    getDefaultProps: true,
+	    mixins: true,
+	    propTypes: true,
+	    type: true
+	};
+
+	var KNOWN_STATICS = {
+	    name: true,
+	    length: true,
+	    prototype: true,
+	    caller: true,
+	    arguments: true,
+	    arity: true
+	};
+
+	module.exports = function hoistNonReactStatics(targetComponent, sourceComponent) {
+	    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
+	        var keys = Object.getOwnPropertyNames(sourceComponent);
+	        for (var i=0; i<keys.length; ++i) {
+	            if (!REACT_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]]) {
+	                try {
+	                    targetComponent[keys[i]] = sourceComponent[keys[i]];
+	                } catch (error) {
+
+	                }
+	            }
+	        }
+	    }
+
+	    return targetComponent;
+	};
+
+
+/***/ },
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	exports.__esModule = true;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _routerWarning = __webpack_require__(183);
+	var _routerWarning = __webpack_require__(162);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _invariant = __webpack_require__(164);
+	var _invariant = __webpack_require__(168);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _Redirect = __webpack_require__(201);
+	var _Redirect = __webpack_require__(205);
 
 	var _Redirect2 = _interopRequireDefault(_Redirect);
 
-	var _InternalPropTypes = __webpack_require__(193);
+	var _InternalPropTypes = __webpack_require__(166);
 
-	var _React$PropTypes = _react2['default'].PropTypes;
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var _React$PropTypes = _react2.default.PropTypes;
 	var string = _React$PropTypes.string;
 	var object = _React$PropTypes.object;
 
 	/**
 	 * An <IndexRedirect> is used to redirect from an indexRoute.
 	 */
-	var IndexRedirect = _react2['default'].createClass({
+
+	var IndexRedirect = _react2.default.createClass({
 	  displayName: 'IndexRedirect',
 
-	  statics: {
 
+	  statics: {
 	    createRouteFromReactElement: function createRouteFromReactElement(element, parentRoute) {
 	      /* istanbul ignore else: sanity check */
 	      if (parentRoute) {
-	        parentRoute.indexRoute = _Redirect2['default'].createRouteFromReactElement(element);
+	        parentRoute.indexRoute = _Redirect2.default.createRouteFromReactElement(element);
 	      } else {
-	        process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, 'An <IndexRedirect> does not make sense at the root of your route config') : undefined;
+	        process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, 'An <IndexRedirect> does not make sense at the root of your route config') : void 0;
 	      }
 	    }
-
 	  },
 
 	  propTypes: {
@@ -23890,40 +24108,39 @@
 
 	  /* istanbul ignore next: sanity check */
 	  render: function render() {
-	     true ? process.env.NODE_ENV !== 'production' ? _invariant2['default'](false, '<IndexRedirect> elements are for router configuration only and should not be rendered') : _invariant2['default'](false) : undefined;
+	     true ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, '<IndexRedirect> elements are for router configuration only and should not be rendered') : (0, _invariant2.default)(false) : void 0;
 	  }
-
 	});
 
-	exports['default'] = IndexRedirect;
+	exports.default = IndexRedirect;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 201 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	exports.__esModule = true;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _invariant = __webpack_require__(164);
+	var _invariant = __webpack_require__(168);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _RouteUtils = __webpack_require__(192);
+	var _RouteUtils = __webpack_require__(161);
 
-	var _PatternUtils = __webpack_require__(185);
+	var _PatternUtils = __webpack_require__(167);
 
-	var _InternalPropTypes = __webpack_require__(193);
+	var _InternalPropTypes = __webpack_require__(166);
 
-	var _React$PropTypes = _react2['default'].PropTypes;
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var _React$PropTypes = _react2.default.PropTypes;
 	var string = _React$PropTypes.string;
 	var object = _React$PropTypes.object;
 
@@ -23934,13 +24151,14 @@
 	 * Redirects are placed alongside routes in the route configuration
 	 * and are traversed in the same manner.
 	 */
-	var Redirect = _react2['default'].createClass({
+
+	var Redirect = _react2.default.createClass({
 	  displayName: 'Redirect',
 
-	  statics: {
 
+	  statics: {
 	    createRouteFromReactElement: function createRouteFromReactElement(element) {
-	      var route = _RouteUtils.createRouteFromReactElement(element);
+	      var route = (0, _RouteUtils.createRouteFromReactElement)(element);
 
 	      if (route.from) route.path = route.from;
 
@@ -23948,16 +24166,17 @@
 	        var location = nextState.location;
 	        var params = nextState.params;
 
-	        var pathname = undefined;
+
+	        var pathname = void 0;
 	        if (route.to.charAt(0) === '/') {
-	          pathname = _PatternUtils.formatPattern(route.to, params);
+	          pathname = (0, _PatternUtils.formatPattern)(route.to, params);
 	        } else if (!route.to) {
 	          pathname = location.pathname;
 	        } else {
 	          var routeIndex = nextState.routes.indexOf(route);
 	          var parentPattern = Redirect.getRoutePattern(nextState.routes, routeIndex - 1);
 	          var pattern = parentPattern.replace(/\/*$/, '/') + route.to;
-	          pathname = _PatternUtils.formatPattern(pattern, params);
+	          pathname = (0, _PatternUtils.formatPattern)(pattern, params);
 	        }
 
 	        replace({
@@ -23969,7 +24188,6 @@
 
 	      return route;
 	    },
-
 	    getRoutePattern: function getRoutePattern(routes, routeIndex) {
 	      var parentPattern = '';
 
@@ -23984,7 +24202,6 @@
 
 	      return '/' + parentPattern;
 	    }
-
 	  },
 
 	  propTypes: {
@@ -23999,61 +24216,60 @@
 
 	  /* istanbul ignore next: sanity check */
 	  render: function render() {
-	     true ? process.env.NODE_ENV !== 'production' ? _invariant2['default'](false, '<Redirect> elements are for router configuration only and should not be rendered') : _invariant2['default'](false) : undefined;
+	     true ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, '<Redirect> elements are for router configuration only and should not be rendered') : (0, _invariant2.default)(false) : void 0;
 	  }
-
 	});
 
-	exports['default'] = Redirect;
+	exports.default = Redirect;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 202 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	exports.__esModule = true;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _routerWarning = __webpack_require__(183);
+	var _routerWarning = __webpack_require__(162);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _invariant = __webpack_require__(164);
+	var _invariant = __webpack_require__(168);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _RouteUtils = __webpack_require__(192);
+	var _RouteUtils = __webpack_require__(161);
 
-	var _InternalPropTypes = __webpack_require__(193);
+	var _InternalPropTypes = __webpack_require__(166);
 
-	var func = _react2['default'].PropTypes.func;
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var func = _react2.default.PropTypes.func;
 
 	/**
 	 * An <IndexRoute> is used to specify its parent's <Route indexRoute> in
 	 * a JSX route config.
 	 */
-	var IndexRoute = _react2['default'].createClass({
+
+	var IndexRoute = _react2.default.createClass({
 	  displayName: 'IndexRoute',
 
-	  statics: {
 
+	  statics: {
 	    createRouteFromReactElement: function createRouteFromReactElement(element, parentRoute) {
 	      /* istanbul ignore else: sanity check */
 	      if (parentRoute) {
-	        parentRoute.indexRoute = _RouteUtils.createRouteFromReactElement(element);
+	        parentRoute.indexRoute = (0, _RouteUtils.createRouteFromReactElement)(element);
 	      } else {
-	        process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, 'An <IndexRoute> does not make sense at the root of your route config') : undefined;
+	        process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, 'An <IndexRoute> does not make sense at the root of your route config') : void 0;
 	      }
 	    }
-
 	  },
 
 	  propTypes: {
@@ -24066,38 +24282,37 @@
 
 	  /* istanbul ignore next: sanity check */
 	  render: function render() {
-	     true ? process.env.NODE_ENV !== 'production' ? _invariant2['default'](false, '<IndexRoute> elements are for router configuration only and should not be rendered') : _invariant2['default'](false) : undefined;
+	     true ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, '<IndexRoute> elements are for router configuration only and should not be rendered') : (0, _invariant2.default)(false) : void 0;
 	  }
-
 	});
 
-	exports['default'] = IndexRoute;
+	exports.default = IndexRoute;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 203 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	exports.__esModule = true;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _invariant = __webpack_require__(164);
+	var _invariant = __webpack_require__(168);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _RouteUtils = __webpack_require__(192);
+	var _RouteUtils = __webpack_require__(161);
 
-	var _InternalPropTypes = __webpack_require__(193);
+	var _InternalPropTypes = __webpack_require__(166);
 
-	var _React$PropTypes = _react2['default'].PropTypes;
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var _React$PropTypes = _react2.default.PropTypes;
 	var string = _React$PropTypes.string;
 	var func = _React$PropTypes.func;
 
@@ -24111,8 +24326,10 @@
 	 * that lead to it are considered "active" and their components are
 	 * rendered into the DOM, nested in the same order as in the tree.
 	 */
-	var Route = _react2['default'].createClass({
+
+	var Route = _react2.default.createClass({
 	  displayName: 'Route',
+
 
 	  statics: {
 	    createRouteFromReactElement: _RouteUtils.createRouteFromReactElement
@@ -24128,30 +24345,29 @@
 
 	  /* istanbul ignore next: sanity check */
 	  render: function render() {
-	     true ? process.env.NODE_ENV !== 'production' ? _invariant2['default'](false, '<Route> elements are for router configuration only and should not be rendered') : _invariant2['default'](false) : undefined;
+	     true ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, '<Route> elements are for router configuration only and should not be rendered') : (0, _invariant2.default)(false) : void 0;
 	  }
-
 	});
 
-	exports['default'] = Route;
+	exports.default = Route;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 204 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	exports.__esModule = true;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _routerWarning = __webpack_require__(183);
+	var _routerWarning = __webpack_require__(162);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _InternalPropTypes = __webpack_require__(193);
+	var _InternalPropTypes = __webpack_require__(166);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
 	 * A mixin that adds the "history" instance variable to components.
@@ -24163,27 +24379,24 @@
 	  },
 
 	  componentWillMount: function componentWillMount() {
-	    process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, 'the `History` mixin is deprecated, please access `context.router` with your own `contextTypes`. http://tiny.cc/router-historymixin') : undefined;
+	    process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, 'the `History` mixin is deprecated, please access `context.router` with your own `contextTypes`. http://tiny.cc/router-historymixin') : void 0;
 	    this.history = this.context.history;
 	  }
-
 	};
 
-	exports['default'] = History;
+	exports.default = History;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 205 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	exports.__esModule = true;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _routerWarning = __webpack_require__(183);
+	var _routerWarning = __webpack_require__(162);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
@@ -24191,11 +24404,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _invariant = __webpack_require__(164);
+	var _invariant = __webpack_require__(168);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var object = _react2['default'].PropTypes.object;
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var object = _react2.default.PropTypes.object;
 
 	/**
 	 * The Lifecycle mixin adds the routerWillLeave lifecycle method to a
@@ -24212,6 +24427,7 @@
 	 * to. In this case routerWillLeave must return a prompt message to prevent
 	 * the user from closing the window/tab.
 	 */
+
 	var Lifecycle = {
 
 	  contextTypes: {
@@ -24228,37 +24444,33 @@
 	  },
 
 	  componentDidMount: function componentDidMount() {
-	    process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, 'the `Lifecycle` mixin is deprecated, please use `context.router.setRouteLeaveHook(route, hook)`. http://tiny.cc/router-lifecyclemixin') : undefined;
-	    !this.routerWillLeave ? process.env.NODE_ENV !== 'production' ? _invariant2['default'](false, 'The Lifecycle mixin requires you to define a routerWillLeave method') : _invariant2['default'](false) : undefined;
+	    process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, 'the `Lifecycle` mixin is deprecated, please use `context.router.setRouteLeaveHook(route, hook)`. http://tiny.cc/router-lifecyclemixin') : void 0;
+	    !this.routerWillLeave ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'The Lifecycle mixin requires you to define a routerWillLeave method') : (0, _invariant2.default)(false) : void 0;
 
 	    var route = this.props.route || this.context.route;
 
-	    !route ? process.env.NODE_ENV !== 'production' ? _invariant2['default'](false, 'The Lifecycle mixin must be used on either a) a <Route component> or ' + 'b) a descendant of a <Route component> that uses the RouteContext mixin') : _invariant2['default'](false) : undefined;
+	    !route ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'The Lifecycle mixin must be used on either a) a <Route component> or ' + 'b) a descendant of a <Route component> that uses the RouteContext mixin') : (0, _invariant2.default)(false) : void 0;
 
 	    this._unlistenBeforeLeavingRoute = this.context.history.listenBeforeLeavingRoute(route, this.routerWillLeave);
 	  },
-
 	  componentWillUnmount: function componentWillUnmount() {
 	    if (this._unlistenBeforeLeavingRoute) this._unlistenBeforeLeavingRoute();
 	  }
-
 	};
 
-	exports['default'] = Lifecycle;
+	exports.default = Lifecycle;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 206 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	exports.__esModule = true;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _routerWarning = __webpack_require__(183);
+	var _routerWarning = __webpack_require__(162);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
@@ -24266,7 +24478,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var object = _react2['default'].PropTypes.object;
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var object = _react2.default.PropTypes.object;
 
 	/**
 	 * The RouteContext mixin provides a convenient way for route
@@ -24274,6 +24488,7 @@
 	 * routes that render elements that want to use the Lifecycle
 	 * mixin to prevent transitions.
 	 */
+
 	var RouteContext = {
 
 	  propTypes: {
@@ -24289,19 +24504,17 @@
 	      route: this.props.route
 	    };
 	  },
-
 	  componentWillMount: function componentWillMount() {
-	    process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, 'The `RouteContext` mixin is deprecated. You can provide `this.props.route` on context with your own `contextTypes`. http://tiny.cc/router-routecontextmixin') : undefined;
+	    process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, 'The `RouteContext` mixin is deprecated. You can provide `this.props.route` on context with your own `contextTypes`. http://tiny.cc/router-routecontextmixin') : void 0;
 	  }
-
 	};
 
-	exports['default'] = RouteContext;
+	exports.default = RouteContext;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 207 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -24310,21 +24523,21 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	var _useQueries = __webpack_require__(187);
 
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	var _useQueries2 = _interopRequireDefault(_useQueries);
 
-	var _historyLibUseQueries = __webpack_require__(179);
-
-	var _historyLibUseQueries2 = _interopRequireDefault(_historyLibUseQueries);
-
-	var _createTransitionManager = __webpack_require__(182);
+	var _createTransitionManager = __webpack_require__(190);
 
 	var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
-	var _routerWarning = __webpack_require__(183);
+	var _routerWarning = __webpack_require__(162);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	/**
 	 * Returns a new createHistory function that may be used to create
@@ -24338,7 +24551,7 @@
 	 * - isActive(pathname, query, indexOnly=false)
 	 */
 	function useRoutes(createHistory) {
-	  process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, '`useRoutes` is deprecated. Please use `createTransitionManager` instead.') : undefined;
+	  process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, '`useRoutes` is deprecated. Please use `createTransitionManager` instead.') : void 0;
 
 	  return function () {
 	    var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
@@ -24347,56 +24560,54 @@
 
 	    var options = _objectWithoutProperties(_ref, ['routes']);
 
-	    var history = _historyLibUseQueries2['default'](createHistory)(options);
-	    var transitionManager = _createTransitionManager2['default'](history, routes);
+	    var history = (0, _useQueries2.default)(createHistory)(options);
+	    var transitionManager = (0, _createTransitionManager2.default)(history, routes);
 	    return _extends({}, history, transitionManager);
 	  };
 	}
 
-	exports['default'] = useRoutes;
+	exports.default = useRoutes;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 208 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	exports.__esModule = true;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _RouterContext = __webpack_require__(194);
+	var _RouterContext = __webpack_require__(197);
 
 	var _RouterContext2 = _interopRequireDefault(_RouterContext);
 
-	var _routerWarning = __webpack_require__(183);
+	var _routerWarning = __webpack_require__(162);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var RoutingContext = _react2['default'].createClass({
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var RoutingContext = _react2.default.createClass({
 	  displayName: 'RoutingContext',
-
 	  componentWillMount: function componentWillMount() {
-	    process.env.NODE_ENV !== 'production' ? _routerWarning2['default'](false, '`RoutingContext` has been renamed to `RouterContext`. Please use `import { RouterContext } from \'react-router\'`. http://tiny.cc/router-routercontext') : undefined;
+	    process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(false, '`RoutingContext` has been renamed to `RouterContext`. Please use `import { RouterContext } from \'react-router\'`. http://tiny.cc/router-routercontext') : void 0;
 	  },
-
 	  render: function render() {
-	    return _react2['default'].createElement(_RouterContext2['default'], this.props);
+	    return _react2.default.createElement(_RouterContext2.default, this.props);
 	  }
 	});
 
-	exports['default'] = RoutingContext;
+	exports.default = RoutingContext;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 209 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -24405,25 +24616,25 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-	var _invariant = __webpack_require__(164);
+	var _invariant = __webpack_require__(168);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _createMemoryHistory = __webpack_require__(210);
+	var _createMemoryHistory = __webpack_require__(214);
 
 	var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
 
-	var _createTransitionManager = __webpack_require__(182);
+	var _createTransitionManager = __webpack_require__(190);
 
 	var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
-	var _RouteUtils = __webpack_require__(192);
+	var _RouteUtils = __webpack_require__(161);
 
-	var _RouterUtils = __webpack_require__(196);
+	var _RouterUtils = __webpack_require__(199);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	/**
 	 * A high-level API to be used for server-side rendering.
@@ -24441,12 +24652,12 @@
 
 	  var options = _objectWithoutProperties(_ref, ['history', 'routes', 'location']);
 
-	  !(history || location) ? process.env.NODE_ENV !== 'production' ? _invariant2['default'](false, 'match needs a history or a location') : _invariant2['default'](false) : undefined;
+	  !(history || location) ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'match needs a history or a location') : (0, _invariant2.default)(false) : void 0;
 
-	  history = history ? history : _createMemoryHistory2['default'](options);
-	  var transitionManager = _createTransitionManager2['default'](history, _RouteUtils.createRoutes(routes));
+	  history = history ? history : (0, _createMemoryHistory2.default)(options);
+	  var transitionManager = (0, _createTransitionManager2.default)(history, (0, _RouteUtils.createRoutes)(routes));
 
-	  var unlisten = undefined;
+	  var unlisten = void 0;
 
 	  if (location) {
 	    // Allow match({ location: '/the/path', ... })
@@ -24459,8 +24670,8 @@
 	    });
 	  }
 
-	  var router = _RouterUtils.createRouterObject(history, transitionManager);
-	  history = _RouterUtils.createRoutingHistory(history, transitionManager);
+	  var router = (0, _RouterUtils.createRouterObject)(history, transitionManager);
+	  history = (0, _RouterUtils.createRoutingHistory)(history, transitionManager);
 
 	  transitionManager.match(location, function (error, redirectLocation, nextState) {
 	    callback(error, redirectLocation, nextState && _extends({}, nextState, {
@@ -24478,50 +24689,49 @@
 	  });
 	}
 
-	exports['default'] = match;
+	exports.default = match;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 210 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
-	exports['default'] = createMemoryHistory;
+	exports.default = createMemoryHistory;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	var _useQueries = __webpack_require__(187);
 
-	var _historyLibUseQueries = __webpack_require__(179);
+	var _useQueries2 = _interopRequireDefault(_useQueries);
 
-	var _historyLibUseQueries2 = _interopRequireDefault(_historyLibUseQueries);
+	var _useBasename = __webpack_require__(215);
 
-	var _historyLibUseBasename = __webpack_require__(211);
+	var _useBasename2 = _interopRequireDefault(_useBasename);
 
-	var _historyLibUseBasename2 = _interopRequireDefault(_historyLibUseBasename);
+	var _createMemoryHistory = __webpack_require__(216);
 
-	var _historyLibCreateMemoryHistory = __webpack_require__(212);
+	var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
 
-	var _historyLibCreateMemoryHistory2 = _interopRequireDefault(_historyLibCreateMemoryHistory);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function createMemoryHistory(options) {
 	  // signatures and type checking differ between `useRoutes` and
 	  // `createMemoryHistory`, have to create `memoryHistory` first because
 	  // `useQueries` doesn't understand the signature
-	  var memoryHistory = _historyLibCreateMemoryHistory2['default'](options);
+	  var memoryHistory = (0, _createMemoryHistory2.default)(options);
 	  var createHistory = function createHistory() {
 	    return memoryHistory;
 	  };
-	  var history = _historyLibUseQueries2['default'](_historyLibUseBasename2['default'](createHistory))(options);
+	  var history = (0, _useQueries2.default)((0, _useBasename2.default)(createHistory))(options);
 	  history.__v2_compatible__ = true;
 	  return history;
 	}
-
 	module.exports = exports['default'];
 
 /***/ },
-/* 211 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -24532,19 +24742,19 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(163);
+	var _warning = __webpack_require__(171);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _ExecutionEnvironment = __webpack_require__(167);
+	var _ExecutionEnvironment = __webpack_require__(175);
 
-	var _PathUtils = __webpack_require__(166);
+	var _PathUtils = __webpack_require__(174);
 
-	var _runTransitionHook = __webpack_require__(177);
+	var _runTransitionHook = __webpack_require__(185);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
-	var _deprecate = __webpack_require__(178);
+	var _deprecate = __webpack_require__(186);
 
 	var _deprecate2 = _interopRequireDefault(_deprecate);
 
@@ -24556,19 +24766,32 @@
 
 	    var basename = options.basename;
 
-	    // Automatically use the value of <base href> in HTML
-	    // documents as basename if it's not explicitly given.
-	    if (basename == null && _ExecutionEnvironment.canUseDOM) {
-	      var base = document.getElementsByTagName('base')[0];
+	    var checkedBaseHref = false;
 
-	      if (base) {
-	        process.env.NODE_ENV !== 'production' ? _warning2['default'](false, 'Automatically setting basename using <base href> is deprecated and will ' + 'be removed in the next major release. The semantics of <base href> are ' + 'subtly different from basename. Please pass the basename explicitly in ' + 'the options to createHistory') : undefined;
-
-	        basename = base.getAttribute('href');
+	    function checkBaseHref() {
+	      if (checkedBaseHref) {
+	        return;
 	      }
+
+	      // Automatically use the value of <base href> in HTML
+	      // documents as basename if it's not explicitly given.
+	      if (basename == null && _ExecutionEnvironment.canUseDOM) {
+	        var base = document.getElementsByTagName('base')[0];
+	        var baseHref = base && base.getAttribute('href');
+
+	        if (baseHref != null) {
+	          basename = baseHref;
+
+	          process.env.NODE_ENV !== 'production' ? _warning2['default'](false, 'Automatically setting basename using <base href> is deprecated and will ' + 'be removed in the next major release. The semantics of <base href> are ' + 'subtly different from basename. Please pass the basename explicitly in ' + 'the options to createHistory') : undefined;
+	        }
+	      }
+
+	      checkedBaseHref = true;
 	    }
 
 	    function addBasename(location) {
+	      checkBaseHref();
+
 	      if (basename && location.basename == null) {
 	        if (location.pathname.indexOf(basename) === 0) {
 	          location.pathname = location.pathname.substring(basename.length);
@@ -24584,6 +24807,8 @@
 	    }
 
 	    function prependBasename(location) {
+	      checkBaseHref();
+
 	      if (!basename) return location;
 
 	      if (typeof location === 'string') location = _PathUtils.parsePath(location);
@@ -24670,7 +24895,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 212 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -24681,19 +24906,19 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(163);
+	var _warning = __webpack_require__(171);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _invariant = __webpack_require__(164);
+	var _invariant = __webpack_require__(172);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _PathUtils = __webpack_require__(166);
+	var _PathUtils = __webpack_require__(174);
 
-	var _Actions = __webpack_require__(165);
+	var _Actions = __webpack_require__(173);
 
-	var _createHistory = __webpack_require__(171);
+	var _createHistory = __webpack_require__(179);
 
 	var _createHistory2 = _interopRequireDefault(_createHistory);
 
@@ -24830,36 +25055,35 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 213 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
-	exports['default'] = useRouterHistory;
+	exports.default = useRouterHistory;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	var _useQueries = __webpack_require__(187);
 
-	var _historyLibUseQueries = __webpack_require__(179);
+	var _useQueries2 = _interopRequireDefault(_useQueries);
 
-	var _historyLibUseQueries2 = _interopRequireDefault(_historyLibUseQueries);
+	var _useBasename = __webpack_require__(215);
 
-	var _historyLibUseBasename = __webpack_require__(211);
+	var _useBasename2 = _interopRequireDefault(_useBasename);
 
-	var _historyLibUseBasename2 = _interopRequireDefault(_historyLibUseBasename);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function useRouterHistory(createHistory) {
 	  return function (options) {
-	    var history = _historyLibUseQueries2['default'](_historyLibUseBasename2['default'](createHistory))(options);
+	    var history = (0, _useQueries2.default)((0, _useBasename2.default)(createHistory))(options);
 	    history.__v2_compatible__ = true;
 	    return history;
 	  };
 	}
-
 	module.exports = exports['default'];
 
 /***/ },
-/* 214 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24868,17 +25092,17 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _RouterContext = __webpack_require__(194);
+	var _RouterContext = __webpack_require__(197);
 
 	var _RouterContext2 = _interopRequireDefault(_RouterContext);
 
-	exports['default'] = function () {
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function () {
 	  for (var _len = arguments.length, middlewares = Array(_len), _key = 0; _key < _len; _key++) {
 	    middlewares[_key] = arguments[_key];
 	  }
@@ -24905,7 +25129,7 @@
 	  return function (renderProps) {
 	    return withContext.reduceRight(function (previous, renderRouterContext) {
 	      return renderRouterContext(previous, renderProps);
-	    }, _react2['default'].createElement(_RouterContext2['default'], _extends({}, renderProps, {
+	    }, _react2.default.createElement(_RouterContext2.default, _extends({}, renderProps, {
 	      createElement: makeCreateElement(renderProps.createElement)
 	    })));
 	  };
@@ -24914,28 +25138,28 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 215 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	var _createBrowserHistory = __webpack_require__(220);
 
-	var _historyLibCreateBrowserHistory = __webpack_require__(216);
+	var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
 
-	var _historyLibCreateBrowserHistory2 = _interopRequireDefault(_historyLibCreateBrowserHistory);
-
-	var _createRouterHistory = __webpack_require__(217);
+	var _createRouterHistory = __webpack_require__(221);
 
 	var _createRouterHistory2 = _interopRequireDefault(_createRouterHistory);
 
-	exports['default'] = _createRouterHistory2['default'](_historyLibCreateBrowserHistory2['default']);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = (0, _createRouterHistory2.default)(_createBrowserHistory2.default);
 	module.exports = exports['default'];
 
 /***/ },
-/* 216 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -24946,21 +25170,21 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(164);
+	var _invariant = __webpack_require__(172);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _Actions = __webpack_require__(165);
+	var _Actions = __webpack_require__(173);
 
-	var _PathUtils = __webpack_require__(166);
+	var _PathUtils = __webpack_require__(174);
 
-	var _ExecutionEnvironment = __webpack_require__(167);
+	var _ExecutionEnvironment = __webpack_require__(175);
 
-	var _DOMUtils = __webpack_require__(168);
+	var _DOMUtils = __webpack_require__(176);
 
-	var _DOMStateStorage = __webpack_require__(169);
+	var _DOMStateStorage = __webpack_require__(177);
 
-	var _createDOMHistory = __webpack_require__(170);
+	var _createDOMHistory = __webpack_require__(178);
 
 	var _createDOMHistory2 = _interopRequireDefault(_createDOMHistory);
 
@@ -25117,52 +25341,52 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 217 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _useRouterHistory = __webpack_require__(213);
-
-	var _useRouterHistory2 = _interopRequireDefault(_useRouterHistory);
-
-	var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-
-	exports['default'] = function (createHistory) {
-	  var history = undefined;
-	  if (canUseDOM) history = _useRouterHistory2['default'](createHistory)();
+	exports.default = function (createHistory) {
+	  var history = void 0;
+	  if (canUseDOM) history = (0, _useRouterHistory2.default)(createHistory)();
 	  return history;
 	};
 
+	var _useRouterHistory = __webpack_require__(217);
+
+	var _useRouterHistory2 = _interopRequireDefault(_useRouterHistory);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
 	module.exports = exports['default'];
 
 /***/ },
-/* 218 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	var _createHashHistory = __webpack_require__(170);
 
-	var _historyLibCreateHashHistory = __webpack_require__(162);
+	var _createHashHistory2 = _interopRequireDefault(_createHashHistory);
 
-	var _historyLibCreateHashHistory2 = _interopRequireDefault(_historyLibCreateHashHistory);
-
-	var _createRouterHistory = __webpack_require__(217);
+	var _createRouterHistory = __webpack_require__(221);
 
 	var _createRouterHistory2 = _interopRequireDefault(_createRouterHistory);
 
-	exports['default'] = _createRouterHistory2['default'](_historyLibCreateHashHistory2['default']);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = (0, _createRouterHistory2.default)(_createHashHistory2.default);
 	module.exports = exports['default'];
 
 /***/ },
-/* 219 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25175,33 +25399,33 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _domHelpersEventsOff = __webpack_require__(220);
+	var _domHelpersEventsOff = __webpack_require__(224);
 
 	var _domHelpersEventsOff2 = _interopRequireDefault(_domHelpersEventsOff);
 
-	var _domHelpersEventsOn = __webpack_require__(222);
+	var _domHelpersEventsOn = __webpack_require__(226);
 
 	var _domHelpersEventsOn2 = _interopRequireDefault(_domHelpersEventsOn);
 
-	var _domHelpersQueryScrollLeft = __webpack_require__(223);
+	var _domHelpersQueryScrollLeft = __webpack_require__(227);
 
 	var _domHelpersQueryScrollLeft2 = _interopRequireDefault(_domHelpersQueryScrollLeft);
 
-	var _domHelpersQueryScrollTop = __webpack_require__(225);
+	var _domHelpersQueryScrollTop = __webpack_require__(229);
 
 	var _domHelpersQueryScrollTop2 = _interopRequireDefault(_domHelpersQueryScrollTop);
 
-	var _domHelpersUtilRequestAnimationFrame = __webpack_require__(226);
+	var _domHelpersUtilRequestAnimationFrame = __webpack_require__(230);
 
 	var _domHelpersUtilRequestAnimationFrame2 = _interopRequireDefault(_domHelpersUtilRequestAnimationFrame);
 
-	var _historyLibDOMStateStorage = __webpack_require__(169);
+	var _historyLibDOMStateStorage = __webpack_require__(177);
 
-	var _utilsCreateUseScroll = __webpack_require__(227);
+	var _utilsCreateUseScroll = __webpack_require__(231);
 
 	var _utilsCreateUseScroll2 = _interopRequireDefault(_utilsCreateUseScroll);
 
-	var _utilsSetScrollRestoration = __webpack_require__(228);
+	var _utilsSetScrollRestoration = __webpack_require__(232);
 
 	var _utilsSetScrollRestoration2 = _interopRequireDefault(_utilsSetScrollRestoration);
 
@@ -25305,11 +25529,11 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 220 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var canUseDOM = __webpack_require__(221);
+	var canUseDOM = __webpack_require__(225);
 	var off = function off() {};
 
 	if (canUseDOM) {
@@ -25327,18 +25551,18 @@
 	module.exports = off;
 
 /***/ },
-/* 221 */
+/* 225 */
 /***/ function(module, exports) {
 
 	'use strict';
 	module.exports = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 
 /***/ },
-/* 222 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var canUseDOM = __webpack_require__(221);
+	var canUseDOM = __webpack_require__(225);
 	var on = function on() {};
 
 	if (canUseDOM) {
@@ -25355,11 +25579,11 @@
 	module.exports = on;
 
 /***/ },
-/* 223 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var getWindow = __webpack_require__(224);
+	var getWindow = __webpack_require__(228);
 
 	module.exports = function scrollTop(node, val) {
 	  var win = getWindow(node);
@@ -25370,7 +25594,7 @@
 	};
 
 /***/ },
-/* 224 */
+/* 228 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25380,11 +25604,11 @@
 	};
 
 /***/ },
-/* 225 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var getWindow = __webpack_require__(224);
+	var getWindow = __webpack_require__(228);
 
 	module.exports = function scrollTop(node, val) {
 	  var win = getWindow(node);
@@ -25395,12 +25619,12 @@
 	};
 
 /***/ },
-/* 226 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var canUseDOM = __webpack_require__(221);
+	var canUseDOM = __webpack_require__(225);
 
 	var vendors = ['', 'webkit', 'moz', 'o', 'ms'],
 	    cancel = 'clearTimeout',
@@ -25446,7 +25670,7 @@
 	module.exports = compatRaf;
 
 /***/ },
-/* 227 */
+/* 231 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -25552,7 +25776,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 228 */
+/* 232 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25583,7 +25807,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 229 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25613,7 +25837,7 @@
 	/* eslint-disable max-len */
 
 	var logo = document.createElement("img");
-	logo.src = __webpack_require__(230);
+	logo.src = __webpack_require__(234);
 
 	exports.default = _react2.default.createClass({
 	    displayName: "app",
@@ -25811,13 +26035,13 @@
 	});
 
 /***/ },
-/* 230 */
+/* 234 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJIAAACTCAYAAABlJ0ArAAAACXBIWXMAAAsTAAALEwEAmpwYAAA4IGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS41LWMwMjEgNzkuMTU0OTExLCAyMDEzLzEwLzI5LTExOjQ3OjE2ICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIKICAgICAgICAgICAgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIgogICAgICAgICAgICB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIKICAgICAgICAgICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD5BZG9iZSBQaG90b3Nob3AgQ0MgKE1hY2ludG9zaCk8L3htcDpDcmVhdG9yVG9vbD4KICAgICAgICAgPHhtcDpDcmVhdGVEYXRlPjIwMTQtMDUtMTlUMTE6NTI6MTMtMDc6MDA8L3htcDpDcmVhdGVEYXRlPgogICAgICAgICA8eG1wOk1vZGlmeURhdGU+MjAxNC0wNS0xOVQxMTo1MzoyMi0wNzowMDwveG1wOk1vZGlmeURhdGU+CiAgICAgICAgIDx4bXA6TWV0YWRhdGFEYXRlPjIwMTQtMDUtMTlUMTE6NTM6MjItMDc6MDA8L3htcDpNZXRhZGF0YURhdGU+CiAgICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2UvcG5nPC9kYzpmb3JtYXQ+CiAgICAgICAgIDxwaG90b3Nob3A6Q29sb3JNb2RlPjM8L3Bob3Rvc2hvcDpDb2xvck1vZGU+CiAgICAgICAgIDx4bXBNTTpJbnN0YW5jZUlEPnhtcC5paWQ6MTk4OGZmMjktNzU1My00M2VjLWE3ZjMtM2RmYzg0YzQ5Mzc4PC94bXBNTTpJbnN0YW5jZUlEPgogICAgICAgICA8eG1wTU06RG9jdW1lbnRJRD54bXAuZGlkOjE5ODhmZjI5LTc1NTMtNDNlYy1hN2YzLTNkZmM4NGM0OTM3ODwveG1wTU06RG9jdW1lbnRJRD4KICAgICAgICAgPHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD54bXAuZGlkOjE5ODhmZjI5LTc1NTMtNDNlYy1hN2YzLTNkZmM4NGM0OTM3ODwveG1wTU06T3JpZ2luYWxEb2N1bWVudElEPgogICAgICAgICA8eG1wTU06SGlzdG9yeT4KICAgICAgICAgICAgPHJkZjpTZXE+CiAgICAgICAgICAgICAgIDxyZGY6bGkgcmRmOnBhcnNlVHlwZT0iUmVzb3VyY2UiPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6YWN0aW9uPmNyZWF0ZWQ8L3N0RXZ0OmFjdGlvbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0Omluc3RhbmNlSUQ+eG1wLmlpZDoxOTg4ZmYyOS03NTUzLTQzZWMtYTdmMy0zZGZjODRjNDkzNzg8L3N0RXZ0Omluc3RhbmNlSUQ+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDp3aGVuPjIwMTQtMDUtMTlUMTE6NTI6MTMtMDc6MDA8L3N0RXZ0OndoZW4+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDpzb2Z0d2FyZUFnZW50PkFkb2JlIFBob3Rvc2hvcCBDQyAoTWFjaW50b3NoKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgIDwvcmRmOlNlcT4KICAgICAgICAgPC94bXBNTTpIaXN0b3J5PgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8dGlmZjpYUmVzb2x1dGlvbj43MjAwMDAvMTAwMDA8L3RpZmY6WFJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOllSZXNvbHV0aW9uPjcyMDAwMC8xMDAwMDwvdGlmZjpZUmVzb2x1dGlvbj4KICAgICAgICAgPHRpZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPGV4aWY6Q29sb3JTcGFjZT42NTUzNTwvZXhpZjpDb2xvclNwYWNlPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+MTQ2PC9leGlmOlBpeGVsWERpbWVuc2lvbj4KICAgICAgICAgPGV4aWY6UGl4ZWxZRGltZW5zaW9uPjE0NzwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgIAo8P3hwYWNrZXQgZW5kPSJ3Ij8+qx1mCQAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAATSklEQVR42uydX2wbV3bGv8iKXNWyRduxE9m1xGorO34ZEfAKRYAFNHXdhwLcjfLSLQLsitliu4b3IXQKvxUN89ZiUZh+iOECDUwhWAMbFDC1FbAvRjpuDQQLrVFysIDX9tpLKnVoW5ZNylQUyRLcB55LHY7mDv9oSM2Q9wAEJZKiZub+5jvfOfcO+crLly/R6aHNmDr9GAAQqvHPDPGDGdaMTj+Gr3QKSNqMGSRIxC0AYNzlf3MdQB5AStzMsJZRIPkbnBCACYJGB9Dv8PIsADHgKYLBKbhyBQEMOby2QOplADDMsJZSIHkbnACBM+EAznUCJSPu3VIMUjyheuJ+XAJWksBKmmEtr0DyFjxvu6EE9J6OPqkeT0TKqLObFfBpAsvXUPkSJDLHEQCTlqfSbFBSVZRDp/sgparRBjcnzXxRnsCVKh1tu4B/yEap4n5Mf74CSZsxIwBilgHIAkgASNgNHg2cuIWqeCU3o0BwCUU0JGoVsYEqTUAlFEjupq8o3TgEUwSPIUklE02oytyo6oRiZmpQ2SyAOO1nXoHkHkBCfeL8wFK6itqc2V6ONO1LBVSS/S7QPscUSPWnsLgFoBiXema0o1vwN15SqoRk/3gq33QcFEhyI5pwOnCkPjE6yP1orygwxc04nFhpAFEvddQ9ARKdfQlWwm+ScgbQJDojpugkyjikvCkCKt/xIGkz5gRBZHtwOhCgakAFSZ34SRcxw1qyI0GyUaEsHRCDPR/vYICscYGAyktswDQdv3zHgEQHIclU6CNLGouSCvUrfjZ5qJgZ1uLsZIsBeJ+djBPb0dBsOUjajBkD8KFEhUJ0lo0qZqpWeVEBjM2JeVbA1nYg0dmTxEaTsEKKLYCpqC3KSm5jFVpqxFsCko3SnGXyrFRoa5GmdJaxOSHTAPRWwNR0kAgUg2S3QDuWkvRHVDTuncqVmyXVVRzzZkVXkyGKMIjSAEIMogSAywoiV6IfwFVtxowD5WUuOnnQfgAGndD+UySC6LJVYimXGyqVNdWIT0iO9XvNml5pCkgWiKbMsBZhaS4J/0ys+tk3RcywlmoVTK6DVAUiQ6Wylvom3WIlJpsFU1eLIIooiLbFN5W9EY3FFD13maamvKdIVCn8lwSiy2pcPaNMSZR6Ta5Wc10uQSS8DwBMK4i8q0worcJMu13NdbkAUcBS4keYQimIPAYTNSd1BlOCxnDbFUlAlGUlPlcoFd6EaYLS26gbY7UlkKgSGKUNEr2LoDLWnoYpqc2YAZpS0enxcdHMbDlI5H9EOcl7FkkFkadjiJQpQEb7PXr8/a1Ucl0NQhRCaY4MAC6w1XlCoVR4O0bF+FE/SbQFEpRRWqZICWGuzbAWJbhi2HzZtArvxiQtIARK68DL5rslIBEwZV/EKjS1lsh/cZ6Z7wiN6TiNcV1RV0OSUtr/0q/vmWFNlI4Z5Yt8G1mUVmXkSaHO0+N/Ws8ntdSrSEL2ptlcTUJB5HvzHSO/FEdp9QDqTXE1g2RJacIXTShf1BbxPvv4wwhrCURcTW3k5FOkPGfNsBZXKa2tU1yMPG8BQLCWpbq1KlKMVWmi7I8riNo2xcWwsbqyJuNdFSQy2JOsTBRVmrpwsT1TXIiPNT0WdEOR4sxgG5bHVLRfxEmVksx4x7YEEinPuEWNIlDd63aOcWa8BUCT1VSpmiKJN5piPYWYOtZtHwlSJaNWVeqqUY1iTI3Uwv0OMN6s9K9JlZwUKaLUqKMjVo8qdUnUKMiqsrhSI6VKTJUC9SiSeIPrbHG4UqPOiwhTpayFjZpAinLTRX5JqVFnVnAhi5BEawKJ5s/6ARTYxGxUHdOODTH2SZSmTIZYe8BRkSIWNQpCTcx2ckzSstw8Ni4SiDiCREbqbQ4SaPGaio6OiWpMdEn+IM1MtkprKqIW091vvVCgy4k8MlrKZKsYZc3IpJ0qWUESac1wKvVUqPQmBYlJVZalNV0dPxUcHGKjQOlNt1MknUsXSZma5VchYpx1tZNWoem2Acnwkxq91r0Df31gD44FdmFgVw/G3ugrP7e4so7bz5ZxN7+MB0vf4NPcM4XD1kLHxvfxTm4CiUgbdROkT749XDGoWwltxrR9/MzgAbx77CD27Nxh+/yenTsw9kZfeTt+snIIV24/xmdfPcWTtXWFxdZAAtgXK3ZZoEmzhd66l1XoF2+N4LQ2IIVIBtZpbQAfjw3jte4dCovGQAKtBsnSSa5zkEJcjcgfebbs/3hsGMf39zb898f39+LjseG2G+WjO3twKrDL9uZiG0D4pIqCrNuiPikLWJ6LM4MHtgQRh+nM4AFcnJtvG5BOvd6P09pAXfaggQiR4BgotYtCHKSQX0B699hB6XOfz+Xx8/vzmC0uAwDeOdCPv/2zg1Lwvju8v61AamF6MxgrQQDoJqnqZz2CpvujS2ausTMusEvqiT6fyyNqzlU8dnW+gP95VsSn3xnB4b6eTX9zuK8HY329ZfBU1BRBi+iMCkUS6pO2eXFTolEVOLrnj6XP/fy+/Xs+WVvHlduPcO7EEdvn39z9RwqkBkCiK3JFYzLUxaDJsxd70mgfDci9kRMMv366JH1u96vdCo36Ypz9LFQpwEESFZtn/dHunsYG/c7Kqhp+F4NVbhlhhbpt0ljAr6WvEzAf3Lhn+/jc8ouG/Zo+sBcjgd6ymX9QXMXNR0UYuWe4ll+q6X3G+noxtq8PJw7uxqG+ngovd2thGbmlFdycf45fzS96qYkqKjcBErqtiuTliu356ppj6XvHwXvVOrCU/6Uwporf4F9CQ7Zd+8N9PTjctw/f+9Y+/Ozml45TMmN9vTj95oBj9//4/hKkJwcD+MnKOv7tt19tes9aZxD4Ps0+LOLvfnPfjSERdihkt9TWs4p0Jy/3Qae1AfxgYG9zU+ur3fh4rLaBO3fiCN450C+F6Pxb9U0h7dm5A+dOHMGZwQNeaQFIPZLnI7e8WnXw4togju7sacr/d+pJyV5vl4LPvzVc19SO9YRxsVPtWnSJCo190ohnwbo6X8DiirNPODkYwH/81ZuIa4OuH/B6O+rH9/dugvqHw/JJ5lsLy7hk5nDJzOGX955K9/XHxw95bWgC3bI+QTND5kFkvoT7myu3H0unAaxAnRwM4NbCMmYyT1xbQrK4so6ZPzzF7cLXeP5iDd9+bQ/efVOebv583y7cya2W1eh739pn+7pLZm5Tf23sywV8oo/YAioaqcaDZ7j5+DkA4MTB3dJ0yZvAz1+suTWOBk29jPquiXJxbh7jhwM1q0PJsB7Bu8XXceX2oy0DFZvNVIB9Lb+ExdU1Kdy8T3Xq9X6pEtk1aWeLy/jlvae28I3t68Nscblif84AUpBcngrS7VKb7+Kns/dxa6G+bvThvh6cO3EEv3hrBGN9jU363lpYtq3+PvvqaW0tCklD9fqDvPRvbkuqTafm7HZ5JN/Fk7V1fP+Luw3N2R3f34tP9JGGKjzZgNfa32mkoSorMBptzjYrfD0/cHFuHtceFfDD4YNS7+FU4eVurNbVX9pqHNvbK63EavF9FanNpdWnvgapHiWp1nm+s7KKf7z1f4jfzeFvDu3Dd4f3287028U/hI7gmvG7lu13oyW/ByPvCZCasQboydo6Ls7N4+LcPE4FdiE8uB8nBwNVfdMPBvaqiwLqjxRQMedm65Eyft/La/klRM05fHDjHh4UnZuYJw7sVlg0HiG6T3ejtIh7SJsxdWpKZtplL6/ll5C6cVe6sA0ABnbt3PbttOsh+S3VdRM4vri+XzbP9PzFmjQ9VVvY5sb6bxX2HsmziiSrbGYfFh19zq/mF3HOA9t/a2G5XcA1LKkt303GaRwbi7oz7Xa2eGUdT/FF/dtxdGePbUf8zuLXLW1dSEKY7VS3TSmX9xsoh/p6tqQS2x1HA73AnP1zskuMLpm57QQpRfdBXrUJBdKBiitJPBezD4vSMt5p6YhsXRAA5JZWWrb9YnLVGsf2yS9qOOSBYsAa7GpsAZLRzUAKsNdmm2nA612cJWQ8tyQv5c8ce2PT5UhA6fJuu3VB5ffOt06R7ix+LT0RTgV2bVKY17p3QP8T+5Ng9mmx7mPuUmV43ab8L3skoPIjbJpaydU7HSBk/OaT59KpkJODAcSBui6QBIBrjwotbUcsrqzbdrh/fPwQUrP3K/xcdMT+sw0WV9brvoTqtDaAEwdLPbO7+WX88+9zje5GBig3I8vXQ3bT9UnWXpKBystOPBFX5wv4++KqtCck1iDVGld+N9/yK0xk66mO7+/Fp98ZwX/eXwAAx6UyV24/rkvxRLg0P5eyqFFaeCRe8gctL/Zc/GvqS9dK8X/PPG759n/21VNpt/1wX095AlcG0eLKunTZSqr4TSuNts5/77L0BXSvg3Qtv4Sf3fxyyxD91JJGWtmK+KffZKsuGZZBdPYL+XY/WVtv+HL4Ooy2tYdkC1KIXpzBxndPeC4+zT3DBzfuSas4p4G4ZObw/S/ubmtvaba4jB/99926tv/WwjLOfnG/qje6ODePD3+dxedzeVvlm31YxN3GC4y0jdFOAfQt22ScRGt4L/mmBHzwvbX8AsO+V3dUpATx0X+5pVXczi957SLD8vb/5RsBjAR6cWxvb4W5nn1YRG5pFTefPMfV+YIXNveCGdai9PlZfyDReQWgKRICJ02Vm47Kzwn0dMwWl0tnqU8nPWeLy5j9vW8+xMJqgcqtgC6bF03QfRIqVFT6o6SFEcMJJF2olCUnqujsmGY/61ax6bLQJr5GSRiphDp+Kjg0lq9hS9kpEleliEpvKuxAklmfLqcXUxtApTcV02yiti6QVHpTUS2tyUEi6qbo16gCSQX55mS1ir6rWi60wKWiA9WI+owBbPQV41VBIskS3xIYUarU8RGzFGBZu8WPsmv/Ezy90USdMt2dF9ep4OJWJ2b3wmogjbIvd4ur49qZakQme8jil6qDRBRO8Tczw1oCHl4RoKIpamRYCy/WBqhJkbiEjbMvxo2p49sxESc10rGxWlaalaQgkSpNK1XqWDVKWsRjivmluhSJEzjJvFJUHeeO8UZcjRyzkSNIlCOtXimJyktSVLSvN6pJjWpRJKtXUqrU/hEhNYqQGhVq8cZVQSISL/C2ADWkLqhj3nbxkRnWMtTFFvDEq6lRrYokVEmsVYqxx5Txbp/ImmEtxjLOEI1vvJY/rgkk6h2U/4k2YwbpMZXi2i+lhQB8KMZa1jdqVJFghrU4mex+luKSUBO67RAXmMFO2LQA3APJYrLHtRkzyh5TKc6/kTbDWpTUKIbSlUQFbEzSug8SmeyPhEfSZswQSd+EGg9fRkGS0mK1GOytKBLIkJVTnDZjBgiws2pcfBdRM6ylqEoTaWyabAyaChIzZgWSwTjzUMov+csXJZgvGmokpW0JJJI98Q8n2QK4KNS6JT/EdeaLogDepscnaq3S3FIkUbGJpuRl5pd0Zb69ba6Fp6WZivP0+Eescqs7Xnn58uWWtkqbMQ1stNJD1BkNoXSNXL8aN8+Za7sxmjbD2pYKJje+ZmuCKO8HkGTmW6cNV+EdiHQ2BZKkMUs36otcVSRWOhpsw3S68kApk7cgEhWagY1+UbBRX+S2IsGiQKOilFTK5HmIdDcgcg0kBo3Is+P0QV0KJm9DlHLrH7mS2ixpLgLgMv06BZr4U2mu5ZGlcr7pEDUFJBuYuGcKUtobVePc9BJfZ1fINhUiV1ObJc0lALzHPJNB1VyG0ty0GuumxZTlxG06RE1TJEk1V5Zaei6GjUlCFe7EWTFPZjn2TYWoaYokqeaGSJkm6LkYgHeUCXfNVP8Fgyhi045JNXMDupq9h7QDQWw0La+K5bo0zRKCuiplKzGNUi/IIIji5E9bBlHTU5slzQVQWikgPhrlOtgkIU0exlRVV5cKxZgKWQuZKTOsRVq1MS0DiQEVxcZEYQFARCzppIORgAe/UMeDKhQVi8/ILiSYH4qyJSLtCRIzgklsfJXXBTq78izHx5U6bYosQZJkKp/AxjKQNJ2YqVZv2LaAxA5CDMD7DgcpSrdOB6pAJ1bc4WS7INYYbUdsG0gMKB0bK/SEd4ow2Q4ScJMKINv0n6XjZWznhm47SBJ1AkoXGVgPYAyl+bz+DgSo6jHqeJAs3inOzjbZAY2itIZmqM0AEle2Jmz2l6f4CtX2QngKJAbUBB3QIRlQ7HURZjb9XIUl+AWJEoA8kcZ8AxI7mBGScw5UApYPNqCDHqHbqI/gSYI+fpjti10Kz1JVm/DqzngaJAegbM9iNhA6DYTuIT8lPsjTsMLD9jGCyh6a5wHyFUiWVBa1HGyhUgm7/gn5Lp1uoRb6qjRKX9OZAmBItm2CgLcWENOkuoZfxsZXIFlURxjufssZLM74ZJWWQ5BuIQAB+nmoAVjydEuh9G3lGRkAlIJ1CTxZUqy4l0x0W4NU41ktqhuDbql6ymQa9BB/rF6FYOAIVRyXpLtkPZ/8oUBqDVTijB+SlNcpdsu7lT5I5QR8IYc0KpTH8Ds8bQuSxHQLRahWzYk0BZaq7EKkQtB9Le+bEsrox7TV0SA5qEaIeaNGfFE1EIVXSvnJLCuQ3AHM6oe46lgjQ7eGfFO7xv8PAH8msn0WtC/4AAAAAElFTkSuQmCC"
 
 /***/ },
-/* 231 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25830,11 +26054,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactMarkdown = __webpack_require__(232);
+	var _reactMarkdown = __webpack_require__(236);
 
 	var _reactMarkdown2 = _interopRequireDefault(_reactMarkdown);
 
-	var _README = __webpack_require__(254);
+	var _README = __webpack_require__(258);
 
 	var _README2 = _interopRequireDefault(_README);
 
@@ -25868,14 +26092,14 @@
 	     */
 
 /***/ },
-/* 232 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(2);
-	var Parser = __webpack_require__(233).Parser;
-	var ReactRenderer = __webpack_require__(253);
+	var Parser = __webpack_require__(237).Parser;
+	var ReactRenderer = __webpack_require__(257);
 
 	var parser = new Parser();
 	var propTypes = React.PropTypes;
@@ -25922,7 +26146,7 @@
 
 
 /***/ },
-/* 233 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25938,14 +26162,14 @@
 	// var renderer = new commonmark.HtmlRenderer();
 	// console.log(renderer.render(parser.parse('Hello *world*')));
 
-	module.exports.Node = __webpack_require__(234);
-	module.exports.Parser = __webpack_require__(235);
-	module.exports.HtmlRenderer = __webpack_require__(251);
-	module.exports.XmlRenderer = __webpack_require__(252);
+	module.exports.Node = __webpack_require__(238);
+	module.exports.Parser = __webpack_require__(239);
+	module.exports.HtmlRenderer = __webpack_require__(255);
+	module.exports.XmlRenderer = __webpack_require__(256);
 
 
 /***/ },
-/* 234 */
+/* 238 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26208,15 +26432,15 @@
 
 
 /***/ },
-/* 235 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var Node = __webpack_require__(234);
-	var unescapeString = __webpack_require__(236).unescapeString;
-	var OPENTAG = __webpack_require__(236).OPENTAG;
-	var CLOSETAG = __webpack_require__(236).CLOSETAG;
+	var Node = __webpack_require__(238);
+	var unescapeString = __webpack_require__(240).unescapeString;
+	var OPENTAG = __webpack_require__(240).OPENTAG;
+	var CLOSETAG = __webpack_require__(240).CLOSETAG;
 
 	var CODE_INDENT = 4;
 
@@ -26226,7 +26450,7 @@
 	var C_SPACE = 32;
 	var C_OPEN_BRACKET = 91;
 
-	var InlineParser = __webpack_require__(247);
+	var InlineParser = __webpack_require__(251);
 
 	var reHtmlBlockOpen = [
 	   /./, // dummy for 0
@@ -27063,17 +27287,17 @@
 
 
 /***/ },
-/* 236 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var encode = __webpack_require__(237);
-	var decode = __webpack_require__(238);
+	var encode = __webpack_require__(241);
+	var decode = __webpack_require__(242);
 
 	var C_BACKSLASH = 92;
 
-	var decodeHTML = __webpack_require__(239).decodeHTML;
+	var decodeHTML = __webpack_require__(243).decodeHTML;
 
 	var ENTITY = "&(?:#x[a-f0-9]{1,8}|#[0-9]{1,8}|[a-z][a-z0-9]{1,31});";
 
@@ -27172,7 +27396,7 @@
 
 
 /***/ },
-/* 237 */
+/* 241 */
 /***/ function(module, exports) {
 
 	
@@ -27276,7 +27500,7 @@
 
 
 /***/ },
-/* 238 */
+/* 242 */
 /***/ function(module, exports) {
 
 	
@@ -27404,11 +27628,11 @@
 
 
 /***/ },
-/* 239 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var encode = __webpack_require__(240),
-	    decode = __webpack_require__(243);
+	var encode = __webpack_require__(244),
+	    decode = __webpack_require__(247);
 
 	exports.decode = function(data, level){
 		return (!level || level <= 0 ? decode.XML : decode.HTML)(data);
@@ -27443,15 +27667,15 @@
 
 
 /***/ },
-/* 240 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var inverseXML = getInverseObj(__webpack_require__(241)),
+	var inverseXML = getInverseObj(__webpack_require__(245)),
 	    xmlReplacer = getInverseReplacer(inverseXML);
 
 	exports.XML = getInverse(inverseXML, xmlReplacer);
 
-	var inverseHTML = getInverseObj(__webpack_require__(242)),
+	var inverseHTML = getInverseObj(__webpack_require__(246)),
 	    htmlReplacer = getInverseReplacer(inverseHTML);
 
 	exports.HTML = getInverse(inverseHTML, htmlReplacer);
@@ -27522,7 +27746,7 @@
 
 
 /***/ },
-/* 241 */
+/* 245 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -27534,7 +27758,7 @@
 	};
 
 /***/ },
-/* 242 */
+/* 246 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -29666,13 +29890,13 @@
 	};
 
 /***/ },
-/* 243 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var entityMap = __webpack_require__(242),
-	    legacyMap = __webpack_require__(244),
-	    xmlMap    = __webpack_require__(241),
-	    decodeCodePoint = __webpack_require__(245);
+	var entityMap = __webpack_require__(246),
+	    legacyMap = __webpack_require__(248),
+	    xmlMap    = __webpack_require__(245),
+	    decodeCodePoint = __webpack_require__(249);
 
 	var decodeXMLStrict  = getStrictDecoder(xmlMap),
 	    decodeHTMLStrict = getStrictDecoder(entityMap);
@@ -29743,7 +29967,7 @@
 	};
 
 /***/ },
-/* 244 */
+/* 248 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -29856,10 +30080,10 @@
 	};
 
 /***/ },
-/* 245 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var decodeMap = __webpack_require__(246);
+	var decodeMap = __webpack_require__(250);
 
 	module.exports = decodeCodePoint;
 
@@ -29888,7 +30112,7 @@
 
 
 /***/ },
-/* 246 */
+/* 250 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -29923,20 +30147,20 @@
 	};
 
 /***/ },
-/* 247 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var Node = __webpack_require__(234);
-	var common = __webpack_require__(236);
-	var normalizeReference = __webpack_require__(248);
+	var Node = __webpack_require__(238);
+	var common = __webpack_require__(240);
+	var normalizeReference = __webpack_require__(252);
 
 	var normalizeURI = common.normalizeURI;
 	var unescapeString = common.unescapeString;
-	var fromCodePoint = __webpack_require__(249);
-	var decodeHTML = __webpack_require__(239).decodeHTML;
-	__webpack_require__(250); // Polyfill for String.prototype.repeat
+	var fromCodePoint = __webpack_require__(253);
+	var decodeHTML = __webpack_require__(243).decodeHTML;
+	__webpack_require__(254); // Polyfill for String.prototype.repeat
 
 	// Constants for character codes:
 
@@ -30861,7 +31085,7 @@
 
 
 /***/ },
-/* 248 */
+/* 252 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30909,7 +31133,7 @@
 
 
 /***/ },
-/* 249 */
+/* 253 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30974,7 +31198,7 @@
 
 
 /***/ },
-/* 250 */
+/* 254 */
 /***/ function(module, exports) {
 
 	/*! http://mths.be/repeat v0.2.0 by @mathias */
@@ -31030,12 +31254,12 @@
 
 
 /***/ },
-/* 251 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var escapeXml = __webpack_require__(236).escapeXml;
+	var escapeXml = __webpack_require__(240).escapeXml;
 
 	// Helper function to produce an HTML tag.
 	var tag = function(name, attrs, selfclosing) {
@@ -31304,12 +31528,12 @@
 
 
 /***/ },
-/* 252 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var escapeXml = __webpack_require__(236).escapeXml;
+	var escapeXml = __webpack_require__(240).escapeXml;
 
 	// Helper function to produce an XML tag.
 	var tag = function(name, attrs, selfclosing) {
@@ -31481,7 +31705,7 @@
 
 
 /***/ },
-/* 253 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31732,13 +31956,13 @@
 
 
 /***/ },
-/* 254 */
+/* 258 */
 /***/ function(module, exports) {
 
 	module.exports = "[![Build status](https://api.travis-ci.org/esnet/pond.png)](https://travis-ci.org/esnet/pond) [![npm version](https://badge.fury.io/js/pondjs.svg)](https://badge.fury.io/js/pondjs)\n\n----\n\nPond.js is a library build on top of [immutable.js](https://facebook.github.io/immutable-js/) to provide time-based data structures, serialization and processing within our tools.\n\nFor data structures it unifies the use of time ranges, events and collections and time series. For processing it provides a chained pipeline interface to aggregate, collect and process batches or streams of events.\n\nWe are still developing Pond.js as it integrates further into our code, so it may change or be incomplete in parts. That said, it has a growing collection of tests and we will strive not to break those without careful consideration.\n\nSee the CHANGES.md document for version updates.\n\n## Rational\n\nESnet runs a large research network for the US Department of Energy. Our tools consume events and time series data throughout our network visualization applications and data processing chains. As our tool set grew, so did our need to build a Javascript library to work with this type of data that was consistent and dependable. The alternative for us has been to pass ad-hoc data structures between the server and the client, making all elements of the system much more complicated. Not only do we need to deal with different formats at all layers of the system, we also repeat our processing code over and over. Pond.js was built to address these pain points.\n\nThe result might be as simple as comparing two time ranges:\n\n```js\n    const timerange = timerange1.intersection(timerange2);\n    timerange.asRelativeString();  // \"a few seconds ago to a month ago\"\n```\n\nOr finding the average value in a timeseries:\n\n```js\n    timeseries.avg(\"sensor\");\n```\n\nOr much higher level stream processing:\n\n```js\n    Pipeline()\n        .from(input)                            // input (unbounded)\n        .windowBy(\"1h\")                         //  - 1 day fixed windows\n        .emitOn(\"eachEvent\")                    //  - emit result on each event\n        .aggregate({in: avg, out: avg})         //  - emit new events, 1hr avg\n        .to(EventOut, event => {                // output\n            result[`${event.index()}`] = event; //  - result\n        });\n\n    // As events come in...\n    input.addEvents(incomingEvents);\n\n```\n\n## What does it do?\n\nPond has three main goals:\n\n 1. provide a robust set of time-related data structures, built on Immutable.js\n 2. provide serialization of these structures for transmission across the wire\n 3. provide processing operations to work with those structures\n\nHere is a summary of what is provided:\n\n* **TimeRange** - a begin and end time, packaged together.\n* **Index** - A time range denoted by a string, for example \"5m-1234\" is a specific 5 minute time range, or \"2014-09\" is September 2014.\n* **Event** - A timestamp and a data object packaged together.\n* **IndexedEvents** - An Index and a data object packaged together. e.g. 1hr max value.\n* **TimeRangeEvents** - A TimeRange and a data object packaged together. e.g. outage event occurred from 9:10am until 10:15am.\n\nAnd forming together collections of events:\n\n* **Collection** - A bag of Events\n* **TimeSeries** - An ordered Collection of Events and associated meta data\n\nAnd then high level processing via Event pipelines:\n\n* **Pipeline** - Stream or batch processing of Events. Supports windowing, grouping and aggregation. Still under development.\n\n# Getting started\n\nPond will run in Node or in the browser (ideally via webpack).\n\nInstall from npm:\n\n    npm install pondjs --save\n\nTo explore via the node REPL:\n\n    node\n    > const pond = require(\"./lib/entry.js\");\n\nFor further information see the [Getting started](http://software.es.net/pond/#/start) guide.\n\n# Contributing\n\nRead the [contribution guidelines](./CONTRIBUTING.md).\n\nThe library has Mocha tests. To run the tests interactively, use:\n\n    npm run start-tester\n\nThen point your browser to:\n\n    http://localhost:9500/webpack-dev-server/tests\n\nOr to run the tests (and linting) on the command line:\n\n    npm test\n\n# License\n\nThis code is distributed under a BSD style license, see the LICENSE file for complete information.\n\n# Copyright\n\nESnet Timeseries Library (\"Pond.js\"), Copyright (c) 2015, The Regents of the University of California, through Lawrence Berkeley National Laboratory (subject to receipt of any required approvals from the U.S. Dept. of Energy).  All rights reserved.\n \nIf you have questions about your rights to use or distribute this software, please contact Berkeley Lab's Innovation & Partnerships Office at  IPO@lbl.gov.\n \nNOTICE.  This software is owned by the U.S. Department of Energy.  As such, the U.S. Government has been granted for itself and others acting on its behalf a paid-up, nonexclusive, irrevocable, worldwide license in the Software to reproduce, prepare derivative works, and perform publicly and display publicly.  Beginning five (5) years after the date permission to assert copyright is obtained from the U.S. Department of Energy, and subject to any subsequent five (5) year renewals, the U.S. Government is granted for itself and others acting on its behalf a paid-up, nonexclusive, irrevocable, worldwide license in the Software to reproduce, prepare derivative works, distribute copies to the public, perform publicly and display publicly, and to permit others to do so.\n"
 
 /***/ },
-/* 255 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31751,15 +31975,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactMarkdown = __webpack_require__(232);
+	var _reactMarkdown = __webpack_require__(236);
 
 	var _reactMarkdown2 = _interopRequireDefault(_reactMarkdown);
 
-	var _highlighter = __webpack_require__(256);
+	var _highlighter = __webpack_require__(260);
 
 	var _highlighter2 = _interopRequireDefault(_highlighter);
 
-	var _start = __webpack_require__(257);
+	var _start = __webpack_require__(261);
 
 	var _start2 = _interopRequireDefault(_start);
 
@@ -31804,7 +32028,7 @@
 	});
 
 /***/ },
-/* 256 */
+/* 260 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -31840,13 +32064,13 @@
 	};
 
 /***/ },
-/* 257 */
+/* 261 */
 /***/ function(module, exports) {
 
 	module.exports = "## Getting started\n\n---\n\nPond will run in node.js or in the browser. Install from npm:\n\n```cmdline\nnpm install pondjs --save\n```\n\n### Client\n\nWhile Pond is written in ES6 the npm dist is transpiled to ES5 so it will run anywhere. To use it within a browser you will need to install it with npm and then build your source with Webpack, Browserify or something similar.\n\n### Server\n\nOn the server, it's best to use babel-node, though straight up node will generally work too.\n\nHere's a simple example, run with babel-node:\n\n    import {Index, TimeSeries} from \"pondjs\";\n\n    //Index example\n    let index = new Index(\"1d-12345\");\n    console.log(index.asTimerange().humanize());\n\n    //Timeseries example\n    const data = {\n        \"name\": \"traffic\",\n        \"columns\": [\"time\", \"value\", \"status\"],\n        \"points\": [\n            [1400425947000, 52, \"ok\"],\n            [1400425948000, 18, \"ok\"],\n            [1400425949000, 26, \"fail\"],\n            [1400425950000, 93, \"offline\"],\n        ]\n    };\n\n    let series = new TimeSeries(data);\n    for (let i=0; i < series.size(); i++) {\n        console.log(series.at(i).toString());\n    }\n"
 
 /***/ },
-/* 258 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31859,15 +32083,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactMarkdown = __webpack_require__(232);
+	var _reactMarkdown = __webpack_require__(236);
 
 	var _reactMarkdown2 = _interopRequireDefault(_reactMarkdown);
 
-	var _highlighter = __webpack_require__(256);
+	var _highlighter = __webpack_require__(260);
 
 	var _highlighter2 = _interopRequireDefault(_highlighter);
 
-	var _range = __webpack_require__(259);
+	var _range = __webpack_require__(263);
 
 	var _range2 = _interopRequireDefault(_range);
 
@@ -31912,13 +32136,13 @@
 	});
 
 /***/ },
-/* 259 */
+/* 263 */
 /***/ function(module, exports) {
 
 	module.exports = "## TimeRange\n\n---\n\nA time range is a simple representation of a begin and end time, used\nto maintain consistency across an application.\n\n### Construction\n\nYou can define a TimeRange with moments, Javascript Date objects\nor ms since UNIX epoch. Here we construct one with two moments:\n\n```js\nvar fmt = \"YYYY-MM-DD HH:mm\";\nvar beginTime = moment(\"2012-01-11 11:11\", fmt);\nvar endTime =   moment(\"2012-02-22 12:12\", fmt);\nvar range = new TimeRange(beginTime, endTime);\n```\n\nor with ms times:\n\n```js\nvar range = new TimeRange([1326309060000, 1329941520000]);\n```\n\n**Kind**: global class  \n## API Reference\n\n\n* [TimeRange](#TimeRange)\n    * [new TimeRange()](#new_TimeRange_new)\n    * _instance_\n        * [.range()](#TimeRange+range) ⇒ <code>Immutable.List</code>\n        * [.toJSON()](#TimeRange+toJSON) ⇒ <code>Array.&lt;number&gt;</code>\n        * [.toString()](#TimeRange+toString) ⇒ <code>string</code>\n        * [.toLocalString()](#TimeRange+toLocalString) ⇒ <code>string</code>\n        * [.toUTCString()](#TimeRange+toUTCString) ⇒ <code>string</code>\n        * [.humanize()](#TimeRange+humanize) ⇒ <code>string</code>\n        * [.relativeString()](#TimeRange+relativeString) ⇒ <code>string</code>\n        * [.begin()](#TimeRange+begin) ⇒ <code>Date</code>\n        * [.end()](#TimeRange+end) ⇒ <code>Date</code>\n        * [.setBegin(t)](#TimeRange+setBegin) ⇒ <code>[TimeRange](#TimeRange)</code>\n        * [.setEnd(t)](#TimeRange+setEnd) ⇒ <code>[TimeRange](#TimeRange)</code>\n        * [.equals(other)](#TimeRange+equals) ⇒ <code>boolean</code>\n        * [.contains(other)](#TimeRange+contains) ⇒ <code>boolean</code>\n        * [.within(other)](#TimeRange+within) ⇒ <code>boolean</code>\n        * [.overlaps(other)](#TimeRange+overlaps) ⇒ <code>boolean</code>\n        * [.disjoint(other)](#TimeRange+disjoint) ⇒ <code>boolean</code>\n        * [.extents(other)](#TimeRange+extents) ⇒ <code>[TimeRange](#TimeRange)</code>\n        * [.intersection(other)](#TimeRange+intersection) ⇒ <code>[TimeRange](#TimeRange)</code>\n        * [.duration()](#TimeRange+duration) ⇒ <code>number</code>\n        * [.humanizeDuration()](#TimeRange+humanizeDuration) ⇒ <code>string</code>\n    * _static_\n        * [.lastDay()](#TimeRange.lastDay) ⇒ <code>[TimeRange](#TimeRange)</code>\n        * [.lastSevenDays()](#TimeRange.lastSevenDays) ⇒ <code>[TimeRange](#TimeRange)</code>\n        * [.lastThirtyDays()](#TimeRange.lastThirtyDays) ⇒ <code>[TimeRange](#TimeRange)</code>\n        * [.lastMonth()](#TimeRange.lastMonth) ⇒ <code>[TimeRange](#TimeRange)</code>\n        * [.lastNinetyDays()](#TimeRange.lastNinetyDays) ⇒ <code>[TimeRange](#TimeRange)</code>\n        * [.lastYear()](#TimeRange.lastYear) ⇒ <code>[TimeRange](#TimeRange)</code>\n\n<a name=\"new_TimeRange_new\"></a>\n\n### new TimeRange()\nBuilds a new TimeRange which may be of several different formats:\n  - Another TimeRange (copy constructor)\n  - An Immutable.List containing two Dates.\n  - A Javascript array containing two Date or ms timestamps\n  - Two arguments, begin and end, each of which may be a Data,\n    a Moment, or a ms timestamp.\n\n<a name=\"TimeRange+range\"></a>\n\n### timeRange.range() ⇒ <code>Immutable.List</code>\nReturns the internal range, which is an Immutable List containing\nbegin and end times.\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>Immutable.List</code> - List containing the begin and end of the time range.  \n<a name=\"TimeRange+toJSON\"></a>\n\n### timeRange.toJSON() ⇒ <code>Array.&lt;number&gt;</code>\nReturns the TimeRange as JSON, which will be a Javascript array\nof two ms timestamps.\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>Array.&lt;number&gt;</code> - JSON representation of the TimeRange  \n<a name=\"TimeRange+toString\"></a>\n\n### timeRange.toString() ⇒ <code>string</code>\nReturns the TimeRange as a string, useful for serialization.\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>string</code> - String representation of the TimeRange  \n<a name=\"TimeRange+toLocalString\"></a>\n\n### timeRange.toLocalString() ⇒ <code>string</code>\nReturns the TimeRange as a string expressed in local time\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>string</code> - String representation of the TimeRange  \n<a name=\"TimeRange+toUTCString\"></a>\n\n### timeRange.toUTCString() ⇒ <code>string</code>\nReturns the TimeRange as a string expressed in UTC time\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>string</code> - String representation of the TimeRange  \n<a name=\"TimeRange+humanize\"></a>\n\n### timeRange.humanize() ⇒ <code>string</code>\nReturns a human friendly version of the TimeRange, e.g.\n\"Aug 1, 2014 05:19:59 am to Aug 1, 2014 07:41:06 am\"\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>string</code> - Human friendly string representation of the TimeRange  \n<a name=\"TimeRange+relativeString\"></a>\n\n### timeRange.relativeString() ⇒ <code>string</code>\nReturns a human friendly version of the TimeRange\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>string</code> - Human friendly string representation of the TimeRange  \n**Example**  \n```js\n\"a few seconds ago to a month ago\"\n```\n<a name=\"TimeRange+begin\"></a>\n\n### timeRange.begin() ⇒ <code>Date</code>\nReturns the begin time of the TimeRange.\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>Date</code> - The begin time of the TimeRange  \n<a name=\"TimeRange+end\"></a>\n\n### timeRange.end() ⇒ <code>Date</code>\nReturns the end time of the TimeRange.\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>Date</code> - The end time of the TimeRange  \n<a name=\"TimeRange+setBegin\"></a>\n\n### timeRange.setBegin(t) ⇒ <code>[TimeRange](#TimeRange)</code>\nSets a new begin time on the TimeRange. The result will be\na new TimeRange.\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>[TimeRange](#TimeRange)</code> - The new mutated TimeRange  \n**Params**\n\n- t <code>Date</code> - Time to set the begin time to\n\n<a name=\"TimeRange+setEnd\"></a>\n\n### timeRange.setEnd(t) ⇒ <code>[TimeRange](#TimeRange)</code>\nSets a new end time on the TimeRange. The result will be\na new TimeRange.\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>[TimeRange](#TimeRange)</code> - The new mutated TimeRange  \n**Params**\n\n- t <code>Date</code> - Time to set the end time to\n\n<a name=\"TimeRange+equals\"></a>\n\n### timeRange.equals(other) ⇒ <code>boolean</code>\nReturns if the two TimeRanges can be considered equal,\nin that they have the same times.\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>boolean</code> - Result  \n**Params**\n\n- other <code>[TimeRange](#TimeRange)</code> - The TimeRange to compare to\n\n<a name=\"TimeRange+contains\"></a>\n\n### timeRange.contains(other) ⇒ <code>boolean</code>\nReturns true if other is completely inside this.\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>boolean</code> - Result  \n**Params**\n\n- other <code>[TimeRange](#TimeRange)</code> - The TimeRange to compare to\n\n<a name=\"TimeRange+within\"></a>\n\n### timeRange.within(other) ⇒ <code>boolean</code>\nReturns true if this TimeRange is completely within the supplied\nother TimeRange.\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>boolean</code> - Result  \n**Params**\n\n- other <code>[TimeRange](#TimeRange)</code> - The TimeRange to compare to\n\n<a name=\"TimeRange+overlaps\"></a>\n\n### timeRange.overlaps(other) ⇒ <code>boolean</code>\nReturns true if the passed in other TimeRange overlaps this time Range.\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>boolean</code> - Result  \n**Params**\n\n- other <code>[TimeRange](#TimeRange)</code> - The TimeRange to compare to\n\n<a name=\"TimeRange+disjoint\"></a>\n\n### timeRange.disjoint(other) ⇒ <code>boolean</code>\nReturns true if the passed in other Range in no way\noverlaps this time Range.\n\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>boolean</code> - Result  \n**Params**\n\n- other <code>[TimeRange](#TimeRange)</code> - The TimeRange to compare to\n\n<a name=\"TimeRange+extents\"></a>\n\n### timeRange.extents(other) ⇒ <code>[TimeRange](#TimeRange)</code>\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>[TimeRange](#TimeRange)</code> - a new Timerange which covers the extents of this and\nother combined.  \n**Params**\n\n- other <code>[TimeRange](#TimeRange)</code> - The TimeRange to extend with\n\n<a name=\"TimeRange+intersection\"></a>\n\n### timeRange.intersection(other) ⇒ <code>[TimeRange](#TimeRange)</code>\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>[TimeRange](#TimeRange)</code> - A new TimeRange which represents the intersection\n(overlapping) part of this and other.  \n**Params**\n\n- other <code>[TimeRange](#TimeRange)</code> - The TimeRange to intersect with\n\n<a name=\"TimeRange+duration\"></a>\n\n### timeRange.duration() ⇒ <code>number</code>\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>number</code> - The duration of the TimeRange in milliseconds  \n<a name=\"TimeRange+humanizeDuration\"></a>\n\n### timeRange.humanizeDuration() ⇒ <code>string</code>\n**Kind**: instance method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>string</code> - A user friendly version of the duration.  \n<a name=\"TimeRange.lastDay\"></a>\n\n### TimeRange.lastDay() ⇒ <code>[TimeRange](#TimeRange)</code>\n**Kind**: static method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>[TimeRange](#TimeRange)</code> - The last day, as a TimeRange  \n<a name=\"TimeRange.lastSevenDays\"></a>\n\n### TimeRange.lastSevenDays() ⇒ <code>[TimeRange](#TimeRange)</code>\n**Kind**: static method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>[TimeRange](#TimeRange)</code> - The last seven days, as a TimeRange  \n<a name=\"TimeRange.lastThirtyDays\"></a>\n\n### TimeRange.lastThirtyDays() ⇒ <code>[TimeRange](#TimeRange)</code>\n**Kind**: static method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>[TimeRange](#TimeRange)</code> - The last thirty days, as a TimeRange  \n<a name=\"TimeRange.lastMonth\"></a>\n\n### TimeRange.lastMonth() ⇒ <code>[TimeRange](#TimeRange)</code>\n**Kind**: static method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>[TimeRange](#TimeRange)</code> - The last month, as a TimeRange  \n<a name=\"TimeRange.lastNinetyDays\"></a>\n\n### TimeRange.lastNinetyDays() ⇒ <code>[TimeRange](#TimeRange)</code>\n**Kind**: static method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>[TimeRange](#TimeRange)</code> - The last 90 days, as a TimeRange  \n<a name=\"TimeRange.lastYear\"></a>\n\n### TimeRange.lastYear() ⇒ <code>[TimeRange](#TimeRange)</code>\n**Kind**: static method of <code>[TimeRange](#TimeRange)</code>  \n**Returns**: <code>[TimeRange](#TimeRange)</code> - The last year, as a TimeRange  \n"
 
 /***/ },
-/* 260 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31931,15 +32155,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactMarkdown = __webpack_require__(232);
+	var _reactMarkdown = __webpack_require__(236);
 
 	var _reactMarkdown2 = _interopRequireDefault(_reactMarkdown);
 
-	var _highlighter = __webpack_require__(256);
+	var _highlighter = __webpack_require__(260);
 
 	var _highlighter2 = _interopRequireDefault(_highlighter);
 
-	var _index = __webpack_require__(261);
+	var _index = __webpack_require__(265);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -31984,13 +32208,13 @@
 	});
 
 /***/ },
-/* 261 */
+/* 265 */
 /***/ function(module, exports) {
 
 	module.exports = "## Index\n\n---\n\nAn index is simply a string that represents a fixed range of time. There are two basic types:\n*Multiplier index* - the number of some unit of time (hours, days etc) since the UNIX epoch.\n*Calendar index* - The second represents a calendar range, such as Oct 2014.\n\nFor the first type, a multiplier index, an example might be:\n\n```text\n    1d-12355      //  30th Oct 2003 (GMT), the 12355th day since the UNIX epoch\n```\n\nYou can also use seconds (e.g. 30s), minutes (e.g. 5m), hours (e.g. 1h) or days (e.g. 7d).\n\nHere are several examples of a calendar index:\n\n```text\n    2003-10-30    // 30th Oct 2003\n    2014-09       // Sept 2014\n    2015          // All of the year 2015\n```\n\nAn Index is a nice representation of certain types of time intervals because it can be cached with its string representation as a key. A specific chunk of time, and associated data can be looked up based on that string. It also allows us to represent things like months, which have variable length.\n\nAn Index is also useful when collecting into specific time ranges, for example generating all the 5 min (\"5m\") maximum rollups within a specific day (\"1d\"). See the processing section within these docs.\n\n**Kind**: global class  \n## API Reference\n\n\n* [Index](#Index)\n    * [.toJSON()](#Index+toJSON)\n    * [.toString()](#Index+toString)\n    * [.toNiceString()](#Index+toNiceString)\n    * [.asString()](#Index+asString)\n    * [.asTimerange()](#Index+asTimerange)\n    * [.begin()](#Index+begin)\n    * [.end()](#Index+end)\n\n<a name=\"Index+toJSON\"></a>\n\n### index.toJSON()\nReturns the Index as JSON, which will just be its string\nrepresentation\n\n**Kind**: instance method of <code>[Index](#Index)</code>  \n<a name=\"Index+toString\"></a>\n\n### index.toString()\nSimply returns the Index as its string\n\n**Kind**: instance method of <code>[Index](#Index)</code>  \n<a name=\"Index+toNiceString\"></a>\n\n### index.toNiceString()\nfor the calendar range style Indexes, this lets you return\nthat calendar range as a human readable format, e.g. \"June, 2014\".\nThe format specified is a Moment.format.\n\n**Kind**: instance method of <code>[Index](#Index)</code>  \n<a name=\"Index+asString\"></a>\n\n### index.asString()\nAlias for toString()\n\n**Kind**: instance method of <code>[Index](#Index)</code>  \n<a name=\"Index+asTimerange\"></a>\n\n### index.asTimerange()\nReturns the Index as a TimeRange\n\n**Kind**: instance method of <code>[Index](#Index)</code>  \n<a name=\"Index+begin\"></a>\n\n### index.begin()\nReturns the start date of the Index\n\n**Kind**: instance method of <code>[Index](#Index)</code>  \n<a name=\"Index+end\"></a>\n\n### index.end()\nReturns the end date of the Index\n\n**Kind**: instance method of <code>[Index](#Index)</code>  \n"
 
 /***/ },
-/* 262 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32003,15 +32227,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactMarkdown = __webpack_require__(232);
+	var _reactMarkdown = __webpack_require__(236);
 
 	var _reactMarkdown2 = _interopRequireDefault(_reactMarkdown);
 
-	var _highlighter = __webpack_require__(256);
+	var _highlighter = __webpack_require__(260);
 
 	var _highlighter2 = _interopRequireDefault(_highlighter);
 
-	var _event = __webpack_require__(263);
+	var _event = __webpack_require__(267);
 
 	var _event2 = _interopRequireDefault(_event);
 
@@ -32056,13 +32280,13 @@
 	});
 
 /***/ },
-/* 263 */
+/* 267 */
 /***/ function(module, exports) {
 
 	module.exports = "## Event\n\n---\n\nThere are three types of Events in Pond:\n\n1. *Event* - a generic event which associates a timestamp with some data\n2. *TimeRangeEvent* - associates a TimeRange with some data\n3. *IndexedEvent* - associates a time range specified as an Index\n\n### Construction\n\nThe creation of an Event is done by combining two parts: the timestamp (or time range, or Index...) and the data, along with an optional key which is described below.\nFor a basic `Event`, you specify the timestamp as either a Javascript Date object, a Moment, or the number of milliseconds since the UNIX epoch.\nFor a `TimeRangeEvent`, you specify a TimeRange, along with the data.\nFor a `IndexedEvent`, you specify an Index, along with the data, and if the event should be considered to be in UTC time or not.\n\nTo specify the data you can supply:\na Javascript object of key/values. The object may contained nested data.\nan Immutable.Map\na simple type such as an integer. This is a shorthand for supplying {\"value\": v}.\n*Example:**\n\nGiven some source of data that looks like this:\n\n```json\nconst sampleEvent = {\n    \"start_time\": \"2015-04-22T03:30:00Z\",\n    \"end_time\": \"2015-04-22T13:00:00Z\",\n    \"description\": \"At 13:33 pacific circuit 06519 went down.\",\n    \"title\": \"STAR-CR5 - Outage\",\n    \"completed\": true,\n    \"external_ticket\": \"\",\n    \"esnet_ticket\": \"ESNET-20150421-013\",\n    \"organization\": \"Internet2 / Level 3\",\n    \"type\": \"U\"\n}\n```\n\nWe first extract the begin and end times to build a TimeRange:\n\n```js\nlet b = new Date(sampleEvent.start_time);\nlet e = new Date(sampleEvent.end_time);\nlet timerange = new TimeRange(b, e);\n```\n\nThen we combine the TimeRange and the event itself to create the Event.\n\n```js\nlet outageEvent = new TimeRangeEvent(timerange, sampleEvent);\n```\n\nOnce we have an event we can get access the time range with:\n\n```js\noutageEvent.begin().getTime()   // 1429673400000\noutageEvent.end().getTime())    // 1429707600000\noutageEvent.humanizeDuration()) // \"10 hours\"\n```\n\nAnd we can access the data like so:\n\n```js\noutageEvent.get(\"title\")  // \"STAR-CR5 - Outage\"\n```\n\nOr use:\n\n```js\noutageEvent.data()\n```\n\nto fetch the whole data object, which will be an Immutable Map.\n\n**Kind**: global class  \n## API Reference\n\n\n* [Event](#Event)\n    * [new Event()](#new_Event_new)\n    * _instance_\n        * [.toJSON()](#Event+toJSON) ⇒ <code>Object</code>\n        * [.toString()](#Event+toString) ⇒ <code>string</code>\n        * [.toPoint()](#Event+toPoint)\n        * [.timestampAsUTCString()](#Event+timestampAsUTCString)\n        * [.timestampAsLocalString()](#Event+timestampAsLocalString)\n        * [.timestamp()](#Event+timestamp)\n        * [.begin()](#Event+begin)\n        * [.end()](#Event+end)\n        * [.data()](#Event+data)\n        * [.setData()](#Event+setData)\n        * [.get()](#Event+get)\n        * [.value()](#Event+value)\n        * [.collapse()](#Event+collapse)\n    * _static_\n        * [.isValidValue()](#Event.isValidValue)\n        * [.selector()](#Event.selector)\n        * [.combine()](#Event.combine)\n        * [.sum()](#Event.sum)\n        * [.avg()](#Event.avg)\n        * [.map()](#Event.map)\n        * [.reduce()](#Event.reduce)\n\n<a name=\"new_Event_new\"></a>\n\n### new Event()\nThe creation of an Event is done by combining two parts:\nthe timestamp and the data.\n\nTo construct you specify the timestamp as either:\n    - Javascript Date object\n    - a Moment, or\n    - millisecond timestamp: the number of ms since the UNIX epoch\n\nTo specify the data you can supply either:\n    - a Javascript object containing key values pairs\n    - an Immutable.Map, or\n    - a simple type such as an integer. In the case of the simple type\n      this is a shorthand for supplying {\"value\": v}.\n\n<a name=\"Event+toJSON\"></a>\n\n### event.toJSON() ⇒ <code>Object</code>\nReturns the Event as a JSON object, essentially:\n {time: t, data: {key: value, ...}}\n\n**Kind**: instance method of <code>[Event](#Event)</code>  \n**Returns**: <code>Object</code> - The event as JSON.  \n<a name=\"Event+toString\"></a>\n\n### event.toString() ⇒ <code>string</code>\nRetruns the Event as a string, useful for serialization.\n\n**Kind**: instance method of <code>[Event](#Event)</code>  \n**Returns**: <code>string</code> - The Event as a string  \n<a name=\"Event+toPoint\"></a>\n\n### event.toPoint()\nReturns a flat array starting with the timestamp, followed by the values.\n\n**Kind**: instance method of <code>[Event](#Event)</code>  \n<a name=\"Event+timestampAsUTCString\"></a>\n\n### event.timestampAsUTCString()\nThe timestamp of this data, in UTC time, as a string.\n\n**Kind**: instance method of <code>[Event](#Event)</code>  \n<a name=\"Event+timestampAsLocalString\"></a>\n\n### event.timestampAsLocalString()\nThe timestamp of this data, in Local time, as a string.\n\n**Kind**: instance method of <code>[Event](#Event)</code>  \n<a name=\"Event+timestamp\"></a>\n\n### event.timestamp()\nThe timestamp of this data\n\n**Kind**: instance method of <code>[Event](#Event)</code>  \n<a name=\"Event+begin\"></a>\n\n### event.begin()\nThe begin time of this Event, which will be just the timestamp\n\n**Kind**: instance method of <code>[Event](#Event)</code>  \n<a name=\"Event+end\"></a>\n\n### event.end()\nThe end time of this Event, which will be just the timestamp\n\n**Kind**: instance method of <code>[Event](#Event)</code>  \n<a name=\"Event+data\"></a>\n\n### event.data()\nDirect access to the event data. The result will be an Immutable.Map.\n\n**Kind**: instance method of <code>[Event](#Event)</code>  \n<a name=\"Event+setData\"></a>\n\n### event.setData()\nSets the data portion of the event and returns a new Event.\n\n**Kind**: instance method of <code>[Event](#Event)</code>  \n<a name=\"Event+get\"></a>\n\n### event.get()\nGet specific data out of the Event. The data will be converted\nto a js object. You can use a fieldSpec to address deep data.\nA fieldSpec could be \"a.b\"\n\n**Kind**: instance method of <code>[Event](#Event)</code>  \n<a name=\"Event+value\"></a>\n\n### event.value()\nAlias for get()\n\n**Kind**: instance method of <code>[Event](#Event)</code>  \n<a name=\"Event+collapse\"></a>\n\n### event.collapse()\nCollapses this event's columns, represented by the fieldSpecList\ninto a single column. The collapsing itself is done with the reducer\nfunction. Optionally the collapsed column could be appended to the\nexisting columns, or replace them (the default).\n\n**Kind**: instance method of <code>[Event](#Event)</code>  \n<a name=\"Event.isValidValue\"></a>\n\n### Event.isValidValue()\nThe same as Event.value() only it will return false if the\nvalue is either undefined, NaN or Null.\n\n**Kind**: static method of <code>[Event](#Event)</code>  \n<a name=\"Event.selector\"></a>\n\n### Event.selector()\nFunction to select specific fields of an event using\na fieldSpec and return a new event with just those fields.\n\nThe fieldSpec currently can be:\n * A single field name\n * An array of field names\n\nThe function returns a new event.\n\n**Kind**: static method of <code>[Event](#Event)</code>  \n<a name=\"Event.combine\"></a>\n\n### Event.combine()\nCombines multiple events with the same time together\nto form a new event. Doesn't currently work on IndexedEvents\nor TimeRangeEvents.\n\n**Kind**: static method of <code>[Event](#Event)</code>  \n<a name=\"Event.sum\"></a>\n\n### Event.sum()\nSum takes multiple events of the same time and uses\ncombine() to add them together\n\n**Kind**: static method of <code>[Event](#Event)</code>  \n<a name=\"Event.avg\"></a>\n\n### Event.avg()\nAvg takes multiple events of the same time and uses\ncombine() to avg them\n\n**Kind**: static method of <code>[Event](#Event)</code>  \n<a name=\"Event.map\"></a>\n\n### Event.map()\nMaps a list of events according to the fieldSpec\npassed in. The spec maybe a single field name, a\nlist of field names, or a function that takes an\nevent and returns a key/value pair.\n\nExample 1:\n        in   out\n 3am    1    2\n 4am    3    4\n\nMapper result:  { in: [1, 3], out: [2, 4]}\n\n**Kind**: static method of <code>[Event](#Event)</code>  \n<a name=\"Event.reduce\"></a>\n\n### Event.reduce()\nTakes a list of events and a reducer function and returns\na new Event with the result, for each column. The reducer is\nof the form:\n    function sum(valueList) {\n        return calcValue;\n    }\n\n**Kind**: static method of <code>[Event](#Event)</code>  \n"
 
 /***/ },
-/* 264 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32075,15 +32299,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactMarkdown = __webpack_require__(232);
+	var _reactMarkdown = __webpack_require__(236);
 
 	var _reactMarkdown2 = _interopRequireDefault(_reactMarkdown);
 
-	var _highlighter = __webpack_require__(256);
+	var _highlighter = __webpack_require__(260);
 
 	var _highlighter2 = _interopRequireDefault(_highlighter);
 
-	var _timerangeevent = __webpack_require__(265);
+	var _timerangeevent = __webpack_require__(269);
 
 	var _timerangeevent2 = _interopRequireDefault(_timerangeevent);
 
@@ -32128,13 +32352,13 @@
 	});
 
 /***/ },
-/* 265 */
+/* 269 */
 /***/ function(module, exports) {
 
 	module.exports = "## TimeRangeEvent\n\n---\n\n**Kind**: global class  \n## API Reference\n\n\n* [TimeRangeEvent](#TimeRangeEvent)\n    * [new TimeRangeEvent()](#new_TimeRangeEvent_new)\n    * [.toPoint()](#TimeRangeEvent+toPoint)\n    * [.timerange()](#TimeRangeEvent+timerange) ⇒ <code>TimeRange</code>\n    * [.data()](#TimeRangeEvent+data) ⇒ <code>Immutable.Map</code>\n    * [.setData()](#TimeRangeEvent+setData)\n    * [.timerangeAsUTCString()](#TimeRangeEvent+timerangeAsUTCString) ⇒ <code>string</code>\n    * [.timerangeAsLocalString()](#TimeRangeEvent+timerangeAsLocalString) ⇒ <code>string</code>\n    * [.begin()](#TimeRangeEvent+begin) ⇒ <code>Data</code>\n    * [.end()](#TimeRangeEvent+end) ⇒ <code>Data</code>\n    * [.timestamp()](#TimeRangeEvent+timestamp) ⇒ <code>Data</code>\n    * [.get()](#TimeRangeEvent+get)\n\n<a name=\"new_TimeRangeEvent_new\"></a>\n\n### new TimeRangeEvent()\nThe creation of an TimeRangeEvent is done by combining two parts:\nthe timerange and the data.\n\nTo construct you specify a TimeRange, along with the data.\n\nTo specify the data you can supply either:\n    - a Javascript object containing key values pairs\n    - an Immutable.Map, or\n    - a simple type such as an integer. In the case of the simple type\n      this is a shorthand for supplying {\"value\": v}.\n\n<a name=\"TimeRangeEvent+toPoint\"></a>\n\n### timeRangeEvent.toPoint()\nReturns a flat array starting with the timestamp, followed by the values.\n\n**Kind**: instance method of <code>[TimeRangeEvent](#TimeRangeEvent)</code>  \n<a name=\"TimeRangeEvent+timerange\"></a>\n\n### timeRangeEvent.timerange() ⇒ <code>TimeRange</code>\nThe TimeRange of this data\n\n**Kind**: instance method of <code>[TimeRangeEvent](#TimeRangeEvent)</code>  \n**Returns**: <code>TimeRange</code> - TimeRange of this data.  \n<a name=\"TimeRangeEvent+data\"></a>\n\n### timeRangeEvent.data() ⇒ <code>Immutable.Map</code>\nAccess the event data\n\n**Kind**: instance method of <code>[TimeRangeEvent](#TimeRangeEvent)</code>  \n**Returns**: <code>Immutable.Map</code> - Data for the Event  \n<a name=\"TimeRangeEvent+setData\"></a>\n\n### timeRangeEvent.setData()\nSets the data portion of the event and\nreturns a new TimeRangeEvent.\n\n**Kind**: instance method of <code>[TimeRangeEvent](#TimeRangeEvent)</code>  \n<a name=\"TimeRangeEvent+timerangeAsUTCString\"></a>\n\n### timeRangeEvent.timerangeAsUTCString() ⇒ <code>string</code>\nThe TimeRange of this data, in UTC, as a string.\n\n**Kind**: instance method of <code>[TimeRangeEvent](#TimeRangeEvent)</code>  \n**Returns**: <code>string</code> - TimeRange of this data.  \n<a name=\"TimeRangeEvent+timerangeAsLocalString\"></a>\n\n### timeRangeEvent.timerangeAsLocalString() ⇒ <code>string</code>\nThe TimeRange of this data, in Local time, as a string.\n\n**Kind**: instance method of <code>[TimeRangeEvent](#TimeRangeEvent)</code>  \n**Returns**: <code>string</code> - TimeRange of this data.  \n<a name=\"TimeRangeEvent+begin\"></a>\n\n### timeRangeEvent.begin() ⇒ <code>Data</code>\nThe begin time of this Event\n\n**Kind**: instance method of <code>[TimeRangeEvent](#TimeRangeEvent)</code>  \n**Returns**: <code>Data</code> - Begin time  \n<a name=\"TimeRangeEvent+end\"></a>\n\n### timeRangeEvent.end() ⇒ <code>Data</code>\nThe end time of this Event\n\n**Kind**: instance method of <code>[TimeRangeEvent](#TimeRangeEvent)</code>  \n**Returns**: <code>Data</code> - End time  \n<a name=\"TimeRangeEvent+timestamp\"></a>\n\n### timeRangeEvent.timestamp() ⇒ <code>Data</code>\nAlias for the begin() time.\n\n**Kind**: instance method of <code>[TimeRangeEvent](#TimeRangeEvent)</code>  \n**Returns**: <code>Data</code> - Time representing this Event  \n<a name=\"TimeRangeEvent+get\"></a>\n\n### timeRangeEvent.get()\nGet specific data out of the Event. The data will be converted\nto a js object. You can use a fieldSpec to address deep data.\nA fieldSpec could be \"a.b\"\n\n**Kind**: instance method of <code>[TimeRangeEvent](#TimeRangeEvent)</code>  \n"
 
 /***/ },
-/* 266 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32147,15 +32371,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactMarkdown = __webpack_require__(232);
+	var _reactMarkdown = __webpack_require__(236);
 
 	var _reactMarkdown2 = _interopRequireDefault(_reactMarkdown);
 
-	var _highlighter = __webpack_require__(256);
+	var _highlighter = __webpack_require__(260);
 
 	var _highlighter2 = _interopRequireDefault(_highlighter);
 
-	var _indexedevent = __webpack_require__(267);
+	var _indexedevent = __webpack_require__(271);
 
 	var _indexedevent2 = _interopRequireDefault(_indexedevent);
 
@@ -32195,13 +32419,13 @@
 	});
 
 /***/ },
-/* 267 */
+/* 271 */
 /***/ function(module, exports) {
 
 	module.exports = "## IndexedEvent\n\n---\n\nAn IndexedEvent uses an Index to specify a timerange over which the event\noccurs and maps that to a data object representing some measurement or metric\nduring that time range.\n\nYou can supply the index as a string or as an Index object.\n\nExample Indexes are:\n    - 1d-1565 is the entire duration of the 1565th day since the UNIX epoch\n    - 2014-03 is the entire duration of march in 2014\n\nThe range, as expressed by the Index, is provided by the convenience method\n`range()`, which returns a TimeRange instance. Alternatively the begin\nand end times represented by the Index can be found with `begin()`\nand `end()` respectively.\n\nThe data is also specified during construction, and is generally expected to\nbe an object or an Immutable.Map. If an object is provided it will be stored\ninternally as an ImmutableMap. If the data provided is some other type then\nit will be equivalent to supplying an object of `{value: data}`. Data may be\nundefined.\n\nThe get the data out of an IndexedEvent instance use `data()`. It will return\nan Immutable.Map.\n\n**Kind**: global class  \n## API Reference\n\n\n* [IndexedEvent](#IndexedEvent)\n    * [new IndexedEvent()](#new_IndexedEvent_new)\n    * [.toPoint()](#IndexedEvent+toPoint)\n    * [.index()](#IndexedEvent+index) ⇒ <code>Index</code>\n    * [.setData()](#IndexedEvent+setData)\n    * [.data()](#IndexedEvent+data) ⇒ <code>Immutable.Map</code>\n    * [.indexAsString()](#IndexedEvent+indexAsString) ⇒ <code>string</code>\n    * [.timerangeAsUTCString()](#IndexedEvent+timerangeAsUTCString) ⇒ <code>string</code>\n    * [.timerangeAsLocalString()](#IndexedEvent+timerangeAsLocalString) ⇒ <code>string</code>\n    * [.timerange()](#IndexedEvent+timerange) ⇒ <code>TimeRange</code>\n    * [.begin()](#IndexedEvent+begin) ⇒ <code>Data</code>\n    * [.end()](#IndexedEvent+end) ⇒ <code>Data</code>\n    * [.timestamp()](#IndexedEvent+timestamp) ⇒ <code>Data</code>\n    * [.get()](#IndexedEvent+get)\n\n<a name=\"new_IndexedEvent_new\"></a>\n\n### new IndexedEvent()\nThe creation of an IndexedEvent is done by combining two parts:\nthe Index and the data.\n\nTo construct you specify an Index, along with the data.\n\nThe index may be an Index, or a string.\n\nTo specify the data you can supply either:\n    - a Javascript object containing key values pairs\n    - an Immutable.Map, or\n    - a simple type such as an integer. In the case of the simple type\n      this is a shorthand for supplying {\"value\": v}.\n\n<a name=\"IndexedEvent+toPoint\"></a>\n\n### indexedEvent.toPoint()\nReturns a flat array starting with the timestamp, followed by the values.\n\n**Kind**: instance method of <code>[IndexedEvent](#IndexedEvent)</code>  \n<a name=\"IndexedEvent+index\"></a>\n\n### indexedEvent.index() ⇒ <code>Index</code>\nReturns the Index associated with the data in this Event\n\n**Kind**: instance method of <code>[IndexedEvent](#IndexedEvent)</code>  \n**Returns**: <code>Index</code> - The Index  \n<a name=\"IndexedEvent+setData\"></a>\n\n### indexedEvent.setData()\nSets the data of the event and returns a new IndexedEvent.\n\n**Kind**: instance method of <code>[IndexedEvent](#IndexedEvent)</code>  \n<a name=\"IndexedEvent+data\"></a>\n\n### indexedEvent.data() ⇒ <code>Immutable.Map</code>\nAccess the event data\n\n**Kind**: instance method of <code>[IndexedEvent](#IndexedEvent)</code>  \n**Returns**: <code>Immutable.Map</code> - Data for the Event  \n<a name=\"IndexedEvent+indexAsString\"></a>\n\n### indexedEvent.indexAsString() ⇒ <code>string</code>\nReturns the Index as a string, same as event.index().toString()\n\n**Kind**: instance method of <code>[IndexedEvent](#IndexedEvent)</code>  \n**Returns**: <code>string</code> - The Index  \n<a name=\"IndexedEvent+timerangeAsUTCString\"></a>\n\n### indexedEvent.timerangeAsUTCString() ⇒ <code>string</code>\nThe TimeRange of this data, in UTC, as a string.\n\n**Kind**: instance method of <code>[IndexedEvent](#IndexedEvent)</code>  \n**Returns**: <code>string</code> - TimeRange of this data.  \n<a name=\"IndexedEvent+timerangeAsLocalString\"></a>\n\n### indexedEvent.timerangeAsLocalString() ⇒ <code>string</code>\nThe TimeRange of this data, in Local time, as a string.\n\n**Kind**: instance method of <code>[IndexedEvent](#IndexedEvent)</code>  \n**Returns**: <code>string</code> - TimeRange of this data.  \n<a name=\"IndexedEvent+timerange\"></a>\n\n### indexedEvent.timerange() ⇒ <code>TimeRange</code>\nThe TimeRange of this data\n\n**Kind**: instance method of <code>[IndexedEvent](#IndexedEvent)</code>  \n**Returns**: <code>TimeRange</code> - TimeRange of this data.  \n<a name=\"IndexedEvent+begin\"></a>\n\n### indexedEvent.begin() ⇒ <code>Data</code>\nThe begin time of this Event\n\n**Kind**: instance method of <code>[IndexedEvent](#IndexedEvent)</code>  \n**Returns**: <code>Data</code> - Begin time  \n<a name=\"IndexedEvent+end\"></a>\n\n### indexedEvent.end() ⇒ <code>Data</code>\nThe end time of this Event\n\n**Kind**: instance method of <code>[IndexedEvent](#IndexedEvent)</code>  \n**Returns**: <code>Data</code> - End time  \n<a name=\"IndexedEvent+timestamp\"></a>\n\n### indexedEvent.timestamp() ⇒ <code>Data</code>\nAlias for the begin() time.\n\n**Kind**: instance method of <code>[IndexedEvent](#IndexedEvent)</code>  \n**Returns**: <code>Data</code> - Time representing this Event  \n<a name=\"IndexedEvent+get\"></a>\n\n### indexedEvent.get()\nGet specific data out of the Event. The data will be converted\nto a js object. You can use a fieldSpec to address deep data.\nA fieldSpec could be \"a.b\"\n\n**Kind**: instance method of <code>[IndexedEvent](#IndexedEvent)</code>  \n"
 
 /***/ },
-/* 268 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32214,15 +32438,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactMarkdown = __webpack_require__(232);
+	var _reactMarkdown = __webpack_require__(236);
 
 	var _reactMarkdown2 = _interopRequireDefault(_reactMarkdown);
 
-	var _highlighter = __webpack_require__(256);
+	var _highlighter = __webpack_require__(260);
 
 	var _highlighter2 = _interopRequireDefault(_highlighter);
 
-	var _collection = __webpack_require__(269);
+	var _collection = __webpack_require__(273);
 
 	var _collection2 = _interopRequireDefault(_collection);
 
@@ -32262,13 +32486,13 @@
 	});
 
 /***/ },
-/* 269 */
+/* 273 */
 /***/ function(module, exports) {
 
 	module.exports = "## Collection\n\n---\n\nA collection is an abstraction for a bag of Events.\n\nYou typically construct a Collection from a list of Events, which\nmay be either within an Immutable.List or an Array. You can also\ncopy another Collection or create an empty one.\n\nYou can mutate a collection in a number of ways. In each instance\na new Collection will be returned.\n\nBasic operations on the list of events are also possible. You\ncan iterate over the collection with a for..of loop, get the size()\nof the collection and access a specific element with at().\n\nYou can also perform aggregations of the events, map them, filter them\nclean them, etc.\n\nCollections form the backing structure for a TimeSeries, as well as\nin Pipeline event processing. They are an instance of a BoundedIn, so\nthey can be used as a pipeline source.\n\n**Kind**: global class  \n## API Reference\n\n\n* [Collection](#Collection)\n    * [new Collection(arg1, [copyEvents])](#new_Collection_new)\n    * _instance_\n        * [.toJSON()](#Collection+toJSON) ⇒ <code>Object</code>\n        * [.toString()](#Collection+toString) ⇒ <code>string</code>\n        * [.type()](#Collection+type) ⇒ <code>Event</code> &#124; <code>IndexedEvent</code> &#124; <code>TimeRangeEvent</code>\n        * [.size()](#Collection+size) ⇒ <code>number</code>\n        * [.sizeValid()](#Collection+sizeValid) ⇒ <code>number</code>\n        * [.at(pos)](#Collection+at) ⇒ <code>Event</code> &#124; <code>TimeRangeEvent</code> &#124; <code>IndexedEvent</code>\n        * [.atTime(time)](#Collection+atTime) ⇒ <code>Event</code> &#124; <code>TimeRangeEvent</code> &#124; <code>IndexedEvent</code>\n        * [.atFirst()](#Collection+atFirst) ⇒ <code>Event</code> &#124; <code>TimeRangeEvent</code> &#124; <code>IndexedEvent</code>\n        * [.atLast()](#Collection+atLast) ⇒ <code>Event</code> &#124; <code>TimeRangeEvent</code> &#124; <code>IndexedEvent</code>\n        * [.bisect(t, b)](#Collection+bisect) ⇒ <code>number</code>\n        * [.events()](#Collection+events)\n        * [.eventList()](#Collection+eventList) ⇒ <code>Immutable.List</code>\n        * [.eventListAsArray()](#Collection+eventListAsArray) ⇒ <code>Array</code>\n        * [.range()](#Collection+range) ⇒ <code>TimeRange</code>\n        * [.addEvent(event)](#Collection+addEvent) ⇒ <code>[Collection](#Collection)</code>\n        * [.slice(begin, end)](#Collection+slice) ⇒ <code>[Collection](#Collection)</code>\n        * [.filter(func)](#Collection+filter) ⇒ <code>[Collection](#Collection)</code>\n        * [.map(func)](#Collection+map) ⇒ <code>[Collection](#Collection)</code>\n        * [.clean(fieldSpec)](#Collection+clean) ⇒ <code>[Collection](#Collection)</code>\n        * [.count()](#Collection+count) ⇒ <code>number</code>\n        * [.first(fieldSpec)](#Collection+first) ⇒ <code>number</code>\n        * [.last(fieldSpec)](#Collection+last) ⇒ <code>number</code>\n        * [.sum(fieldSpec)](#Collection+sum) ⇒ <code>number</code>\n        * [.avg(fieldSpec)](#Collection+avg) ⇒ <code>number</code>\n        * [.max(fieldSpec)](#Collection+max) ⇒ <code>number</code>\n        * [.min(fieldSpec)](#Collection+min) ⇒ <code>number</code>\n        * [.mean(fieldSpec)](#Collection+mean) ⇒ <code>number</code>\n        * [.median(fieldSpec)](#Collection+median) ⇒ <code>number</code>\n        * [.stdev(fieldSpec)](#Collection+stdev) ⇒ <code>number</code>\n        * [.aggregate(func, fieldSpec)](#Collection+aggregate) ⇒ <code>number</code>\n    * _static_\n        * [.equal(collection1, collection2)](#Collection.equal) ⇒ <code>bool</code>\n        * [.is(collection1, collection2)](#Collection.is) ⇒ <code>bool</code>\n\n<a name=\"new_Collection_new\"></a>\n\n### new Collection(arg1, [copyEvents])\nConstruct a new Collection.\n\n**Params**\n\n- arg1 <code>[Collection](#Collection)</code> | <code>array</code> | <code>Immutable.List</code> - Initial data for\nthe collection. If arg1 is another Collection, this will act as\na copy constructor.\n- [copyEvents] <code>Boolean</code> <code> = true</code> - When using a the copy constructor\nthis specified whether or not to also copy all the events in this\ncollection. Generally you'll want to let it copy the events.\n\n<a name=\"Collection+toJSON\"></a>\n\n### collection.toJSON() ⇒ <code>Object</code>\nReturns the Collection as a regular JSON object.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>Object</code> - The JSON representation of this Collection  \n<a name=\"Collection+toString\"></a>\n\n### collection.toString() ⇒ <code>string</code>\nSerialize out the Collection as a string. This will be the\nstring representation of `toJSON()`.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>string</code> - The Collection serialized as a string.  \n<a name=\"Collection+type\"></a>\n\n### collection.type() ⇒ <code>Event</code> &#124; <code>IndexedEvent</code> &#124; <code>TimeRangeEvent</code>\nReturns the Event object type in this Collection.\n\nSince Collections may only have one type of event (`Event`, `IndexedEvent`\nor `TimeRangeEvent`) this will return that type. If no events\nhave been added to the Collection it will return `undefined`.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>Event</code> &#124; <code>IndexedEvent</code> &#124; <code>TimeRangeEvent</code> - - The class of the type\n                                              of events contained in\n                                              this Collection.  \n<a name=\"Collection+size\"></a>\n\n### collection.size() ⇒ <code>number</code>\nReturns the number of events in this collection\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>number</code> - Count of events  \n<a name=\"Collection+sizeValid\"></a>\n\n### collection.sizeValid() ⇒ <code>number</code>\nReturns the number of valid items in this collection.\n\nUses the fieldSpec to look up values in all events.\nIt then counts the number that are considered valid, which\nspecifically are not NaN, undefined or null.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>number</code> - Count of valid events  \n<a name=\"Collection+at\"></a>\n\n### collection.at(pos) ⇒ <code>Event</code> &#124; <code>TimeRangeEvent</code> &#124; <code>IndexedEvent</code>\nReturns an event in the Collection by its position.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>Event</code> &#124; <code>TimeRangeEvent</code> &#124; <code>IndexedEvent</code> - Returns the\nevent at the pos specified.  \n**Params**\n\n- pos <code>number</code> - The position of the event\n\n**Example**  \n```\nfor (let row=0; row < series.size(); row++) {\n  const event = series.at(row);\n  console.log(event.toString());\n}\n```\n<a name=\"Collection+atTime\"></a>\n\n### collection.atTime(time) ⇒ <code>Event</code> &#124; <code>TimeRangeEvent</code> &#124; <code>IndexedEvent</code>\nReturns an event in the Collection by its time. This is the same\nas calling `bisect` first and then using `at` with the index.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Params**\n\n- time <code>Date</code> - The time of the event.\n\n<a name=\"Collection+atFirst\"></a>\n\n### collection.atFirst() ⇒ <code>Event</code> &#124; <code>TimeRangeEvent</code> &#124; <code>IndexedEvent</code>\nReturns the first event in the Collection.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n<a name=\"Collection+atLast\"></a>\n\n### collection.atLast() ⇒ <code>Event</code> &#124; <code>TimeRangeEvent</code> &#124; <code>IndexedEvent</code>\nReturns the last event in the Collection.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n<a name=\"Collection+bisect\"></a>\n\n### collection.bisect(t, b) ⇒ <code>number</code>\nReturns the index that bisects the Collection at the time specified.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>number</code> - The row number that is the greatest, but still below t.  \n**Params**\n\n- t <code>Data</code> - The time to bisect the Collection with\n- b <code>number</code> - The position to begin searching at\n\n<a name=\"Collection+events\"></a>\n\n### collection.events()\nGenerator to return all the events in the collection.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Example**  \n```\nfor (let event of series.events()) {\n    console.log(event.toString());\n}\n```\n<a name=\"Collection+eventList\"></a>\n\n### collection.eventList() ⇒ <code>Immutable.List</code>\nReturns the raw Immutable event list\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>Immutable.List</code> - All events as an Immutable List.  \n<a name=\"Collection+eventListAsArray\"></a>\n\n### collection.eventListAsArray() ⇒ <code>Array</code>\nReturns a Javascript array representation of the event list\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>Array</code> - All events as a Javascript Array.  \n<a name=\"Collection+range\"></a>\n\n### collection.range() ⇒ <code>TimeRange</code>\nFrom the range of times, or Indexes within the TimeSeries, return\nthe extents of the TimeSeries as a TimeRange. This is currently implemented\nby walking the events.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>TimeRange</code> - The extents of the TimeSeries  \n<a name=\"Collection+addEvent\"></a>\n\n### collection.addEvent(event) ⇒ <code>[Collection](#Collection)</code>\nAdds an event to the collection, returns a new Collection. The event added\ncan be an Event, TimeRangeEvent or IndexedEvent, but it must be of the\nsame type as other events within the Collection.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>[Collection](#Collection)</code> - A new, modified, Collection containing the new event.  \n**Params**\n\n- event <code>Event</code> | <code>TimeRangeEvent</code> | <code>IndexedEvent</code> - The event being added.\n\n<a name=\"Collection+slice\"></a>\n\n### collection.slice(begin, end) ⇒ <code>[Collection](#Collection)</code>\nPerform a slice of events within the Collection, returns a new\nCollection representing a portion of this TimeSeries from begin up to\nbut not including end.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>[Collection](#Collection)</code> - The new, sliced, Collection.  \n**Params**\n\n- begin <code>Number</code> - The position to begin slicing\n- end <code>Number</code> - The position to end slicing\n\n<a name=\"Collection+filter\"></a>\n\n### collection.filter(func) ⇒ <code>[Collection](#Collection)</code>\nFilter the collection's event list with the supplied function\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>[Collection](#Collection)</code> - A new, filtered, Collection.  \n**Params**\n\n- func <code>function</code> - The filter function, that should return\n                       true or false when passed in an event.\n\n<a name=\"Collection+map\"></a>\n\n### collection.map(func) ⇒ <code>[Collection](#Collection)</code>\nMap the collection's event list to a new event list with\nthe supplied function.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>[Collection](#Collection)</code> - A new, modified, Collection.  \n**Params**\n\n- func <code>function</code> - The mapping function, that should return\na new event when passed in the old event.\n\n<a name=\"Collection+clean\"></a>\n\n### collection.clean(fieldSpec) ⇒ <code>[Collection](#Collection)</code>\nReturns a new Collection by testing the fieldSpec\nvalues for being valid (not NaN, null or undefined).\n\nThe resulting Collection will be clean (for that fieldSpec).\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>[Collection](#Collection)</code> - A new, modified, Collection.  \n**Params**\n\n- fieldSpec <code>string</code> <code> = &quot;value&quot;</code> - The field to test\n\n<a name=\"Collection+count\"></a>\n\n### collection.count() ⇒ <code>number</code>\nReturns the number of events in this collection\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>number</code> - The number of events  \n<a name=\"Collection+first\"></a>\n\n### collection.first(fieldSpec) ⇒ <code>number</code>\nReturns the first value in the Collection for the fieldspec\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>number</code> - The first value  \n**Params**\n\n- fieldSpec <code>string</code> <code> = &quot;value&quot;</code> - The field to fetch\n\n<a name=\"Collection+last\"></a>\n\n### collection.last(fieldSpec) ⇒ <code>number</code>\nReturns the last value in the Collection for the fieldspec\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>number</code> - The last value  \n**Params**\n\n- fieldSpec <code>string</code> <code> = &quot;value&quot;</code> - The field to fetch\n\n<a name=\"Collection+sum\"></a>\n\n### collection.sum(fieldSpec) ⇒ <code>number</code>\nReturns the sum Collection for the fieldspec\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>number</code> - The sum  \n**Params**\n\n- fieldSpec <code>string</code> <code> = &quot;value&quot;</code> - The field to sum over the collection\n\n<a name=\"Collection+avg\"></a>\n\n### collection.avg(fieldSpec) ⇒ <code>number</code>\nAggregates the events down to their average\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>number</code> - The average  \n**Params**\n\n- fieldSpec <code>String</code> <code> = value</code> - The field to average over the collection\n\n<a name=\"Collection+max\"></a>\n\n### collection.max(fieldSpec) ⇒ <code>number</code>\nAggregates the events down to their maximum value\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>number</code> - The max value for the field  \n**Params**\n\n- fieldSpec <code>String</code> <code> = value</code> - The field to find the max within the collection\n\n<a name=\"Collection+min\"></a>\n\n### collection.min(fieldSpec) ⇒ <code>number</code>\nAggregates the events down to their minimum value\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>number</code> - The min value for the field  \n**Params**\n\n- fieldSpec <code>String</code> <code> = value</code> - The field to find the min within the collection\n\n<a name=\"Collection+mean\"></a>\n\n### collection.mean(fieldSpec) ⇒ <code>number</code>\nAggregates the events down to their mean (same as avg)\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>number</code> - The mean  \n**Params**\n\n- fieldSpec <code>String</code> <code> = value</code> - The field to find the mean of within the collection\n\n<a name=\"Collection+median\"></a>\n\n### collection.median(fieldSpec) ⇒ <code>number</code>\nAggregates the events down to their medium value\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>number</code> - The resulting median value  \n**Params**\n\n- fieldSpec <code>String</code> <code> = value</code> - The field to aggregate over\n\n<a name=\"Collection+stdev\"></a>\n\n### collection.stdev(fieldSpec) ⇒ <code>number</code>\nAggregates the events down to their stdev\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>number</code> - The resulting stdev value  \n**Params**\n\n- fieldSpec <code>String</code> <code> = value</code> - The field to aggregate over\n\n<a name=\"Collection+aggregate\"></a>\n\n### collection.aggregate(func, fieldSpec) ⇒ <code>number</code>\nAggregates the events down using a user defined function to\ndo the reduction.\n\n**Kind**: instance method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>number</code> - The resulting value  \n**Params**\n\n- func <code>function</code> - User defined reduction function. Will be\n                           passed a list of values. Should return a\n                           singe value.\n- fieldSpec <code>String</code> <code> = value</code> - The field to aggregate over\n\n<a name=\"Collection.equal\"></a>\n\n### Collection.equal(collection1, collection2) ⇒ <code>bool</code>\nStatic function to compare two collections to each other. If the collections\nare of the same instance as each other then equals will return true.\n\n**Kind**: static method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>bool</code> - result  \n**Params**\n\n- collection1 <code>[Collection](#Collection)</code>\n- collection2 <code>[Collection](#Collection)</code>\n\n<a name=\"Collection.is\"></a>\n\n### Collection.is(collection1, collection2) ⇒ <code>bool</code>\nStatic function to compare two collections to each other. If the collections\nare of the same value as each other then equals will return true.\n\n**Kind**: static method of <code>[Collection](#Collection)</code>  \n**Returns**: <code>bool</code> - result  \n**Params**\n\n- collection1 <code>[Collection](#Collection)</code>\n- collection2 <code>[Collection](#Collection)</code>\n\n"
 
 /***/ },
-/* 270 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32281,15 +32505,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactMarkdown = __webpack_require__(232);
+	var _reactMarkdown = __webpack_require__(236);
 
 	var _reactMarkdown2 = _interopRequireDefault(_reactMarkdown);
 
-	var _highlighter = __webpack_require__(256);
+	var _highlighter = __webpack_require__(260);
 
 	var _highlighter2 = _interopRequireDefault(_highlighter);
 
-	var _series = __webpack_require__(271);
+	var _series = __webpack_require__(275);
 
 	var _series2 = _interopRequireDefault(_series);
 
@@ -32329,13 +32553,13 @@
 	});
 
 /***/ },
-/* 271 */
+/* 275 */
 /***/ function(module, exports) {
 
 	module.exports = "## TimeSeries\n\n---\n\nA `TimeSeries` represents a series of events, with each event being a combination of:\n\n - time (or `TimeRange`, or `Index`)\n - data - corresponding set of key/values.\n\n### Construction\n\nCurrently you can initialize a `TimeSeries` with either a list of events, or with a data format that looks like this:\n\n```javascript\nconst data = {\n    name: \"trafficc\",\n    columns: [\"time\", \"value\"],\n    points: [\n        [1400425947000, 52],\n        [1400425948000, 18],\n        [1400425949000, 26],\n        [1400425950000, 93],\n        ...\n    ]\n};\n```\n\nTo create a new TimeSeries object from the above format, simply use the constructor:\n\n```javascript\nvar series = new TimeSeries(data);\n```\n\nThe format of the data is as follows:\n\n - **name** - optional, but a good practice\n - **columns** - are necessary and give labels to the data in the points.\n - **points** - are an array of tuples. Each row is at a different time (or timerange), and each value corresponds to the column labels.\n   \nAs just hinted at, the first column may actually be:\n\n - \"time\"\n - \"timeRange\" represented by a `TimeRange`\n - \"index\" - a time range represented by an `Index`. By using an index it is possible, for example, to refer to a specific month:\n\n```javascript\nvar availabilityData = {\n    name: \"Last 3 months availability\",\n    columns: [\"index\", \"uptime\"],\n    points: [\n        [\"2015-06\", \"100%\"], // <-- 2015-06 specified here represents June 2015\n        [\"2015-05\", \"92%\"],\n        [\"2015-04\", \"87%\"],\n    ]\n};\n```\n\nAlternatively, you can construct a `TimeSeries` with a list of events. These may be `Events`, `TimeRangeEvents` or `IndexedEvents`. Here's an example of that:\n\n```javascript\nconst events = [];\nevents.push(new Event(new Date(2015, 7, 1), {value: 27}));\nevents.push(new Event(new Date(2015, 8, 1), {value: 29}));\nconst series = new TimeSeries({\n    name: \"avg temps\",\n    events: events\n});\n```\n\n### Nested data\n\nThe values do not have to be simple types like the above examples. Here's an example where each value is itself an object with \"in\" and \"out\" keys:\n\n```javascript\nconst series = new TimeSeries({\n    name: \"Map Traffic\",\n    columns: [\"time\", \"NASA_north\", \"NASA_south\"],\n    points: [\n        [1400425951000, {in: 100, out: 200}, {in: 145, out: 135}],\n        [1400425952000, {in: 200, out: 400}, {in: 146, out: 142}],\n        [1400425953000, {in: 300, out: 600}, {in: 147, out: 158}],\n        [1400425954000, {in: 400, out: 800}, {in: 155, out: 175}],\n    ]\n});\n```\n\nComplex data is stored in an Immutable structure. To get a value out of nested data like this you will get the Event you want (by row), as usual, and then use `get()` to fetch the value by column name. The result of this call will be a JSON copy of the Immutable data so you can query deeper in the usual way:\n\n```javascript\nseries.at(0).get(\"NASA_north\")[\"in\"]  // 200`\n```\n\nIt is then possible to use a value mapper function when calculating different properties. For example, to get the average \"in\" value of the NASA_north column:\n\n```javascript\nseries.avg(\"NASA_north\", d => d.in);  // 250\n```\n\n**Kind**: global class  \n## API Reference\n\n\n* [TimeSeries](#TimeSeries)\n    * _instance_\n        * [.toJSON()](#TimeSeries+toJSON)\n        * [.toString()](#TimeSeries+toString)\n        * [.timerange()](#TimeSeries+timerange)\n        * [.begin()](#TimeSeries+begin) ⇒ <code>Date</code>\n        * [.end()](#TimeSeries+end) ⇒ <code>Date</code>\n        * [.at(pos)](#TimeSeries+at)\n        * [.setCollection(collection)](#TimeSeries+setCollection) ⇒ <code>[TimeSeries](#TimeSeries)</code>\n        * [.bisect(t, b)](#TimeSeries+bisect) ⇒ <code>number</code>\n        * [.slice(begin, end)](#TimeSeries+slice) ⇒ <code>[TimeSeries](#TimeSeries)</code>\n        * [.clean(fieldSpec)](#TimeSeries+clean) ⇒ <code>[TimeSeries](#TimeSeries)</code>\n        * [.events()](#TimeSeries+events)\n        * [.name()](#TimeSeries+name) ⇒ <code>string</code>\n        * [.index()](#TimeSeries+index) ⇒ <code>Index</code>\n        * [.indexAsString()](#TimeSeries+indexAsString) ⇒ <code>string</code>\n        * [.indexAsRange()](#TimeSeries+indexAsRange) ⇒ <code>TimeRange</code>\n        * [.isUTC()](#TimeSeries+isUTC) ⇒ <code>TimeRange</code>\n        * [.columns()](#TimeSeries+columns) ⇒ <code>array</code>\n        * [.collection()](#TimeSeries+collection) ⇒ <code>Collection</code>\n        * [.meta(key)](#TimeSeries+meta) ⇒ <code>object</code>\n        * [.size()](#TimeSeries+size) ⇒ <code>number</code>\n        * [.sizeValid()](#TimeSeries+sizeValid) ⇒ <code>number</code>\n        * [.count()](#TimeSeries+count) ⇒ <code>number</code>\n        * [.sum(fieldSpec)](#TimeSeries+sum) ⇒ <code>number</code>\n        * [.avg(fieldSpec)](#TimeSeries+avg) ⇒ <code>number</code>\n        * [.mean(fieldSpec)](#TimeSeries+mean) ⇒ <code>number</code>\n        * [.median(fieldSpec)](#TimeSeries+median) ⇒ <code>number</code>\n        * [.stdev(fieldSpec)](#TimeSeries+stdev) ⇒ <code>number</code>\n        * [.aggregate(func, fieldSpec)](#TimeSeries+aggregate) ⇒ <code>number</code>\n        * [.pipeline()](#TimeSeries+pipeline) ⇒ <code>Pipeline</code>\n        * [.map(operator, cb)](#TimeSeries+map)\n        * [.select(fieldSpec, cb)](#TimeSeries+select)\n        * [.collapse(fieldSpec, name, reducer, append, cb)](#TimeSeries+collapse)\n    * _static_\n        * [.equal(series1, series2)](#TimeSeries.equal) ⇒ <code>bool</code>\n        * [.is(series1, series2)](#TimeSeries.is) ⇒ <code>bool</code>\n        * [.timeseriesListReduce(data, seriesList, reducer, fieldSpec)](#TimeSeries.timeseriesListReduce) ⇒ <code>[TimeSeries](#TimeSeries)</code>\n        * [.timeSeriesListMerge(data, seriesList)](#TimeSeries.timeSeriesListMerge) ⇒ <code>[TimeSeries](#TimeSeries)</code>\n        * [.timeSeriesListSum(data, seriesList, fieldSpec)](#TimeSeries.timeSeriesListSum) ⇒ <code>[TimeSeries](#TimeSeries)</code>\n\n<a name=\"TimeSeries+toJSON\"></a>\n\n### timeSeries.toJSON()\nTurn the TimeSeries into regular javascript objects\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n<a name=\"TimeSeries+toString\"></a>\n\n### timeSeries.toString()\nRepresent the TimeSeries as a string\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n<a name=\"TimeSeries+timerange\"></a>\n\n### timeSeries.timerange()\nReturns the extents of the TimeSeries as a TimeRange.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n<a name=\"TimeSeries+begin\"></a>\n\n### timeSeries.begin() ⇒ <code>Date</code>\nGets the earliest time represented in the TimeSeries.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>Date</code> - Begin time  \n<a name=\"TimeSeries+end\"></a>\n\n### timeSeries.end() ⇒ <code>Date</code>\nGets the latest time represented in the TimeSeries.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>Date</code> - End time  \n<a name=\"TimeSeries+at\"></a>\n\n### timeSeries.at(pos)\nAccess a specific TimeSeries event via its position\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Params**\n\n- pos <code>number</code> - The event position\n\n<a name=\"TimeSeries+setCollection\"></a>\n\n### timeSeries.setCollection(collection) ⇒ <code>[TimeSeries](#TimeSeries)</code>\nSets a new underlying collection for this TimeSeries.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>[TimeSeries](#TimeSeries)</code> - A new TimeSeries  \n**Params**\n\n- collection <code>Collection</code> - The new collection\n\n<a name=\"TimeSeries+bisect\"></a>\n\n### timeSeries.bisect(t, b) ⇒ <code>number</code>\nReturns the index that bisects the TimeSeries at the time specified.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>number</code> - The row number that is the greatest, but still below t.  \n**Params**\n\n- t <code>Data</code> - The time to bisect the TimeSeries with\n- b <code>number</code> - The position to begin searching at\n\n<a name=\"TimeSeries+slice\"></a>\n\n### timeSeries.slice(begin, end) ⇒ <code>[TimeSeries](#TimeSeries)</code>\nPerform a slice of events within the TimeSeries, returns a new\nTimeSeries representing a portion of this TimeSeries from\nbegin up to but not including end.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>[TimeSeries](#TimeSeries)</code> - The new, sliced, TimeSeries.  \n**Params**\n\n- begin <code>Number</code> - The position to begin slicing\n- end <code>Number</code> - The position to end slicing\n\n<a name=\"TimeSeries+clean\"></a>\n\n### timeSeries.clean(fieldSpec) ⇒ <code>[TimeSeries](#TimeSeries)</code>\nReturns a new Collection by testing the fieldSpec\nvalues for being valid (not NaN, null or undefined).\n\nThe resulting TimeSeries will be clean (for that fieldSpec).\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>[TimeSeries](#TimeSeries)</code> - A new, modified, TimeSeries.  \n**Params**\n\n- fieldSpec <code>string</code> - The field to test\n\n<a name=\"TimeSeries+events\"></a>\n\n### timeSeries.events()\nGenerator to return all the events in the collection.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Example**  \n```\nfor (let event of timeseries.events()) {\n    console.log(event.toString());\n}\n```\n<a name=\"TimeSeries+name\"></a>\n\n### timeSeries.name() ⇒ <code>string</code>\nFetch the timeseries name\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>string</code> - The name given to this TimeSeries  \n<a name=\"TimeSeries+index\"></a>\n\n### timeSeries.index() ⇒ <code>Index</code>\nFetch the timeseries Index, if it has one.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>Index</code> - The Index given to this TimeSeries  \n<a name=\"TimeSeries+indexAsString\"></a>\n\n### timeSeries.indexAsString() ⇒ <code>string</code>\nFetch the timeseries Index, as a string, if it has one.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>string</code> - The Index, as a string, given to this TimeSeries  \n<a name=\"TimeSeries+indexAsRange\"></a>\n\n### timeSeries.indexAsRange() ⇒ <code>TimeRange</code>\nFetch the timeseries Index, as a TimeRange, if it has one.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>TimeRange</code> - The Index, as a TimeRange, given to this TimeSeries  \n<a name=\"TimeSeries+isUTC\"></a>\n\n### timeSeries.isUTC() ⇒ <code>TimeRange</code>\nFetch the UTC flag, i.e. are the events in this TimeSeries in\nUTC or local time (if they are IndexedEvents an event might be\n\"2014-08-31\". The actual time range of that representation\ndepends on where you are. Pond supports thinking about that in\neither as a UTC day, or a local day).\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>TimeRange</code> - The Index, as a TimeRange, given to this TimeSeries  \n<a name=\"TimeSeries+columns\"></a>\n\n### timeSeries.columns() ⇒ <code>array</code>\nFetch the list of column names. This is determined by\ntraversing though the events and collecting the set.\n\nNote: the order is not defined\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>array</code> - List of columns  \n<a name=\"TimeSeries+collection\"></a>\n\n### timeSeries.collection() ⇒ <code>Collection</code>\nReturns the internal collection of events for this TimeSeries\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>Collection</code> - The collection backing this TimeSeries  \n<a name=\"TimeSeries+meta\"></a>\n\n### timeSeries.meta(key) ⇒ <code>object</code>\nReturns the meta data about this TimeSeries as a JSON object.\nAny extra data supplied to the TimeSeries constructor will be\nplaced in the meta data object. This returns either all of that\ndata as a JSON object, or a specific key if `key` is supplied.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>object</code> - The meta data  \n**Params**\n\n- key <code>string</code> - Optional specific part of the meta data\n\n<a name=\"TimeSeries+size\"></a>\n\n### timeSeries.size() ⇒ <code>number</code>\nReturns the number of events in this TimeSeries\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>number</code> - Count of events  \n<a name=\"TimeSeries+sizeValid\"></a>\n\n### timeSeries.sizeValid() ⇒ <code>number</code>\nReturns the number of valid items in this TimeSeries.\n\nUses the fieldSpec to look up values in all events.\nIt then counts the number that are considered valid, which\nspecifically are not NaN, undefined or null.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>number</code> - Count of valid events  \n<a name=\"TimeSeries+count\"></a>\n\n### timeSeries.count() ⇒ <code>number</code>\nReturns the number of events in this TimeSeries. Alias\nfor size().\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>number</code> - Count of events  \n<a name=\"TimeSeries+sum\"></a>\n\n### timeSeries.sum(fieldSpec) ⇒ <code>number</code>\nReturns the sum for the fieldspec\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>number</code> - The sum  \n**Params**\n\n- fieldSpec <code>string</code> - The field to sum over the TimeSeries\n\n<a name=\"TimeSeries+avg\"></a>\n\n### timeSeries.avg(fieldSpec) ⇒ <code>number</code>\nAggregates the events in the TimeSeries down to their average\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>number</code> - The average  \n**Params**\n\n- fieldSpec <code>String</code> - The field to average over in the TimeSeries\n\n<a name=\"TimeSeries+mean\"></a>\n\n### timeSeries.mean(fieldSpec) ⇒ <code>number</code>\nAggregates the events in the TimeSeries down to their mean (same as avg)\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>number</code> - The mean  \n**Params**\n\n- fieldSpec <code>String</code> - The field to find the mean of within the collection\n\n<a name=\"TimeSeries+median\"></a>\n\n### timeSeries.median(fieldSpec) ⇒ <code>number</code>\nAggregates the events down to their medium value\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>number</code> - The resulting median value  \n**Params**\n\n- fieldSpec <code>String</code> - The field to aggregate over\n\n<a name=\"TimeSeries+stdev\"></a>\n\n### timeSeries.stdev(fieldSpec) ⇒ <code>number</code>\nAggregates the events down to their stdev\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>number</code> - The resulting stdev value  \n**Params**\n\n- fieldSpec <code>String</code> - The field to aggregate over\n\n<a name=\"TimeSeries+aggregate\"></a>\n\n### timeSeries.aggregate(func, fieldSpec) ⇒ <code>number</code>\nAggregates the events down using a user defined function to\ndo the reduction.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>number</code> - The resulting value  \n**Params**\n\n- func <code>function</code> - User defined reduction function. Will be\n                           passed a list of values. Should return a\n                           singe value.\n- fieldSpec <code>String</code> - The field to aggregate over\n\n<a name=\"TimeSeries+pipeline\"></a>\n\n### timeSeries.pipeline() ⇒ <code>Pipeline</code>\nReturns a new Pipeline with input source being initialized to\nthis TimeSeries collection. This allows pipeline operations\nto be chained directly onto the TimeSeries to produce a new\nTimeSeries or Event result.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>Pipeline</code> - The Pipeline.  \n**Example**  \n```\ntimeseries.pipeline()\n    .offsetBy(1)\n    .offsetBy(2)\n    .to(CollectionOut, c => out = c);\n```\n<a name=\"TimeSeries+map\"></a>\n\n### timeSeries.map(operator, cb)\nTakes an operator that is used to remap events from this TimeSeries to\na new set of Events. The result is returned via the callback.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Params**\n\n- operator <code>function</code> - An operator which will be passed each event and\n                                   which should return a new event.\n- cb <code>function</code> - Callback containing a collapsed TimeSeries\n\n<a name=\"TimeSeries+select\"></a>\n\n### timeSeries.select(fieldSpec, cb)\nTakes a fieldSpec (list of column names) and outputs to the callback just those\ncolumns in a new TimeSeries.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Params**\n\n- fieldSpec <code>array</code> - The list of columns\n- cb <code>function</code> - Callback containing a collapsed TimeSeries\n\n<a name=\"TimeSeries+collapse\"></a>\n\n### timeSeries.collapse(fieldSpec, name, reducer, append, cb)\nTakes a fieldSpec (list of column names) and collapses\nthem to a new column named `name` which is the reduction (using\nthe `reducer` function) of the matched columns in the fieldSpecList.\n\nThe column may be appended to the existing columns, or replace them,\nusing the `append` boolean.\n\nThe result, a new TimeSeries, will be passed to the supplied callback.\n\n**Kind**: instance method of <code>[TimeSeries](#TimeSeries)</code>  \n**Params**\n\n- fieldSpec <code>array</code> - The list of columns\n- name <code>string</code> - The resulting summed column name\n- reducer <code>function</code> - Reducer function e.g. sum\n- append <code>boolean</code> - Append the summed column, rather than replace\n- cb <code>function</code> - Callback containing a collapsed TimeSeries\n\n<a name=\"TimeSeries.equal\"></a>\n\n### TimeSeries.equal(series1, series2) ⇒ <code>bool</code>\nStatic function to compare two TimeSeries to each other. If the TimeSeries\nare of the same instance as each other then equals will return true.\n\n**Kind**: static method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>bool</code> - result  \n**Params**\n\n- series1 <code>[TimeSeries](#TimeSeries)</code>\n- series2 <code>[TimeSeries](#TimeSeries)</code>\n\n<a name=\"TimeSeries.is\"></a>\n\n### TimeSeries.is(series1, series2) ⇒ <code>bool</code>\nStatic function to compare two TimeSeries to each other. If the TimeSeries\nare of the same value as each other then equals will return true.\n\n**Kind**: static method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>bool</code> - result  \n**Params**\n\n- series1 <code>[TimeSeries](#TimeSeries)</code>\n- series2 <code>[TimeSeries](#TimeSeries)</code>\n\n<a name=\"TimeSeries.timeseriesListReduce\"></a>\n\n### TimeSeries.timeseriesListReduce(data, seriesList, reducer, fieldSpec) ⇒ <code>[TimeSeries](#TimeSeries)</code>\nReduces a list of TimeSeries objects using a reducer function. This works\nby taking each event in each TimeSeries and collecting them together\nbased on timestamp. All events for a given time are then merged together\nusing the reducer function to produce a new Event. Those Events are then\ncollected together to form a new TimeSeries.\n\n**Kind**: static method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>[TimeSeries](#TimeSeries)</code> - The new TimeSeries  \n**Params**\n\n- data <code>object</code> - Meta data for the resulting TimeSeries\n- seriesList <code>array</code> - A list of TimeSeries objects\n- reducer <code>func</code> - The reducer function\n- fieldSpec <code>string</code> - The fields to map\n\n<a name=\"TimeSeries.timeSeriesListMerge\"></a>\n\n### TimeSeries.timeSeriesListMerge(data, seriesList) ⇒ <code>[TimeSeries](#TimeSeries)</code>\nTakes a list of TimeSeries and merges them together to form a new\nTimeseries.\n\nMerging will produce a new Event only when events are conflict free, so\nit is useful to combine multiple TimeSeries which have different time ranges\nas well as combine TimeSeries which have different columns.\n\n**Kind**: static method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>[TimeSeries](#TimeSeries)</code> - The resulting TimeSeries  \n**Params**\n\n- data <code>object</code> - Meta data for the new TimeSeries\n- seriesList <code>array</code> - A list of TimeSeries\n\n<a name=\"TimeSeries.timeSeriesListSum\"></a>\n\n### TimeSeries.timeSeriesListSum(data, seriesList, fieldSpec) ⇒ <code>[TimeSeries](#TimeSeries)</code>\nTakes a list of TimeSeries and sums them together to form a new\nTimeseries.\n\n**Kind**: static method of <code>[TimeSeries](#TimeSeries)</code>  \n**Returns**: <code>[TimeSeries](#TimeSeries)</code> - The resulting TimeSeries  \n**Params**\n\n- data <code>object</code> - Meta data for the new TimeSeries\n- seriesList <code>array</code> - A list of TimeSeries\n- fieldSpec <code>object</code> | <code>array</code> | <code>string</code> - Which fields to use in the sum\n\n**Example**  \n```\nconst ts1 = new TimeSeries(weather1);\nconst ts2 = new TimeSeries(weather2);\nconst sum = TimeSeries.sum({name: \"sum\"}, [ts1, ts2], [\"temp\"]);\n```\n"
 
 /***/ },
-/* 272 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32348,15 +32572,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactMarkdown = __webpack_require__(232);
+	var _reactMarkdown = __webpack_require__(236);
 
 	var _reactMarkdown2 = _interopRequireDefault(_reactMarkdown);
 
-	var _highlighter = __webpack_require__(256);
+	var _highlighter = __webpack_require__(260);
 
 	var _highlighter2 = _interopRequireDefault(_highlighter);
 
-	var _pipeline = __webpack_require__(273);
+	var _pipeline = __webpack_require__(277);
 
 	var _pipeline2 = _interopRequireDefault(_pipeline);
 
@@ -32396,7 +32620,7 @@
 	});
 
 /***/ },
-/* 273 */
+/* 277 */
 /***/ function(module, exports) {
 
 	module.exports = "## Pipeline\n\n---\n\nPipelines are used to transform Pond data. They allow a chain of operations to be applied to streaming Events, Collections or TimeSeries.\n\nA general Pipeline has a source (`from(source)`), a chain of Processors, and a destination (`to(dest)`). Events pass through the Pipeline, read from the source, processed one by one, and output to the destination. The source my be bounded, such as a TimeSeries or Collection, or unbounded where events arrive as a stream and are added to the Pipeline one by one.\n\nPipelines can also define a set of state that applies within all or part of the chain.\n\nThis state maybe a combination of:\n * windows, such as a 5 minute collection window\n * groups, such as the type of the Event\n  \nThese states would be applied where appropriate, for example, when aggregating.\n\n### Example\n\nLet's look at what that looks like. Imagine we have a collection of Events and each event has a timestamp along with an \"in\" and \"out\" value, such as we have with network traffic data.\n\nWe then want to offset the \"in\" value of each event by 1, and then by 2.\n\n    Pipeline()\n        .from(collection)   // From the source collection\n        .offsetBy(1, \"in\")  // Process each event in the collection\n        .offsetBy(2)        // Process again\n        .to(CollectionOut, c => /* result */ ); // Output to new Collection\n\nIn this case, we use the from() operation to specify a Collection to take data from. Since a Collection is a bounded data source, the operation will be performed in batch. That is, all events in the collection will be piped though the transforms and the result collected at the end. This batching will happen when the Collector is added with the to() operation. As each event flows from the from collection to the end Collector, it is passed into the intermediate Processors. In this case it passes through two offsetBy Processors. Each of these is used to in some way process the event. In this case that means taking the input Event, changing a value (adding 1 to the \"in\" value), and outputting a new Event. As these are immutable objects, the output Events do not share data with the input Events.\n\nThis raises probably the most important part of how Pipelines work: they are foremost an event processing pipeline. Events are passed into each Processor (e.g. offsetBy) and the result is zero, one or many output events. Events are passed down the line of Processors until they reach a `to()`, which causes some kind of output (which could be a stream of Events, a Collection, or something else). This is distinct from systems which essentially transform between collection of items or micro-batch.\n\n---\n\n### Event streaming\n\nAs an event processing system, it makes sense that you can stream events though a pipeline. In this example we create a simple UnboundedIn. This forms a target for adding events. A Pipeline similar to the above examples follows. As each event is added to the source, those events flow into the Pipeline and are collected at the bottom.\n\n    const source = new UnboundedIn();\n    Pipeline()\n        .from(source)\n        .offsetBy(3, \"in\")\n        .to(CollectionOut, c => /* result */ );\n\n    // Start adding events...\n    source.addEvent(e1);\n    source.addEvent(e2);\n\nNote that in this case the Collection will be updated each time new data appears, and that Collection is global (i.e. not windowed). It is possible to change how often the collection is updated, as well as provide windowing to output collections per window, or per window per groupedBy key.\n\nIt is also possible to derive a class from UnboundedIn() that can produce Events itself, for instance if your events are coming from a Pubsub subscription.\n\n---\n### Aggregation\n\nA common use-case for Pipelines is aggregation. Aggregation is performed on windowed (and grouped) events. There must currently be a window defined for a Pipeline to aggregate.\n\nHere is a simple example:\n\n    const result = {};\n    const p = Pipeline()\n        .from(stream)\n        .windowBy(\"1h\")           // 1 day fixed windows\n        .emitOn(\"eachEvent\")    // emit result on each event\n        .aggregate({in: avg, out: avg})\n        .to(EventOut, event => {\n            // resulting IndexedEvents...\n            result[`${event.index()}`] = event;\n        });\n\nAs in the streaming example above, we make an UnboundedIn onto which we add Events.\n\nWhat's new here is the state that is being set in the Pipeline:\n * windowBy - sets windowing to be 1 hour\n * emitOn - sets the triggering of aggregation to be each time a new event comes in. This will mean the same output will be generated multiple times, each time with an updated aggregation. The alternative is \"discard\" which would only emit when an event moves into another window\n\nOnce this state is established the aggregate() processor can be used. The argument to this is a field specification that tells the emit code which fields of the collected window of events should be aggregated together and what function to use.\n\nThe output, an EventOut, will call the callback whenever a new aggregated event is emitted. Since the triggering (emitOn) is set to \"eachEvent\", it will be called multiple times. In this case we just re-add it, but the index, to our result map.\n\n### Aggregation with grouping\n\nPipelines also support a groupBy() processor. In the following example each event has a field called \"type\". The result of this will be that aggregation collections will be further partitioned based on the group, in addition to the window.\n\n    const stream = new UnboundedIn();\n    const result = {};\n\n    const p = Pipeline()\n        .from(stream)\n        .groupBy(\"type\")\n        .windowBy(\"1h\")           // 1 day fixed windows\n        .emitOn(\"eachEvent\")      // emit result on each event\n        .aggregate({type: keep, in: avg, out: avg})\n        .to(EventOut, event => {\n            result[`${event.index()}:${event.get(\"type\")}`] = event;\n        });\n\n    eventsIn.forEach(event => stream.addEvent(event));\n\nDuring our aggregation, output IndexedEvents are formed with the average of \"in\", and the average of \"out\". The value of the \"type\" field is kept in the final result using the `keep` aggregation function.\n\nIn this case we simply want to collect the events. To do this we separate the output events using both the IndexEvent's Index (which describes the windowed timerange of the event), joined with the value of the \"type\" field that we preserved in our aggregation.\n\n---\n\n### Conversions\n\nThere are three types of events in Pond: regular `Events`, which have a single timestamp, `TimeRangeEvents` which have a `TimeRange` (begin and end time) associated with them, and `IndexedEvents` which have a string that represents a time range. Sometimes it is helpful to convert between these Event types. To do this you can use the `asEvents()`, `asIndexedEvents()` and `asTimeRangeEvent()` processors.\n\nTaking the first streaming example, we can convert the output IndexedEvents to a basic Event like so:\n\n```\n    const input = new UnboundedIn();\n    const result = {};\n\n    const p = Pipeline()\n        .from(input)\n        .windowBy(\"1h\")           // 1 day fixed windows\n        .emitOn(\"eachEvent\")    // emit result on each event\n        .aggregate({in: avg, out: avg})\n        .asEvents()\n        .to(EventOut, event => /* result */ );\n```\n\n---\n### Merging pipelines\n\nPipelines can themselves be chained together.\n\n    const p1 = Pipeline()\n        .from(collection)                  // This links to the src collection\n        .offsetBy(1, \"in\")                 // Process each event\n        .offsetBy(2)                       // Process again\n        .to(CollectionOut, collection => /* result */ );\n\n    const p2 = p1\n        .offsetBy(3, \"in\")                    // Transforms to a new collection\n        .to(CollectionOut, collection => /* result */);\n\nIn this example, the second pipeline will attach to the first pipeline. Currently batch pipelines support this, but only as a linear pipe. You cannot merge multiple bounded sources together. It is recommended that you do this manually by using, for example, Collection.combine() first, then running this through the Pipeline.\n\n---\n### TimeSeries pipelines\n\nPipelines can also be run directly off TimeSeries objects.\n\n    const timeseries = new TimeSeries(data);\n    timeseries.pipeline()\n        .offsetBy(1, \"in\")\n        .offsetBy(2)\n        .to(Collector, {}, collection => /* result */ );\n\n---\n## API Reference\n\nA pipeline manages a processing chain, for either batch or stream processing\nof collection data.\n\n**Kind**: global class  \n\n* [Pipeline](#Pipeline)\n    * [new Pipeline([arg])](#new_Pipeline_new)\n    * [.windowBy()](#Pipeline+windowBy) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.groupBy(k)](#Pipeline+groupBy) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.emitOn(trigger)](#Pipeline+emitOn) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.from(src)](#Pipeline+from) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.to()](#Pipeline+to) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.count(observer, force)](#Pipeline+count) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.offsetBy(by, fieldSpec)](#Pipeline+offsetBy) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.aggregate(fields)](#Pipeline+aggregate) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.asEvents(options)](#Pipeline+asEvents) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.map(op)](#Pipeline+map) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.filter(op)](#Pipeline+filter) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.select(fieldSpec)](#Pipeline+select) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.collapse(fieldSpec, name, reducer, append)](#Pipeline+collapse) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.take(limit)](#Pipeline+take) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.asTimeRangeEvents(options)](#Pipeline+asTimeRangeEvents) ⇒ <code>[Pipeline](#Pipeline)</code>\n    * [.asIndexedEvents(options)](#Pipeline+asIndexedEvents) ⇒ <code>[Pipeline](#Pipeline)</code>\n\n<a name=\"new_Pipeline_new\"></a>\n\n### new Pipeline([arg])\nBuild a new Pipeline.\n\n**Params**\n\n- [arg] <code>[Pipeline](#Pipeline)</code> | <code>Immutable.Map</code> | <code>null</code> - May be either:\n * a Pipeline (copy contructor)\n * an Immutable.Map, in which case the internal state of the\n   Pipeline will be contructed from the Map\n * not specified\n\nUsually you would initialize a Pipeline using the factory\nfunction, rather than this object directly with `new`.\n\n**Example**  \n```\nimport { Pipeline } from \"pondjs\";\nconst process = Pipeline()...`\n```\n<a name=\"Pipeline+windowBy\"></a>\n\n### pipeline.windowBy() ⇒ <code>[Pipeline](#Pipeline)</code>\nSet the window, returning a new Pipeline. The argument here\nis an object with {type, duration}.\ntype may be:\n * \"Fixed\"\n * other types coming\n\nduration is of the form:\n * \"30s\" or \"1d\" etc\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n<a name=\"Pipeline+groupBy\"></a>\n\n### pipeline.groupBy(k) ⇒ <code>[Pipeline](#Pipeline)</code>\nSets a new groupBy expression. Returns a new Pipeline.\n\nGrouping is a state set on the Pipeline. Operations downstream\nof the group specification will use that state. For example, an\naggregation would occur over any grouping specified.\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n**Params**\n\n- k <code>function</code> | <code>array</code> | <code>string</code> - The key to group by.\nYou can groupBy using a function `(event) => return key`,\na fieldSpec (a field name, or dot delimitted path to a field),\nor a array of fieldSpecs\n\n<a name=\"Pipeline+emitOn\"></a>\n\n### pipeline.emitOn(trigger) ⇒ <code>[Pipeline](#Pipeline)</code>\nSets the condition under which an accumulated collection will\nbe emitted. If specified before an aggregation this will control\nwhen the resulting event will be emitted relative to the\nwindow accumulation. Current options are:\n * to emit on every event, or\n * just when the collection is complete, or\n * when a flush signal is received, either manually calling done(),\n   or at the end of a bounded source\n\nThe difference will depend on the output you want, how often\nyou want to get updated, and if you need to get a partial state.\nThere's currently no support for late data or watermarks. If an\nevent passes comes in after a collection window, that collection\nis considered finished.\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n**Params**\n\n- trigger <code>string</code> - A string indicating how to trigger a\nCollection should be emitted. May be:\n    * \"eachEvent\" - when a new event comes in, all currently\n                    maintained collections will emit their result\n    * \"discard\"   - when a collection is to be discarded,\n                    first it will emit. But only then.\n    * \"flush\"     - when a flush signal is received\n\n<a name=\"Pipeline+from\"></a>\n\n### pipeline.from(src) ⇒ <code>[Pipeline](#Pipeline)</code>\nThe source to get events from. The source needs to be able to\niterate its events using `for..of` loop for bounded Ins, or\nbe able to emit() for unbounded Ins. The actual batch, or stream\nconnection occurs when an output is defined with `to()`.\n\nPipelines can be chained together since a source may be another\nPipeline.\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n**Params**\n\n- src <code>BoundedIn</code> | <code>UnboundedIn</code> | <code>[Pipeline](#Pipeline)</code> - The source for the\n                                            Pipeline, or another\n                                            Pipeline.\n\n<a name=\"Pipeline+to\"></a>\n\n### pipeline.to() ⇒ <code>[Pipeline](#Pipeline)</code>\nSets up the destination sink for the pipeline.\n\nFor a batch mode connection, i.e. one with a Bounded source,\nthe output is connected to a clone of the parts of the Pipeline dependencies\nthat lead to this output. This is done by a Runner. The source input is\nthen iterated over to process all events into the pipeline and though to the Out.\n\nFor stream mode connections, the output is connected and from then on\nany events added to the input will be processed down the pipeline to\nthe out.\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n**Example**  \n```\nconst p = Pipeline()\n ...\n .to(EventOut, {}, event => {\n     result[`${event.index()}`] = event;\n });\n```\n<a name=\"Pipeline+count\"></a>\n\n### pipeline.count(observer, force) ⇒ <code>[Pipeline](#Pipeline)</code>\nOutputs the count of events\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n**Params**\n\n- observer <code>function</code> - The callback function. This will be\n                             passed the count, the windowKey and\n                             the groupByKey\n- force <code>Boolean</code> <code> = true</code> - Flush at the end of processing batch\n                           events, output again with possibly partial\n                           result.\n\n<a name=\"Pipeline+offsetBy\"></a>\n\n### pipeline.offsetBy(by, fieldSpec) ⇒ <code>[Pipeline](#Pipeline)</code>\nProcessor to offset a set of fields by a value. Mostly used for\ntesting processor and pipeline operations with a simple operation.\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The modified Pipeline  \n**Params**\n\n- by <code>number</code> - The amount to offset by\n- fieldSpec <code>string</code> | <code>array</code> - The field(s)\n\n<a name=\"Pipeline+aggregate\"></a>\n\n### pipeline.aggregate(fields) ⇒ <code>[Pipeline](#Pipeline)</code>\nUses the current Pipeline windowing and grouping\nstate to build collections of events and aggregate them.\n\n`IndexedEvent`s will be emitted out of the aggregator based\non the `emitOn` state of the Pipeline.\n\nTo specify what part of the incoming events should\nbe aggregated together you specify a `fields`\nobject. This is a map from fieldName to operator.\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n**Params**\n\n- fields <code>object</code> - Fields and operators to be aggregated\n\n**Example**  \n```\nimport { Pipeline, EventOut, functions } from \"pondjs\";\nconst { avg } = functions;\n\nconst p = Pipeline()\n  .from(input)\n  .windowBy(\"1h\")           // 1 day fixed windows\n  .emitOn(\"eachEvent\")      // emit result on each event\n  .aggregate({in: avg, out: avg})\n  .asEvents()\n  .to(EventOut, {}, event => {\n     result[`${event.index()}`] = event; // Result\n  });\n```\n<a name=\"Pipeline+asEvents\"></a>\n\n### pipeline.asEvents(options) ⇒ <code>[Pipeline](#Pipeline)</code>\nConverts incoming TimeRangeEvents or IndexedEvents to\nEvents. This is helpful since some processors will\nemit TimeRangeEvents or IndexedEvents, which may be\nunsuitable for some applications.\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n**Params**\n\n- options <code>object</code> - To convert to an Event you need\nto convert a time range to a single time. There are three options:\n 1. use the beginning time (options = {alignment: \"lag\"})\n 2. use the center time (options = {alignment: \"center\"})\n 3. use the end time (options = {alignment: \"lead\"})\n\n<a name=\"Pipeline+map\"></a>\n\n### pipeline.map(op) ⇒ <code>[Pipeline](#Pipeline)</code>\nMap the event stream using an operator\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n**Params**\n\n- op <code>function</code> - A function that returns a new Event\n\n<a name=\"Pipeline+filter\"></a>\n\n### pipeline.filter(op) ⇒ <code>[Pipeline](#Pipeline)</code>\nFilter the event stream using an operator\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n**Params**\n\n- op <code>function</code> - A function that returns true or false\n\n<a name=\"Pipeline+select\"></a>\n\n### pipeline.select(fieldSpec) ⇒ <code>[Pipeline](#Pipeline)</code>\nSelect a subset of columns\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n**Params**\n\n- fieldSpec <code>array</code> | <code>String</code> - The columns to include in the output\n\n<a name=\"Pipeline+collapse\"></a>\n\n### pipeline.collapse(fieldSpec, name, reducer, append) ⇒ <code>[Pipeline](#Pipeline)</code>\nCollapse a subset of columns using a reducer function\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n**Params**\n\n- fieldSpec <code>array</code> | <code>String</code> - The columns to collapse into the output\n- name <code>string</code> - The resulting output column's name\n- reducer <code>function</code> - Function to use to do the reduction\n- append <code>boolean</code> - Add the new column to the existing ones, or replace them.\n\n**Example**  \n```\n const timeseries = new TimeSeries(inOutData);\n Pipeline()\n     .from(timeseries)\n     .collapse([\"in\", \"out\"], \"in_out_sum\", sum)\n     .emitOn(\"flush\")\n     .to(CollectionOut, c => {\n          const ts = new TimeSeries({name: \"subset\", collection: c});\n          ...\n     }, true);\n```\n<a name=\"Pipeline+take\"></a>\n\n### pipeline.take(limit) ⇒ <code>[Pipeline](#Pipeline)</code>\nTake events up to the supplied limit, per key.\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n**Params**\n\n- limit <code>number</code> - Integer number of events to take\n\n<a name=\"Pipeline+asTimeRangeEvents\"></a>\n\n### pipeline.asTimeRangeEvents(options) ⇒ <code>[Pipeline](#Pipeline)</code>\nConverts incoming Events or IndexedEvents to TimeRangeEvents.\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n**Params**\n\n- options <code>object</code> - To convert from an Event you need\nto convert a single time to a time range. To control this you\nneed to specify the duration of that time range, along with\nthe positioning (alignment) of the time range with respect to\nthe time stamp of the Event.\n\nThere are three option for alignment:\n 1. time range will be in front of the timestamp (options = {alignment: \"front\"})\n 2. time range will be centered on the timestamp (options = {alignment: \"center\"})\n 3. time range will be positoned behind the timestamp (options = {alignment: \"behind\"})\n\nThe duration is of the form \"1h\" for one hour, \"30s\" for 30 seconds and so on.\n\n<a name=\"Pipeline+asIndexedEvents\"></a>\n\n### pipeline.asIndexedEvents(options) ⇒ <code>[Pipeline](#Pipeline)</code>\nConverts incoming Events to IndexedEvents.\n\nNote: It isn't possible to convert TimeRangeEvents to IndexedEvents.\n\n**Kind**: instance method of <code>[Pipeline](#Pipeline)</code>  \n**Returns**: <code>[Pipeline](#Pipeline)</code> - The Pipeline  \n**Params**\n\n- options <code>Object</code> - An object containing the conversion\noptions. In this case the duration string of the Index is expected.\n    - .duration <code>string</code> - The duration string is of the form \"1h\" for one hour, \"30s\"\nfor 30 seconds and so on.\n\n\n\n\n"
