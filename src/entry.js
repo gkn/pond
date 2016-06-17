@@ -22,7 +22,9 @@ export Index from "./index.js";
 export TimeRange from "./range.js";
 export Collection from "./collection.js";
 export TimeSeries from "./series.js";
-export Pipeline from "./pipeline.js";
+export {
+    Pipeline
+} from "./pipeline.js";
 export UnboundedIn from "./pipeline-in-unbounded";
 export BoundedIn from "./pipeline-in-bounded";
 export PipelineOut from "./pipeline-out";
@@ -30,4 +32,16 @@ export EventOut from "./pipeline-out-event";
 export CollectionOut from "./pipeline-out-collection";
 export Offset from "./offset.js";
 export Converter from "./offset.js";
-export Functions from "./functions.js";
+export {
+    keep,
+    sum,
+    avg,
+    max,
+    min,
+    cound,
+    first,
+    last,
+    difference,
+    median,
+    stdev
+} from "./functions";
