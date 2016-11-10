@@ -9,6 +9,7 @@
  */
 
 import _ from "underscore";
+import { EventEmitter2 } from 'eventemitter2'
 
 /**
  * Base class for objects in the processing chain which
@@ -16,38 +17,34 @@ import _ from "underscore";
  * interface to define the relationships and to emit events
  * to the interested observers.
  */
-class Observable {
 
-    constructor() {
+class Observable extends EventEmitter2 {
+
+    constructor () {
+        super({
+            wildcard: true,
+            delimiter: ".",
+            newListener: false,
+            maxListeners: 100
+        })
         this._id = _.uniqueId("id-");
-        this._observers = [];
     }
 
-    emit(event) {
-        this._observers.forEach(observer => {
-            observer.addEvent(event);
-        });
+    addEvent(event) {
+        this.emit("event", event);
     }
 
     flush() {
-        this._observers.forEach(observer => {
-            observer.flush();
-        });
+        this.emit("flush");
     }
 
     addObserver(observer) {
-        let shouldAdd = true;
-        this._observers.forEach(o => {
-            if (o === observer) {
-                shouldAdd = false;
-            }
-        });
-
-        if (shouldAdd) this._observers.push(observer);
+        this.on("event", observer.addEvent);
     }
 
     hasObservers() {
-        return this._observers.length > 0;
+        console.log(">", this.listenersAny("event").length);
+        return this.listenersAny().length > 0;
     }
 }
 

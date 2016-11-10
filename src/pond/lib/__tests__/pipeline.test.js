@@ -176,7 +176,7 @@ describe("Pipeline", () => {
 
     describe("test processor using offsetBy", () => {
 
-        it("can transform process events with an offsetBy chain", () => {
+        fit("can transform process events with an offsetBy chain", () => {
 
             const events = EVENT_LIST;
             const collection = new Collection(events);
@@ -187,14 +187,22 @@ describe("Pipeline", () => {
             const p1 = Pipeline()
                 .from(collection)                      // <-- This links to the src collection
                 .offsetBy(1, "in")                     //     - Transforms to a new collection
-                .offsetBy(2)                           //     - And then to another collection
+                .offsetBy(2)
+                .offsetBy(3)                            //     - And then to another collection
                 .to(CollectionOut, c => c1 = c);       // --> Specified output, evokes batch op
+            
+            console.log("P1");
+            p1.printGraph();
+
             const p2 = p1                              //            ||
-                .offsetBy(3, "in")                     //     - Transforms to a new collection
+                .offsetBy(4, "in")                     //     - Transforms to a new collection
                 .to(CollectionOut, c => {
                     c2 = c;
                 });       // --> Specified output, evokes batch op
 
+            console.log("P2");
+            p2.printGraph();
+/*
             expect(c1.size()).toBe(3);
             expect(c1.at(0).get("in")).toBe(4);
             expect(c1.at(1).get("in")).toBe(6);
@@ -204,6 +212,7 @@ describe("Pipeline", () => {
             expect(c2.at(0).get("in")).toBe(7);
             expect(c2.at(1).get("in")).toBe(9);
             expect(c2.at(2).get("in")).toBe(11);;
+            */
         });
 
         it("can stream from an unbounded source directly to output", () => {

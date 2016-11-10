@@ -10,6 +10,8 @@
 
 import Immutable from "immutable";
 import _ from "underscore";
+import { Graph, Predicate } from "morbius";
+import archy from "archy";
 
 import Event from "./event";
 import IndexedEvent from "./indexedevent";
@@ -38,8 +40,14 @@ import Taker from "./processors/taker";
 
 /**
  * A runner is used to extract the chain of processing operations
- * from a Pipeline given an Output. The idea here is to traverse
- * back up the Pipeline(s) and build an execution chain.
+ * from a Pipeline given an Output. This chain is in the form of
+ * a DAG graph. The purpose of the runner is to translate that DAG
+ * into executable nodes.
+ *
+ * The idea here is to traverse up the DAG from the out, building
+ * Processor nodes as we go. These processors are chained together
+ * as observers of each other, with each emiting events down the
+ * stream.
  *
  * When the runner is started, events from the "in" are streamed
  * into the execution chain and outputed into the "out".
@@ -86,6 +94,7 @@ class Runner {
         // a linear chain.
         //
 
+        /*
         let processChain = [];
         if (pipeline.last()) {
             processChain = pipeline.last().chain();
@@ -112,6 +121,7 @@ class Runner {
                 prev = processor;
             }
         });
+        */
     }
 
     /**
@@ -119,7 +129,44 @@ class Runner {
      * @param  {Boolean} force Force a flush at the end of the batch source
      *                         to cause any buffers to emit.
      */
-    start(force = false) {
+    execute(force = false) {
+
+        console.log("Set output");
+        const graph = this._pipeline.graph();
+        const last = this._pipeline.last();
+        console.log(graph);
+        const chain = graph.getAncestors(last);
+        console.log("processChain", chain);
+
+        //
+        // Execution chain
+        //
+
+        const executionChain = [ this._output ];
+        let prev = this._output;
+        chain.forEach(node => {
+            const n = graph.getNode(node);
+            const type = n.get("type");
+            const data = n.get("data");
+ 
+            let processor;
+            switch (type) {
+                case "collection":
+                    processor = n.getIn(["data", "bounded"]);
+                    break;
+
+                case "offset":
+                    processor = new Offset(this._pipeline, data);
+                    break;
+                // const processor = p.clone();
+                // if (prev) processor.addObserver(prev);
+                // this._executionChain.push(processor);
+                // prev = processor;
+            }
+            processor.addObserver(prev);
+            prev = processor;
+        });
+
 
         // Clear any results ready for the run
         this._pipeline.clearResults();
@@ -173,7 +220,7 @@ class Pipeline {
      *
      * @return {Pipeline} The Pipeline
      */
-    constructor(arg) {
+    constructor(arg, runner = Runner) {
         if (arg instanceof Pipeline) {
             const other = arg;
             this._d = other._d;
@@ -181,64 +228,129 @@ class Pipeline {
             this._d = arg;
         } else {
             this._d = new Immutable.Map({
-                type: null,
+                // Execution runner
+                runner: Runner,
+                // DAG graph
+                graph: new Graph(),
                 in: null,
                 first: null,
                 last: null,
-                groupBy: () => "",
-                windowType: "global",
-                windowDuration: null,
-                emitOn: "eachEvent"
+                // State
+                state: new Immutable.Map({
+                    groupBy: null,
+                    windowType: "global",
+                    windowDuration: null,
+                    emitOn: "eachEvent"
+                })
             });
         }
+        
         this._results = [];
     }
 
-    //
-    // Accessors to the current Pipeline state
-    //
-
-    in() {
-        return this._d.get("in");
-    }
-
+    /**
+     * Current mode the pipeline is in, streaming or batch
+     */
     mode() {
         return this._d.get("mode");
     }
 
+    /**
+     * The input for this pipeline
+     */
+    in() {
+        return this._d.get("in");
+    }
+
+    /**
+     * Get the first node of the pipeline dag
+     */
     first() {
         return this._d.get("first");
     }
 
+    /**
+     * Get the last node of the pipeline dag
+     */
     last() {
         return this._d.get("last");
     }
 
-    getWindowType() {
-        return this._d.get("windowType");
+    /**
+     * Get the runner set on this pipeline
+     */
+    runner() {
+        return this._d.get("runner");
     }
 
-    getWindowDuration() {
-        return this._d.get("windowDuration");
+    /**
+     * Get the full pipeline dag
+     */
+    graph() {
+        return this._d.get("graph");
     }
 
-    getGroupBy() {
-        return this._d.get("groupBy");
+    /**
+     * Get the current state of the pipeline
+     */
+    state() {
+        return this._d.get("state");
     }
 
-    getEmitOn() {
-        return this._d.get("emitOn");
+    /**
+     * @private
+     *
+     * Recursively format the child nodes for printing
+     */
+    _printChildNodes(nodeId) {
+        const children = this.graph().getRelatedNodes(nodeId, Predicate.hasChild);
+        return children.map(childId => ({
+            label: this._printGraphItem(childId), nodes: this._printChildNodes(childId)
+        }));
+    }
+
+    /**
+     * @private
+     *
+     * Format a graph item for printing
+     */
+    _printGraphItem(id) {
+        const node = this.graph().getNode(id);
+        const type = node.get("type");
+        const data = JSON.stringify(node.get("data").toJS());
+        return `${type}: ${data}`;
+    }
+
+    /**
+     * Pretty prints the DAG graph for the pipeline
+     */
+    printGraph() {
+        const rootNode = this.graph().getRoot();
+        const id = rootNode.get("id");
+        const s = archy({label: this._printGraphItem(id), nodes: this._printChildNodes(id)});
+        console.log(s);
     }
 
     //
     // Results
     //
 
+    /**
+     * @private
+     *
+     * Clears the results cache
+     */
     clearResults() {
         this._resultsDone = false;
         this._results = null;
     }
     
+    /**
+     * @private
+     *
+     * Adds to the result cache. Called from pipeline
+     * output processors to accumulate results for sync pipelines
+     */
     addResult(arg1, arg2) {
         if (!this._results) {
             if (_.isString(arg1) && arg2) {
@@ -256,6 +368,11 @@ class Pipeline {
         this._resultsDone = false;
     }
 
+    /**
+     * @private
+     *
+     * Completes the accumulation of cached results
+     */
     resultsDone() {
         this._resultsDone = true;
     }
@@ -270,75 +387,96 @@ class Pipeline {
      * @private
      */
     _setIn(input) {
+        console.log("SET IN");
         let mode;
         let source = input;
+        let first = this.first();
+        let last = this.last();
+
+        let node;
+
+        // Get the mode of the pipeline based on the input
+        // and add a first node to out DAG graph
         if (input instanceof TimeSeries) {
             mode = "batch";
             source = input.collection();
+            node = this.graph().createRoot("collection", {
+                mode,
+                collection: input.collection()
+            });
         } else if (input instanceof Bounded) {
             mode = "batch";
+            node = this.graph().createRoot("collection", {
+                mode,
+                bounded: input
+            });
         } else if (input instanceof Stream) {
             mode = "stream";
+            node = this.graph().createRoot("collection", {
+                mode,
+                stream: input
+            });
         } else {
             throw new Error("Unknown input type", input);
         }
 
         const d = this._d.withMutations(map => {
-            map.set("in", source)
-               .set("mode", mode);
+            map.set("mode", mode)
+               .set("first", node)
+               .set("last", node);
         });
 
         return new Pipeline(d);
     }
 
     /**
-     * Set the first processing node pointed to, returning
-     * a new Pipeline. The original pipeline will still point
-     * to its orginal processing node.
+     * @private
      *
-     * @private
+     * Chain new node to pipeline
      */
-    _setFirst(n) {
-        const d = this._d.set("first", n);
-        return new Pipeline(d);
-    }
-
-    /**
-     * Set the last processing node pointed to, returning
-     * a new Pipeline. The original pipeline will still point
-     * to its orginal processing node.
-     *
-     * @private
-     */
-    _setLast(n) {
-        const d = this._d.set("last", n);
-        return new Pipeline(d);
-    }
-
-    /**
-     * @private
-     */
-    _append(processor) {
+    _chain(type, options) {
+        const state = this.state();
+        const graph = this.graph();
         let first = this.first();
         let last = this.last();
+        let node;
 
-        if (!first) first = processor;
-        if (last) last.addObserver(processor);
-        last = processor;
+        if (!first) {
+            throw new Error("No pipeline in node exists");
+        } else {
+            node = graph.createNode(type, {...state.toJS(), ...options});
+            graph.addRelationship(last, Predicate.hasChild, node);
+        }
+
+        last = node;
 
         const d = this._d.withMutations(map => {
             map.set("first", first)
                .set("last", last);
         });
+
         return new Pipeline(d);
     }
 
-    _chainPrev() {
-        return this.last() || this;
+    /**
+     * @private
+     *
+     * Updates the state of the pipeline. The state manages
+     * variables such as groupBy requirements for the pipeline.
+     * The state can change at any point in the pipeline and
+     * that state will apply to downstream processors.
+     */
+    _updateState(state) {
+        const s = Immutable.Map(state);
+        let d;
+        _.forEach(state, (value, key) => {
+            d = this._d.setIn(["state", key], value);
+        });
+        return new Pipeline(d);
     }
 
     //
-    // Pipeline state chained methods
+    // Pipeline state set methods
     //
 
     /**
@@ -391,12 +529,10 @@ class Pipeline {
             duration = null;
         }
 
-        const d = this._d.withMutations(map => {
-            map.set("windowType", type)
-               .set("windowDuration", duration);
+        return this._updateState({
+            windowType: type,
+            windowDuration: duration
         });
-
-        return new Pipeline(d);
     }
 
     /**
@@ -503,7 +639,7 @@ class Pipeline {
     }
 
     //
-    // I/O
+    // I/O - Set the input and outputs of the pipeline
     //
 
     /**
@@ -580,6 +716,8 @@ class Pipeline {
      * @return {Pipeline} The Pipeline
      */
     to(arg1, arg2, arg3) {
+        const Runner = this.runner();
+
         const Out = arg1;
         let observer;
         let options = {};
@@ -591,15 +729,17 @@ class Pipeline {
             observer = arg3;
         }
 
-        if (!this.in()) {
+        // We need the user to have at least added an "in" to this pipeline
+        if (!this.first()) {
             throw new Error("Tried to eval pipeline without a In. Missing from() in chain?");
         }
        
-        const out = new Out(this, options, observer);
+        const out = new Out(this, options);
 
         if (this.mode() === "batch") {
+            console.log("Starting runner in batch mode");
             const runner = new Runner(this, out);
-            runner.start(true);
+            runner.execute(true);
             if (this._resultsDone && !observer) {
                 return this._results;
             }
@@ -636,7 +776,7 @@ class Pipeline {
     }
 
     //
-    // Processors
+    // Processors - chain new processors to the DAG graph
     //
     
     /**
@@ -649,13 +789,7 @@ class Pipeline {
      * @return {Pipeline}               The modified Pipeline
      */
     offsetBy(by, fieldSpec) {
-        const p = new Offset(this, {
-            by,
-            fieldSpec,
-            prev: this._chainPrev()
-        });
-
-        return this._append(p);
+        return this._chain("offset", { by, fieldSpec });
     }
 
     /**
@@ -694,36 +828,7 @@ class Pipeline {
      * @return {Pipeline} The Pipeline
      */
     aggregate(fields) {
-        const p = new Aggregator(this, {
-            fields,
-            prev: this._chainPrev()
-        });
-        return this._append(p);
-    }
-
-    /**
-     * Converts incoming TimeRangeEvents or IndexedEvents to
-     * Events. This is helpful since some processors will
-     * emit TimeRangeEvents or IndexedEvents, which may be
-     * unsuitable for some applications.
-     *
-     * @param  {object} options To convert to an Event you need
-     * to convert a time range to a single time. There are three options:
-     *  1. use the beginning time (options = {alignment: "lag"})
-     *  2. use the center time (options = {alignment: "center"})
-     *  3. use the end time (options = {alignment: "lead"})
-     *
-     * @return {Pipeline} The Pipeline
-     */
-    asEvents(options) {
-        const type = Event;
-        const p = new Converter(this, {
-            type,
-            ...options,
-            prev: this._chainPrev()
-        });
-        
-        return this._append(p);
+        return this._chain("aggregate", { fields });
     }
 
     /**
@@ -734,12 +839,7 @@ class Pipeline {
      * @return {Pipeline} The Pipeline
      */
     map(op) {
-        const p = new Mapper(this, {
-            op,
-            prev: this._chainPrev()
-        });
-
-        return this._append(p);
+        return this._chain("map", { op });
     }
 
     /**
@@ -750,12 +850,7 @@ class Pipeline {
      * @return {Pipeline} The Pipeline
      */
     filter(op) {
-        const p = new Filter(this, {
-            op,
-            prev: this._chainPrev()
-        });
-
-        return this._append(p);
+        return this._chain("filter", { op });
     }
 
     /**
@@ -770,12 +865,7 @@ class Pipeline {
      * @return {Pipeline} The Pipeline
      */
     select(fieldSpec) {
-        const p = new Selector(this, {
-            fieldSpec,
-            prev: this._chainPrev()
-        });
-
-        return this._append(p);
+        return this._chain("select", { fieldSpec });
     }
 
     /**
@@ -805,15 +895,12 @@ class Pipeline {
      * @return {Pipeline}               The Pipeline
      */
     collapse(fieldSpecList, name, reducer, append) {
-        const p = new Collapser(this, {
+        return this._chain("collapse", {
             fieldSpecList,
             name,
             reducer,
-            append,
-            prev: this._chainPrev()
+            append
         });
-
-        return this._append(p);
     }
 
     /**
@@ -836,23 +923,15 @@ class Pipeline {
      * @return {Pipeline}               The Pipeline
      */
     fill({fieldSpec = null, method = "linear", limit = null}) {
-        const prev = this._chainPrev();
-        return this._append(new Filler(this, {fieldSpec, method, limit, prev}));
+        return this._chain("fill", { fieldSpec, method, limit });
     }
 
     align(fieldSpec, window, method, limit) {
-        const prev = this._chainPrev();
-        return this._append(new Aligner(this, {fieldSpec, window, method, limit, prev}));
+        return this._chain("align", { fieldSpec, window, method, limit });
     }
 
     rate(fieldSpec, allowNegative = true) {
-        const p = new Derivator(this, {
-            fieldSpec,
-            allowNegative,
-            prev: this._chainPrev()
-        });
-
-        return this._append(p);
+        return this._chain("rate", { fieldSpec, allowNegative });
     }
 
     /**
@@ -863,41 +942,54 @@ class Pipeline {
      * @return {Pipeline} The Pipeline
      */
     take(limit) {
-        const p = new Taker(this, {
-            limit,
-            prev: this._chainPrev()
-        });
+        return this._chain("take", { limit });
+    }
 
-        return this._append(p);
+    /**
+     * Converts incoming TimeRangeEvents or IndexedEvents to
+     * Events. This is helpful since some processors will
+     * emit TimeRangeEvents or IndexedEvents, which may be
+     * unsuitable for some applications.
+     *
+     * There are three options to convert a range to a single time:
+     *   1. use the beginning time (options = {alignment: "lag"})
+     *   2. use the center time (options = {alignment: "center"})
+     *   3. use the end time (options = {alignment: "lead"})
+     *
+     * @param  {object}   options   To convert to an Event you need
+     *                              to convert a time range to a single time.
+     *                              Use options.alignment with either "lag",
+     *                              "center" or "lead".
+     *
+     * @return {Pipeline} The Pipeline
+     */
+    asEvents(options) {
+        const type = Event;
+        return this._chain("convert", { type, ...options });
     }
 
     /**
      * Converts incoming Events or IndexedEvents to TimeRangeEvents.
      *
-     * @param {object} options To convert from an Event you need
-     * to convert a single time to a time range. To control this you
-     * need to specify the duration of that time range, along with
-     * the positioning (alignment) of the time range with respect to
-     * the time stamp of the Event.
-     *
-     * There are three option for alignment:
+     * There are three option for conversion:
      *  1. time range will be in front of the timestamp (options = {alignment: "front"})
      *  2. time range will be centered on the timestamp (options = {alignment: "center"})
      *  3. time range will be positoned behind the timestamp (options = {alignment: "behind"})
      *
      * The duration is of the form "1h" for one hour, "30s" for 30 seconds and so on.
      *
+     * @param {object} options To convert from an Event you need to convert
+     *                         a single time to a time range. To control this
+     *                         you need to specify the duration of that time
+     *                         range, along with the positioning (alignment)
+     *                         of the time range with respect to the time stamp
+     *                         of the Event.
+     *
      * @return {Pipeline} The Pipeline
      */
     asTimeRangeEvents(options) {
         const type = TimeRangeEvent;
-        const p = new Converter(this, {
-            type,
-            ...options,
-            prev: this._chainPrev()
-        });
-        
-        return this._append(p);
+        return this._chain("convert", { type, ...options });
     }
 
     /**
@@ -906,20 +998,17 @@ class Pipeline {
      * Note: It isn't possible to convert TimeRangeEvents to IndexedEvents.
      *
      * @param {Object} options            An object containing the conversion
-     * options. In this case the duration string of the Index is expected.
-     * @param {string} options.duration   The duration string is of the form "1h" for one hour, "30s"
-     * for 30 seconds and so on.
+     *                                    options. In this case a duration
+     *                                    string is expected.
+     * @param {string} options.duration   The duration string is of the
+     *                                    form "1h" for one hour, "30s"
+     *                                    for 30 seconds and so on.
      *
      * @return {Pipeline} The Pipeline
      */
     asIndexedEvents(options) {
         const type = IndexedEvent;
-        const p = new Converter(this, {
-            type,
-            ...options,
-            prev: this._chainPrev()
-        });
-        return this._append(p);
+        return this._chain("convert", { type, ...options });
     }
 }
 

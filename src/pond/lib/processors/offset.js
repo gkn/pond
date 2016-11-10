@@ -43,16 +43,14 @@ export default class Offset extends Processor {
      * Output an event that is offset
      */
     addEvent(event) {
-        if (this.hasObservers()) {
-            const selected = Event.selector(event, this._fieldSpec);
-            const data = {};
-            _.each(selected.data().toJSON(), (value, key) => {
-                const offsetValue = value + this._by;
-                data[key] = offsetValue;
-            });
-            const outputEvent = event.setData(data);
+        const selected = Event.selector(event, this._fieldSpec);
+        const data = {};
+        _.each(selected.data().toJSON(), (value, key) => {
+            const offsetValue = value + this._by;
+            data[key] = offsetValue;
+        });
+        const outputEvent = event.setData(data);
 
-            this.emit(outputEvent);
-        }
+        this.emit(outputEvent);
     }
 }

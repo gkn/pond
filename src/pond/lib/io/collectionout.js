@@ -18,10 +18,10 @@ class CollectionOut extends PipelineOut {
         
         this._callback = callback;
         this._collector = new Collector({
-            windowType: pipeline.getWindowType(),
-            windowDuration: pipeline.getWindowDuration(),
-            groupBy: pipeline.getGroupBy(),
-            emitOn: pipeline.getEmitOn()
+            windowType: pipeline.state().get("windowType"),
+            windowDuration: pipeline.state().get("windowDuration"),
+            groupBy: pipeline.state().get("groupBy"),
+            emitOn: pipeline.state().get("emitOn"),
         }, (collection, windowKey, groupByKey) => {
             const groupBy = groupByKey ? groupByKey : "all";
             if (this._callback) {
